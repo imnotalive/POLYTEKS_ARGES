@@ -1,0 +1,16 @@
+﻿@model POLYTEKS_ARGE.Models.NumuneModel
+
+@{
+    ViewBag.Title = "NumuneAdiRapor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NumuneAdiRapor</h2>
+
+@using (Html.BeginForm("NumuneAdiRapor", "Numune"))
+{
+    @Html.DropDownListFor(a => a.SecilenId, Model.NumuneSelect)
+    <button type="submit">Kaydet</button>
+}
+<form>
+</form>

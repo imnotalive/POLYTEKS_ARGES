@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+@*<h5>Complete models list</h5>
+            </div>
+    <div class="col-md-1">
+        <i class="fa fa-blog float-right"></i>
+    </div>
+        </div>
+    </div>*@
+
+@*<p class="text-center">h center</p>*@
+
+@*<div class="row">
+    <div class="card" style="color:aliceblue">
+        <div class="card-header">
+            <div class="center">*@
+<div class="col-12">
+    <div class="card">
+        <div class="card-header text-center bg-gradient-light text-white">
+            <div class="row align-items-center">
+                <div class="col-md-11">
+                    <center><h2 style="color: black"><b>PROJE DENEMELERİ LİSTESİ</b></h2></center>
+                </div>
+            </div>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+            @*<div class="row text-center h-100">
+                <div class="col-md-3 text-center my-auto">
+                    <div class="card card-block d-flex" style="height: 120px">*@
+            <div class="card-body align-items-center d-flex justify-content-center">
+                <div class="card-body">
+                    <div class="tabs">
+                        <div class="tab-nav-wrapper">
+                            <ul>
+                                <li class="active"><a href="#tab1">POY/FDY DENEMESİ</a></li>
+                                <li><a href="#tab2">TEKSTÜRE DENEMESİ </a></li>
+                                <li><a href="#tab3">BÜKÜM DENEMESİ </a></li>
+                                <li><a href="#tab4">HAVA TEKSTÜRE DENEMESİ</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content-wrapper">
+                            <div id="tab1" class="tab-content" style="display:none;">
+                                <input type="button" id="btn1" value="POY/FDY DENEMESİ EKLE" style="background-color:#003173;color:white;" />
+                                <div id="result1"></div>
+                            </div>
+                            <div id="tab2" class="tab-content" style="display:none;">
+                                <input type="button" id="btn2" value="TEKSTÜRE DENEMESİ EKLE" style="background-color: #003173; color: white; " />
+                                <div id="result2"></div>
+                            </div>
+                            <div id="tab3" class="tab-content" style="display:none;">
+                                <input type="button" id="btn3" value="BÜKÜM DENEMESİ EKLE" style="background-color: #003173; color: white; " />
+                                <div id="result3"></div>
+
+                            </div>
+                            <div id="tab4" class="tab-content" style="display:none;">
+                                <input type="button" id="btn4" value="HAVA TEKSTÜRE DENEMESİ EKLE" style="background-color: #003173; color: white; " />
+                                <div id="result4"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+    .tabs {
+        height: 1475px;
+        width: 100%;
+        color: #003173;
+        text-align: left;
+    }
+
+    .tab-nav-wrapper {
+        width: 100%;
+        color: #003173;
+        overflow-x: auto;
+        position: relative !important;
+        z-index: 999 !important;
+        top: 3px;
+    }
+
+    .tabs ul {
+        display: block;
+        width: max-content;
+        color: #003173;
+        overflow-y: hidden;
+        margin: 0px;
+        padding-inline-start: 5px;
+    }
+
+        .tabs ul li {
+            display: inline-block;
+            border: 2px solid black;
+            color: #003173;
+        }
+
+            .tabs ul li.active {
+                color: #003173;
+                border-bottom: #003173;
+            }
+
+            .tabs ul li a {
+                text-decoration: none;
+                color: #003173;
+                padding: 10px;
+                line-height: 25px;
+                position: relative;
+                font-weight: bold;
+            }
+
+    .tab-content-wrapper {
+        position: relative !important;
+        z-index: 1 !important;
+        color: #003173;
+        padding: 20px;
+        min-height: 40px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $(".tab-nav-wrapper li.active").click();
+        $($(".tab-nav-wrapper li.active a").attr("href")).show();
+
+        $(".tab-nav-wrapper li").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $(".tab-nav-wrapper li").removeClass("active");
+            $(this).addClass("active");
+
+            var target = $(this).find("a").attr("href");
+            $(".tab-content-wrapper").find(".tab-content").hide();
+            $(".tab-content-wrapper").find(target).show();
+        })
+    });
+
+
+    $(document).ready(function () {
+        $('#btn1').click(function () {
+            $('#result1').load('/ProjeDenemeleri/_PoyDenemeOlustur');
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('#btn2').click(function () {
+            $('#result2').load('/ProjeDenemeleri/_TekstureDenemeOlustur');
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('#btn3').click(function () {
+            $('#result3').load('/ProjeDenemeleri/_BukumDenemeOlustur');
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('#btn4').click(function () {
+            $('#result4').load('/ProjeDenemeleri/_HavaTekstureDenemeOlustur');
+        });
+    });
+
+</script>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

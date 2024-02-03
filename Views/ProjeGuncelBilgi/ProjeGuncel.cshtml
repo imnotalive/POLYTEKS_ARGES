@@ -1,0 +1,113 @@
+﻿@model POLYTEKS_ARGE.Models.ProjeGuncelBilgiModel
+@{
+    ViewBag.Title = "ProjeGuncel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("GuncelBilgiModeliOlustur", "ProjeGuncelBilgi", FormMethod.Post))
+{
+    <input type="submit" value="GENEL RAPOR İNDİR" class="btn btn-danger" />
+}
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+
+
+            @using (Html.BeginForm("ProjeGuncels", "ProjeGuncelBilgi"))
+            {
+
+                <div class="row">
+
+
+                    <label class="control-label"><b>PROJE KODU:</b></label><br />
+                    <div class="col-md-4">
+                        <div class="input-icon right">
+
+                            @Html.TextBoxFor(a => a.ProjeKodus, Model.ProjeKodus, new
+                       {
+                           @class = "form-control uppercase"
+                       })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>&nbsp; </b></label>
+                        <button type="submit" class="btn btn-primary red-thunderbird"><b> RAPOR İNDİR <i class="fa fa-book"></i></b></button>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <br />
+
+
+
+
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+<style>
+    .uppercase {
+        text-transform: uppercase
+    }
+</style>
+<script>
+    function InputToUpper(obj) {
+        if (obj.value != "") {
+            obj.value = obj.value.toUpperCase();
+        }
+    }
+</script>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

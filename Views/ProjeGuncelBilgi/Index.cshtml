@@ -1,0 +1,531 @@
+﻿@*@using GridMvc.Html
+    @model IEnumerable<POLYTEKS_ARGE.Models.ARGE_ProjeGuncelBilgi>*@
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<POLYTEKS_ARGE.Models.ARGE_ProjeGuncelBilgi>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+
+            <center><h2 style="color: black"><b>AR-GE PROJE GÜNCEL BİLGİLERİ</b></h2></center>
+            <hr />
+            @*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+                <script src="~/Scripts/bootstrap.min.js"></script>
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+                <link href="/Content/glyphicons.css" rel="stylesheet" />
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">*@
+            <p>
+                @Html.ActionLink("PROJE İÇİN BİLGİ GİRİŞİ YAP", "Create", "ProjeGuncelBilgi", new { @class = "btn btn-info btn-block" })
+            </p>
+
+            @Html.ActionLink("RAPORLAMA", "ProjeGuncel", "ProjeGuncelBilgi", new { @class = "btn btn-danger btn-block" })
+            <br />
+            <div class="container">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" id="Search" placeholder="ARA">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-search"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+            <script type="text/javascript"></script>
+            <script src="~/Scripts/bootstrap-datepicker.js"></script>
+            <script src="~/Scripts/locales/bootstrap-datepicker.tr.min.js"></script>
+            <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+            @*<table class="table table-striped table-bordered table-sm sortable"  id="myTable">*@
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="portlet light bordered">
+                        <div class="portlet-title">
+                            <div class="caption font-red-sunglo">
+                                <table class="table table-striped border table-sm sortable" id="myTable">
+                                    <thead>
+                                        <tr style="color:black">
+
+                                            <th>
+                                                <b>PROJE GÜNCELLEME TARİHİ</b>
+                                            </th>
+                                            <th>
+                                                <b>PROJE KODU</b>
+                                            </th>
+                                            <th>
+                                                <b>PROJE ADI</b>
+                                            </th>
+                                            <th>
+                                                <b>PROJE GÜNCELLEME DETAYLARI</b>
+                                            </th>
+
+                                            <th><b></b></th>
+                                            <th><b></b></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+
+                                            foreach (var item in Model)
+                                            {
+
+                                                <tr class="Search item" style="color:black">
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ProjeGuncellemeTarih)
+                                                    </td>
+                                                    <td>
+                                                        <b> @Html.DisplayFor(modelItem => item.ARGE_Proje.ProjeKodu)</b>
+                                                    </td>
+                                                    <td>
+                                                        <b> @Html.DisplayFor(modelItem => item.ARGE_Proje.ProjeAdi)</b>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ProjeGuncellemeDetay)
+                                                    </td>
+
+                                                    <td style="text-align: center; color: black">
+
+
+                                                        <a href="@Url.Action("Edit", "ProjeGuncelBilgi",new { id = item.ProjeGuncellemeId })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+
+                                                    </td>
+                                                    <td style="text-align: center; color: black">
+
+                                                        <a href="@Url.Action("Delete", "ProjeGuncelBilgi",new { id = item.ProjeGuncellemeId })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="color:black" class="b">
+                <b>
+                    <strong> &nbsp;F-32.03H/00  </strong>
+
+                </b>
+            </div>
+            <style>
+
+                div.b {
+                    text-align: left;
+                    font-style: italic;
+                }
+            </style>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+            <script src="JS/jquery.cycle.all.js"></script>
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    function Contains(text_one, text_two) {
+                        if (text_one.indexOf(text_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        var searchText = $("#Search").val().toLowerCase();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text().toLowerCase(), searchText)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        })
+                    });
+                });
+
+            </script>
+            @*<div style="height: 500px; overflow: auto;">
+                    <div class="row-cols-sm-1">
+                        @Html.Grid(Model).EmptyText("Gösterilecek bir şey bulunamadı").Columns(Columns =>
+                   {
+                       Columns.Add(c => c.ProjeGuncellemeTarih).Titled("PROJE GÜNCELLEME TARİHİ").Format("{0:dd.MM.yyyy}").Sortable(true).Filterable(true);
+                       Columns.Add(c => c.ARGE_Proje.ProjeAdi).Titled("PROJE ADI").Sortable(true).Filterable(true);
+                       Columns.Add(c => c.ProjeGuncellemeDetay).Titled("PROJE GÜNCELLEME DETAYI").Sortable(true).Filterable(true);
+
+                       Columns.Add()
+                    .Encoded(false)
+                    .Sanitized(false)
+                    .SetWidth(1)
+                    .RenderValueAs(o => Html.ActionLink("DÜZENLE", "Edit", new { id = o.ProjeGuncellemeId }, new { @class = "btn btn-primary btn-xl" })).Encoded(false).Filterable(false).Sortable(false).Titled("DÜZENLE");
+                       Columns.Add()
+                    .Encoded(false)
+                    .Sanitized(false)
+                    .SetWidth(1)
+                      .RenderValueAs(o => Html.ActionLink("SİL", "Delete", new { id = o.ProjeGuncellemeId }, new { @class = "btn btn-danger btn-xl classname" })).Encoded(false).Filterable(false).Sortable(false).Titled("SİL");
+
+
+                   }
+                    ).WithPaging(50).SetLanguage("tr").Sortable(true).Filterable(true).WithGridItemsCount("Toplam Proje Güncel Bilgi Sayısı").WithMultipleFilters()
+                    </div>
+                </div>
+
+                <script>
+                    /***
+                * Grid.Mvc russian language (ru-RU) http://gridmvc.codeplex.com/
+                */
+                    window.GridMvc = window.GridMvc || {};
+                    window.GridMvc.lang = window.GridMvc.lang || {};
+                    GridMvc.lang.tr = {
+                        filterTypeLabel: "Filtre: ",
+                        filterValueLabel: "Değer:",
+                        applyFilterButtonText: "Uygula",
+                        filterSelectTypes: {
+                            Equals: "Eşittir",
+                            StartsWith: "Başlar",
+                            Contains: "İçerir",
+                            EndsWith: "Biter",
+                            GreaterThan: "Büyüktür",
+                            LessThan: "Küçüktür",
+
+                        },
+                        code: 'tr',
+                        boolTrueLabel: "Doğru",
+                        boolFalseLabel: "Yanlış",
+                        clearFilterLabel: "Temizle"
+                    };
+                </script>
+
+                <script type="text/javascript">
+                    $('.datepicker').datepicker({
+                        autoclose: true,
+                        todayHighlight: true,
+
+                    });
+                </script>
+                <style>
+                    td, th {
+                        border-bottom: 1px solid black;
+                        border-left: 1px solid black;
+                        border-right: 1px solid black;
+                        border-top: 1px solid black
+                    }
+                    a.classname {
+                        background:  no-repeat top left;
+                        display: block;
+                        width: 50px;
+                        height: 50px;
+
+                    }
+                </style>*@
+            <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+            <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker;
+                });
+            </script>
+            <div class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+            {
+                DisplayLinkToIndividualPages = true,
+                DisplayPageCountAndCurrentLocation = true,
+                MaximumPageNumbersToDisplay = 5,
+                //MaximumPageNumbersToDisplay = 3,
+                //LiElementClasses = new string[] { "pagination" },
+                //LinkToFirstPageFormat = "<< İLK",
+                //LinkToPreviousPageFormat = "< GERİ",
+                //LinkToNextPageFormat = "İLERİ >",
+                //LinkToLastPageFormat = "SON >>",
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+
+                DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                EllipsesFormat = "&#8230;",
+                LinkToFirstPageFormat = "««",
+                LinkToPreviousPageFormat = "«",
+                LinkToIndividualPageFormat = "{0}",
+                LinkToNextPageFormat = "»",
+                LinkToLastPageFormat = "»»",
+                PageCountAndCurrentLocationFormat = "Sayfa {0}/{1}",
+                //ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                FunctionToDisplayEachPageNumber = null,
+                ClassToApplyToFirstListItemInPager = null,
+                ClassToApplyToLastListItemInPager = null,
+                ContainerDivClasses = new[] { "pagination" },
+                //UlElementClasses = new[] { "pagination" },
+                //LiElementClasses = Enumerable.Empty<string>(),
+
+                //PageClasses = new string[] { "page-link" },
+
+            }
+            /* PagedListRenderOptions.PageNumbersOnly*/)
+            </div>
+            <style>
+                .pagination a {
+                    color: black;
+                    float: left;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    transition: background-color .3s;
+                    border: 1px solid #ddd;
+                }
+
+                    .pagination a.active {
+                        background-color: #4CAF50;
+                        color: white;
+                        border: 1px solid #4CAF50;
+                    }
+
+                    .pagination a:hover:not(.active) {
+                        background-color: #ddd;
+                    }
+            </style>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <style>
+                table {
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    width: 100%;
+                    position: relative;
+                    overflow: auto;
+                    /*  overflow-y: overlay;*/
+                }
+
+                th,
+                thead {
+                    position: sticky;
+                    top: 0;
+                    border: 1px solid #dddddd;
+                    /* background-color: #1f2d54;*/
+                    text-align: center;
+                    color: white;
+                    table-layout: fixed;
+                    word-break: break-word;
+                    height: 45px;
+                }
+
+                .filter {
+                    position: absolute;
+                    width: 20vw;
+                    height: 30vh;
+                    display: none;
+                    text-align: left;
+                    font-size: small;
+                    z-index: 9999;
+                    overflow: auto;
+                    background: #ffffff;
+                    /*   color: #1f2d54;*/
+                    border: 1px solid #dddddd;
+                }
+
+                    .filter input {
+                        margin: 5px !important;
+                        padding: 0 !important;
+                        width: 10%;
+                    }
+            </style>
+            <script>
+                (function ($) {
+
+                    $.fn.ddTableFilter = function (options) {
+                        options = $.extend(true, $.fn.ddTableFilter.defaultOptions, options);
+
+                        return this.each(function () {
+                            if ($(this).hasClass('ddtf-processed')) {
+                                refreshFilters(this);
+                                return;
+                            }
+                            var table = $(this);
+                            var start = new Date();
+
+                            $('th:visible', table).each(function (index) {
+                                if ($(this).hasClass('skip-filter')) return;
+                                var selectbox = $('<select class="form-control">');
+                                var values = [];
+                                var opts = [];
+                                selectbox.append('<option value="--all--">' + $(this).text() + '</option>');
+
+                                var col = $('tr:not(.skip-filter) td:nth-child(' + (index + 1) + ')', table).each(function () {
+                                    var cellVal = options.valueCallback.apply(this);
+                                    if (cellVal.length == 0) {
+                                        cellVal = '--empty--';
+                                    }
+                                    $(this).attr('ddtf-value', cellVal);
+
+                                    if ($.inArray(cellVal, values) === -1) {
+                                        var cellText = options.textCallback.apply(this);
+                                        if (cellText.length == 0) { cellText = options.emptyText; }
+                                        values.push(cellVal);
+                                        opts.push({ val: cellVal, text: cellText });
+                                    }
+                                });
+                                if (opts.length < options.minOptions) {
+                                    return;
+                                }
+                                if (options.sortOpt) {
+                                    opts.sort(options.sortOptCallback);
+                                }
+                                $.each(opts, function () {
+                                    $(selectbox).append('<option value="' + this.val + '">' + this.text + '</option>')
+                                });
+
+                                $(this).wrapInner('<div style="display:none">');
+                                $(this).append(selectbox);
+
+                                selectbox.bind('change', { column: col }, function (event) {
+                                    var changeStart = new Date();
+                                    var value = $(this).val();
+
+                                    event.data.column.each(function () {
+                                        if ($(this).attr('ddtf-value') === value || value == '--all--') {
+                                            $(this).removeClass('ddtf-filtered');
+                                        }
+                                        else {
+                                            $(this).addClass('ddtf-filtered');
+                                        }
+                                    });
+                                    var changeStop = new Date();
+                                    if (options.debug) {
+                                        console.log('Search: ' + (changeStop.getTime() - changeStart.getTime()) + 'ms');
+                                    }
+                                    refreshFilters(table);
+
+                                });
+                                table.addClass('ddtf-processed');
+                                if ($.isFunction(options.afterBuild)) {
+                                    options.afterBuild.apply(table);
+                                }
+                            });
+
+                            function refreshFilters(table) {
+                                var refreshStart = new Date();
+                                $('tr', table).each(function () {
+                                    var row = $(this);
+                                    if ($('td.ddtf-filtered', row).length > 0) {
+                                        options.transition.hide.apply(row, options.transition.options);
+                                    }
+                                    else {
+                                        options.transition.show.apply(row, options.transition.options);
+                                    }
+                                });
+
+                                if ($.isFunction(options.afterFilter)) {
+                                    options.afterFilter.apply(table);
+                                }
+
+                                if (options.debug) {
+                                    var refreshEnd = new Date();
+                                    console.log('Refresh: ' + (refreshEnd.getTime() - refreshStart.getTime()) + 'ms');
+                                }
+                            }
+
+                            if (options.debug) {
+                                var stop = new Date();
+                                console.log('Build: ' + (stop.getTime() - start.getTime()) + 'ms');
+                            }
+                        });
+                    };
+
+                    $.fn.ddTableFilter.defaultOptions = {
+                        valueCallback: function () {
+                            return encodeURIComponent($.trim($(this).text()));
+                        },
+                        textCallback: function () {
+                            return $.trim($(this).text());
+                        },
+                        sortOptCallback: function (a, b) {
+                            return a.text.toLowerCase() > b.text.toLowerCase();
+                        },
+                        afterFilter: null,
+                        afterBuild: null,
+                        transition: {
+                            hide: $.fn.hide,
+                            show: $.fn.show,
+                            options: []
+                        },
+                        emptyText: '--BOŞ--',
+                        sortOpt: true,
+                        debug: false,
+                        minOptions: 2
+                    }
+
+                })(jQuery);
+
+                $('table').ddTableFilter();
+            </script>
+        </div>
+    </div>
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

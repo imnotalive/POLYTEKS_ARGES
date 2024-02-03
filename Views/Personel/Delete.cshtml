@@ -1,0 +1,133 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Personel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+
+<h3>PERSONELİ SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            KULLANICI ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KullaniciAdi)
+        </dd>
+
+        <dt>
+            PERSONEL KODU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelKodu)
+        </dd>
+
+        <dt>
+            AD SOYAD
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdSoyad)
+        </dd>
+
+
+
+
+        <dt>
+            E-MAİL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            E-MAİL2
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email2)
+        </dd>
+        <dt>
+            DURUM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+
+
+
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+
+    </dl>
+    <br />   <br />   <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" /><br /><br />
+
+        </div>
+    }
+</div>
+<hr />
+<br />
+@Html.ActionLink("LİSTEYE DÖN", "Index", "Personel", new { @class = "btn btn-primary" })
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

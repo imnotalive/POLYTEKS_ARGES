@@ -1,0 +1,107 @@
+﻿@model POLYTEKS_ARGE.Models.PersonelDisaridaGecirilenSureModel
+@{
+    ViewBag.Title = "PersonelRapor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+            @*<div class="portlet-title">
+                    <div class="caption font-red-sunglo">
+                        <i class="icon-settings font-red-sunglo"></i>
+                        @using (Html.BeginForm("PersonelRapor", "PersonelDisaridaGecirilenSure"))
+                        {
+                            <input type="submit" value="EXCEL" color="btn btn-success" />
+                        }
+                    </div>
+                </div>*@
+
+            @using (Html.BeginForm("PersonelRaporModeliOlustur", "PersonelDisaridaGecirilenSure"))
+            {
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>BAŞLANGIÇ TARİH SEÇİMİ </b></label>
+                        <div class="input-icon right">
+                            @Html.TextBoxFor(a => a.BaslangicTarihiDateTime, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>BİTİŞ TARİH SEÇİMİ </b></label>
+                        <div class="input-icon right">
+                            @Html.TextBoxFor(a => a.BitisTarihiDateTime, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="control-label"><b>&nbsp; </b></label>
+                        <button type="submit" class="btn btn-danger red-thunderbird"><b> RAPOR İNDİR <i class="fa fa-book"></i></b></button>
+                    </div>
+
+
+
+                </div>
+                <br />
+
+
+            }
+
+
+
+
+        </div>
+    </div>
+</div>
+@*<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker;
+        });
+    </script>*@
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

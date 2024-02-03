@@ -1,0 +1,125 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Hammadde
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>HAMMADDEYİ SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            HAMMADDE GİRİŞ TARİHİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HammaddeGirisTarihi)
+        </dd>
+
+        <dt>
+            TEDARİKÇİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tedarikci)
+        </dd>
+
+        <dt>
+            KATKI İSMİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KatkiIsmi)
+        </dd>
+
+        <dt>
+            ÜRÜN KODU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunKodu)
+        </dd>
+
+        <dt>
+            FONKSİYON
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fonksiyon)
+        </dd>
+
+        <dt>
+            DOZAJ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dozaj)
+        </dd>
+
+        <dt>
+            BİRİM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miktar)
+        </dd>
+
+        <dt>
+            MİKTAR BİRİM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiktarBirim)
+        </dd>
+
+        <dt>
+            FİYAT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            FİYAT BİRİM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FiyatBirim)
+        </dd>
+
+        <dt>
+            ÖZELLİK
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ozellik)
+        </dd>
+
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" />
+
+        </div>
+    }
+</div>
+<hr />
+<br />
+@Html.ActionLink("LİSTEYE DÖN", "Index", "Hammadde", new { @class = "btn btn-success" })

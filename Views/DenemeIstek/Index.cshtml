@@ -1,0 +1,299 @@
+﻿@*@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_DenemeIstek>*@
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<POLYTEKS_ARGE.Models.ARGE_DenemeIstek>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+            <center>
+                <h2 style="color: black"><b>PROJE DENEME İSTEKLERİ</b></h2>
+
+                <p>
+                    @Html.ActionLink("YENİ PROJE DENEMESİ İSTEĞİ OLUŞTUR", "Create", "DenemeIstek", new { @class = "btn btn-info btn-block" })
+                </p>
+                <p>
+                    @Html.ActionLink("RAPORLAMA", "DenemeIstekRapor", "DenemeIstek", new { @class = "btn btn-danger btn-block" })
+                </p>
+            </center>
+            <hr />
+            <div class="container">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" id="Search" placeholder="ARA">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-search"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+            <table class="table table-striped table-bordered table-sm sortable">
+                <tr style="color: black">
+                    <th>
+                        <b> PROJE KODU</b>
+                    </th>
+                    <th>
+                        <b> PROJE ADI</b>
+                    </th>
+                    <th>
+                        <b>TARİH</b>
+                    </th>
+                    <th>
+                        <b>KATKI</b>
+                    </th>
+                    <th>
+                        <b>  KESİT TİPİ</b>
+                    </th>
+                    <th>
+                        <b>CHIPS</b>
+                    </th>
+                    <th>
+                        <b>DOZAJ(%)</b>
+                    </th>
+                    <th>
+                        <b> POY DTEX</b>
+                    </th>
+                    <th>
+                        <b>POY MİKTARI</b>
+                    </th>
+                    <th>
+                        <b>POY REFERANS</b>
+                    </th>
+
+
+                    @*<th>
+                            <b> DURUM</b>
+                        </th>*@
+
+                    <th></th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="Search item">
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.ARGE_Proje.ProjeKodu)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.ARGE_Proje.ProjeAdi)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.Tarih)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.Katki)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.ARGE_KesitTipi.KesitTipi)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.Chips)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.Dozaj)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.POYDtex)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.POYMiktari)
+                        </td>
+                        <td style="color: black">
+                            @Html.DisplayFor(modelItem => item.POYReferans)
+                        </td>
+
+                        @*<td style="color: black">
+                                @Html.DisplayFor(modelItem => item.ARGE_DenemeDurum.DenemeDurum)
+                            </td>*@
+                        <td style="text-align: center; color: black">
+
+
+                            <a href="@Url.Action("Edit", "DenemeIstek",new { id = item.DenemeIstekId })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+
+                        </td>
+
+
+                        <td style="text-align: center; color: black">
+                            @*@Html.ActionLink("DETAYLAR", "Details", new { id = item.ID }, new { @class = "btn btn-info" })*@
+                            <a href="@Url.Action("Details", "DenemeIstek",new { id = item.DenemeIstekId })" title="DETAYLAR" class="btn btn-info"> <i class="fa fa-book" aria-hidden="true">  </i></a>
+
+                        </td>
+                        <td style="text-align: center; color: black">
+                            @*@Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })*@
+                            <a href="@Url.Action("Delete", "DenemeIstek",new { id = item.DenemeIstekId })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+
+                        </td>
+                        @*<td class="text-center"><a href="javascript:" onclick="Sil(@item.ID)" class="btn purple-seance">Sil</a></td>*@
+                    </tr>
+                }
+
+            </table>
+            <div style="color:black" class="b">
+                <b>
+                    <strong> &nbsp;F-32.09B/01  </strong>
+
+                </b>
+            </div>
+            <style>
+
+                div.b {
+                    text-align: left;
+                    font-style: italic;
+                }
+            </style>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+            @*<script src="JS/jquery.cycle.all.js"></script>*@
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    function Contains(text_one, text_two) {
+                        if (text_one.indexOf(text_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        var searchText = $("#Search").val().toLowerCase();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text().toLowerCase(), searchText)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        })
+                    });
+                });
+
+            </script>
+            <div class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+            {
+                DisplayLinkToIndividualPages = true,
+                DisplayPageCountAndCurrentLocation = true,
+                MaximumPageNumbersToDisplay = 5,
+                //MaximumPageNumbersToDisplay = 3,
+                //LiElementClasses = new string[] { "pagination" },
+                //LinkToFirstPageFormat = "<< İLK",
+                //LinkToPreviousPageFormat = "< GERİ",
+                //LinkToNextPageFormat = "İLERİ >",
+                //LinkToLastPageFormat = "SON >>",
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+
+                DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                EllipsesFormat = "&#8230;",
+                LinkToFirstPageFormat = "««",
+                LinkToPreviousPageFormat = "«",
+                LinkToIndividualPageFormat = "{0}",
+                LinkToNextPageFormat = "»",
+                LinkToLastPageFormat = "»»",
+                PageCountAndCurrentLocationFormat = "Sayfa {0}/{1}",
+                //ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                FunctionToDisplayEachPageNumber = null,
+                ClassToApplyToFirstListItemInPager = null,
+                ClassToApplyToLastListItemInPager = null,
+                ContainerDivClasses = new[] { "pagination" },
+                //UlElementClasses = new[] { "pagination" },
+                //LiElementClasses = Enumerable.Empty<string>(),
+
+                //PageClasses = new string[] { "page-link" },
+
+            }
+            /* PagedListRenderOptions.PageNumbersOnly*/)
+            </div>
+            <style>
+                .pagination a {
+                    color: black;
+                    float: left;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    transition: background-color .3s;
+                    border: 1px solid #ddd;
+                }
+
+                    .pagination a.active {
+                        background-color: #4CAF50;
+                        color: white;
+                        border: 1px solid #4CAF50;
+                    }
+
+                    .pagination a:hover:not(.active) {
+                        background-color: #ddd;
+                    }
+            </style>
+
+        </div>
+    </div>
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

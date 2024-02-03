@@ -1,0 +1,133 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeGuncelBilgi
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header text-center bg-dark text-white">
+            <div class="row align-items-center">
+                <div class="col-md-11">
+                    <center><h2 style="color: black"><b>PROJE GÜNCEL BİLGİ GİRİŞİ</b></h2></center>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                <div class="card" style="color:aliceblue">
+                    <div class="card-header">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <b>@Html.Label("PROJE GÜNCELLEME TARİHİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(model => model.ProjeGuncellemeTarih, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", style = "color:black" })
+                                    @Html.ValidationMessageFor(model => model.ProjeGuncellemeTarih, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <b>@Html.Label("PROJE", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                <div class="col-md-12">
+                                    @Html.DropDownList("ProjeId", null, "--LÜTFEN PROJE SEÇİNİZ--", htmlAttributes: new { @class = "form-control", style = "color:black" })
+                                    @Html.ValidationMessageFor(model => model.ProjeId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-12">
+                <div class="card" style="color:aliceblue">
+                    <div class="card-header">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <b> @Html.Label("PROJE GÜNCELLEME DETAYLARI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(model => model.ProjeGuncellemeDetay, 10, 100, new { maxlength = 300, @class = "form-control", style = "color:black" })
+                                    @Html.ValidationMessageFor(model => model.ProjeGuncellemeDetay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    <input type="submit" value="OLUŞTUR" class="btn btn-danger btn-block" />
+                </div>
+            </div>
+
+
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                @Html.ActionLink("LİSTEYE GERİ GİT", "Index", "ProjeGuncelBilgi", new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker;
+    });
+</script>
+ 
+
+
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

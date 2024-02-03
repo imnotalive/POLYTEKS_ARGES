@@ -1,0 +1,199 @@
+﻿@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_KesitTipi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-warning">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+            <center>
+                <h2 style="color:black"><b>KESİT TİPLERİ</b></h2>
+
+                @*<p>
+                        @Html.ActionLink("YENİ KESİT TİPİ EKLE", "Create", "KesitTipi", new { @class = "btn btn-success" })
+                    </p>*@
+                <input type="button" id="btn1" value="KESİT TİPİ EKLE" class="btn btn-primary" onclick="beklemeAnimasyonu()" color:white />
+                <br />
+                <hr />
+                <div id="result1"></div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btn1').click(function () {
+                            $('#result1').load('/KesitTipi/Create');
+                        });
+                    });
+
+                </script>
+                <table id="b" class="table table-bordered table-striped table-responsive-sm">
+                    <tr>
+                        <th style="color: black">
+                            <b> @Html.DisplayName("KESİT TİPİ")</b>
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="color: black">
+                                @Html.DisplayFor(modelItem => item.KesitTipi)
+                            </td>
+                            <td>
+                                @Html.ActionLink("DÜZENLE", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+
+
+                                @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </center>
+        </div>
+    </div>
+</div>
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.buttons.min.js"></script>
+<script src="~/Scripts/DataTables/buttons.flash.min.js"></script>
+<script src="~/Scripts/DataTables/jszip.min.js"></script>
+<script src="~/Scripts/DataTables/pdfmake.min.js"></script>
+<script src="~/Scripts/DataTables/vfs_fonts.js"></script>
+<script src="~/Scripts/DataTables/buttons.html5.min.js"></script>
+<script src="~/Scripts/DataTables/buttons.print.min.js"></script>
+@*<script src="js/jquery.js" type="text/javascript"></script>*@
+@*<script src="js/jquery.dataTables.js" type="text/javascript"></script>*@
+<script>
+    $.noConflict();
+    jQuery(document).ready(function ($) {
+        $('#b').DataTable();
+    });
+    // Code that uses other library's $ can follow here.
+</script>
+
+@*<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#b').DataTable({
+                extend: 'print',
+                pageLength: 10,
+                paging: true,
+                searching: true,
+                "order": [[3, "desc"]],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                },
+
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    { extend: 'copyHtml5', text: 'KOPYALA' },
+                //    { extend: 'excel', text: 'EXCEL' },
+                //    { extend: 'pdf', text: 'PDF' },
+                //    { extend: 'print', text: 'YAZDIR' }
+                //],
+
+            });
+        });
+    </script>*@
+@*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>*@
+
+@*@(Html.JS().Datatable<Person>()
+            .Name("PersonGrid")
+            .Columns(col =>
+            {
+                col.Field(a => a.Id).Visible(false);
+                col.Field(a => a.Name).Title("First Name").Class("text-danger");
+                col.Field(a => a.Age).Title("Age").Searchable(false);
+                col.Field(a => a.BirthDate).Title("Birth Date").Format("DD-MMM-Y");
+                col.Command(a => a.Id, "onClick", text: "Click").Title("");
+            })
+            .Filters(filter =>
+            {
+                filter.Add(a => a.Id).GreaterThanOrEqual(1);
+            })
+            .URL(Url.Action("GetDataResult"), "POST")
+            .ServerSide(true)
+            .Render()
+    )*@
+@*<js-datatable name="PersonGrid">
+        <columns>
+            <column field="Id" visible="false" />
+            <column field="Name" width="50" title="Full Name" />
+            <column field="Age" />
+            <command-item field="Id" on-click="onClick" btn-class="btn btn-info" text="Edit" icon-class="fa fa-edit" />
+            <commands field="Id" text="Actions" items='new [] { new Command("Update", "onClick"), new Command("Delete", "onClick") }' />
+        </columns>
+        <data-source url="@Url.Action("GetDataResult")" method="POST" server-side="true" data="addParam" />
+        <language url="//cdn.datatables.net/plug-ins/1.10.22/i18n/Turkish.json" />
+        <filters>
+            <add field="Id" value="1" operand="GreaterThanOrEqual" />
+        </filters>
+        <captions top="top caption here" bottom="bottom caption here" />
+        <render />
+    </js-datatable>*@
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+        #loader {
+            border: 12px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 12px solid #444444;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+        }
+
+        @@keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .center {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+</style>

@@ -1,0 +1,204 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeleri
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2 style="color: black"><b>AR-GE PROJE DENEMESİ OLUŞTUR</b></h2></center>
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("DENEME TARİHİ", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.DenemeTarih, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control"  })
+                @Html.ValidationMessageFor(model => model.DenemeTarih, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("DENEME ADI", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.DenemeAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DenemeAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("PROJE", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-6">
+                @Html.DropDownList("ProjeId", null, "LÜTFEN PROJE SEÇİNİZ", htmlAttributes: new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.ProjeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.Label("POY/FDY LOTU", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.POYLotu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.POYLotu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("POY/FDY DTEX", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.POYDtex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.POYDtex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("KATKI", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Katki, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Katki, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("CHIPS", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Chips, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Chips, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("POY/FDY MAKİNESİ", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.POYMakinesi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.POYMakinesi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("POY/FDY MİKTARI", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.POYMiktari, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.POYMiktari, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("TEKSTÜRE LOTU", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TekstureLotu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TekstureLotu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("TEKSTÜRE DTEX", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TekstureDtex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TekstureDtex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("TEKSTÜRE MAKİNESİ", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TekstureMakinesi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TekstureMakinesi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("TEKSTÜRE MİKTARI", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TekstureMiktari, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TekstureMiktari, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("BÜKÜM LOTU", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BukumLotu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BukumLotu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("BÜKÜM DTEX", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BukumDtex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BukumDtex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("BÜKÜM MAKİNESİ", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BukumMakinesi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BukumMakinesi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("BÜKÜM MİKTARI", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BukumMiktari, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BukumMiktari, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                @Html.Label("HAVA TEKSTÜRE LOTU", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HavaTekstureLotu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HavaTekstureLotu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.Label("HAVA TEKSTÜRE DTEX", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HavaTekstureDtex, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HavaTekstureDtex, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.Label("HAVA TEKSTÜRE MİKTARI", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HavaTekstureMiktari, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HavaTekstureMiktari, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+            <div class="form-group">
+                @Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-6", style = "color:black" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Aciklama, 10, 50, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="YENİ PROJE DENEMESİ OLUŞTUR" class="btn btn-success btn-block" />
+                </div>
+            </div>
+        </div>
+
+
+        }
+
+        <div class="form-group">
+            <div>
+                @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "ProjeDenemeleri", new { @class = "btn btn-primary" })
+            </div>
+        </div>*@
+
+

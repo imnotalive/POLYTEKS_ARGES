@@ -1,0 +1,134 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Hammadde
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<center><h2 style="color: black"><b> HAMMADDE DETAYLARI</b></h2></center>
+
+<div>
+    @Html.HiddenFor(model => model.ID)
+</div>
+<hr />
+<body>
+    <div class="bs-example">
+        <table class="table table-bordered table-hover table-striped table-responsive-lg">
+            <thead class="table-striped">
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: black"><b>HAMMADDE GELİŞ TARİHİ</b></td>
+
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.HammaddeGirisTarihi)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>HAMMADDE GELİŞ MİKTARI</b></td>
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.HammaddeGelisMiktari)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>KATKI İSMİ</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.KatkiIsmi)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>ÜRÜN KODU</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.UrunKodu)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>TEDARİKÇİ</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.Tedarikci)</td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3" style="color: black"><b>AR-GE STOK</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.Miktar)</td>
+                </tr>
+                <tr>
+                    <td class="col-sm-3" style="color: black"><b>AR-GE STOK MİKTAR BİRİMİ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.MiktarBirim)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>DOZAJ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.Dozaj)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>FİYAT</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.Fiyat)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>FİYAT BİRİMİ</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.FiyatBirim)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>KULLANIM DURUMU</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.KullanımDurumu)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>AÇIKLAMA</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.Aciklama)</td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+<p>
+    @Html.ActionLink("DÜZENLE", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+</p>
+<p>
+    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "Hammadde", new { @class = "btn btn-success" })
+</p>
+
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

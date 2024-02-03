@@ -1,0 +1,239 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_DenemeIstek
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header text-center bg-dark text-white">
+                <div class="row align-items-center">
+                    <div class="col-md-11">
+                        <CENTER><h2 style="color:black"><b>PROJE DENEME İSTEĞİ OLUŞTUR</b></h2></CENTER>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <b>@Html.Label("DENEME İSTEK", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @*@Html.EditorFor(model => model.DenemeIstekId, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })*@
+                    @Html.DropDownList("DenemeIstekId", null, "DENEME DURUMUNU SEÇİNİZ", htmlAttributes: new { @class = "form-control", style = "color:black", title = "Lütfen Kesit Tipi Seçiniz!" })
+                    @Html.ValidationMessageFor(model => model.DenemeIstekId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <b> @Html.Label("DENEME İSTEK TARİHİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.Tarih, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", style = "color:black" })
+                        @Html.ValidationMessageFor(model => model.Tarih, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <b> @Html.Label("KATKI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Katki, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.Katki, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <b>@Html.Label("KESİT TİPİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="input-group">
+                        <div class="col-md-4">
+                            @Html.DropDownList("KesitTipiId", null, "KESİT TİPİ SEÇİNİZ", htmlAttributes: new { @class = "form-control", style = "color:black", title = "Lütfen Kesit Tipi Seçiniz!" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("KesitTipiId2", null, "KESİT TİPİ SEÇİNİZ", htmlAttributes: new { @class = "form-control", style = "color:black", title = "Lütfen Kesit Tipi Seçiniz!" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownList("KesitTipiId3", null, "KESİT TİPİ SEÇİNİZ", htmlAttributes: new { @class = "form-control", style = "color:black", title = "Lütfen Kesit Tipi Seçiniz!" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <b> @Html.Label("PROJE", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+
+                        @Html.DropDownList("ProjeDenemeIstekId", null, "PROJE SEÇİNİZ", htmlAttributes: new { @class = "form-control", style = "color:black" })
+                        @Html.ValidationMessageFor(model => model.ProjeDenemeIstekId, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <b> @Html.Label("CHIPS", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.DropDownList("ChipsSecme", null, "CHIPS SEÇİNİZ", htmlAttributes: new { @class = "form-control", style = "color:black" })
+                        @*@Html.DropDownListFor(model => model.Chips, new List<SelectListItem>
+        {
+                  new  SelectListItem { Text = "SP", Value = "SP" },
+        new  SelectListItem { Text = "YM", Value = "YM" },
+
+          new  SelectListItem { Text = "RCY", Value = "RCY" },
+
+              new  SelectListItem { Text = "SP-RCY", Value = "SP-RCY" },
+
+        }, "CHIPS SEÇİNİZ", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen Chipsi Seçiniz!" })*@
+                        @Html.ValidationMessageFor(model => model.Chips, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <b>@Html.Label("DOZAJ(%)", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Dozaj, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                    @Html.ValidationMessageFor(model => model.Dozaj, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <b> @Html.Label("POY DTEX", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.POYDtex, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.POYDtex, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <b> @Html.Label("POY MİKTARI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.POYMiktari, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.POYMiktari, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <b> @Html.Label("POY REFERANS", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.POYReferans, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.POYReferans, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <b>  @Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.Aciklama, 5, 100, new { @class = "form-control", style = "color:black" })
+                    @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    <input type="submit" value="YENİ DENEME İSTEĞİ OLUŞTUR" class="btn btn-success btn btn-block" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    @Html.ActionLink("LİSTEYE DÖN", "Index", "DenemeIstek", new { @class = "btn btn-primary", onclick = "trytoredirect()" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker;
+    });
+</script>
+@*<div class="col-md-12">
+
+        @Html.DropDownListFor(model => model.KesitTipi, new List<SelectListItem>
+       {
+                 new  SelectListItem { Text = "ROUND", Value = "ROUND" },
+       new  SelectListItem { Text = "TRILOBAL", Value = "TRILOBAL" },
+
+         new  SelectListItem { Text = "YASSI", Value = "YASSI" },
+
+             new  SelectListItem { Text = "YASSI YASSI", Value = "YASSI YASSI" },
+
+             new  SelectListItem { Text = "HOLLOW", Value = "HOLLOW" },
+
+             new  SelectListItem { Text = "OCTOLOBAL", Value = "OCTOLOBAL" },
+
+             new  SelectListItem { Text = "W", Value = "W" },
+              new  SelectListItem { Text = "WW", Value = "WW" },
+               new  SelectListItem { Text = "CORE AND SHEATH", Value = "CORE AND SHEATH" },
+
+
+             new  SelectListItem { Text = "SEA AND ISLAND", Value = "SEA AND ISLAND" },
+                    new  SelectListItem { Text = "SIDE BY SIDE", Value = "SIDE BY SIDE" },
+
+       }, "--LÜTFEN KESİT TİPİ SEÇİNİZ--", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen Kesit Tipi Seçiniz!" })
+        @Html.ValidationMessageFor(model => model.KesitTipi, "", new { @class = "text-danger" })
+    </div>*@
+@*<script>
+        //submit search, display loading message
+        $('input[type = submit]').click(function () {
+            $.blockUI({
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    opacity: .6
+                }
+            });
+        });
+    </script>*@
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

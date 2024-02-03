@@ -1,0 +1,155 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Personel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+
+<h2 style="color: black"><b>PERSONEL DÜZENLE</b></h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PersonelId)
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <b>@Html.Label("KULLANICI ADI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.KullaniciAdi, new { htmlAttributes = new { @class = "form-control uppercase" } })
+                    @Html.ValidationMessageFor(model => model.KullaniciAdi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <b>@Html.Label("PERSONEL KODU", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.PersonelKodu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PersonelKodu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <b> @Html.Label("AD-SOYAD", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control", onkeyup = "InputToUpper(this);" } })
+                    @Html.ValidationMessageFor(model => model.AdSoyad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <b> @Html.Label("ŞİFRE", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <b> @Html.Label("E-MAİL", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <b> @Html.Label("E-MAİL2", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            &emsp;<b style="color:black">DURUM</b>
+            <div class="col-md-12">
+                @Html.DropDownListFor(model => model.Durum, new List<SelectListItem>
+                            {
+                                      new  SelectListItem { Text = "TEKNİSYEN", Value = "TEKNİSYEN" },
+                            new  SelectListItem { Text = "ARAŞTIRMACI", Value = "ARAŞTIRMACI" },
+
+                              new  SelectListItem { Text = "DESTEK PERSONEL", Value = "DESTEK PERSONEL" },
+
+
+
+                            }, "--DURUM SEÇİNİZ--", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen Personel Durumunu Seçiniz!" })
+                @Html.ValidationMessageFor(model => model.Durum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <b>@Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Aciklama, 3, 50, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                <input type="submit" value="DEĞİŞİKLİKLERİ KAYDET" class="btn btn-danger btn-block" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "Personel", new { @class = "btn btn-primary" })
+</div>
+
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

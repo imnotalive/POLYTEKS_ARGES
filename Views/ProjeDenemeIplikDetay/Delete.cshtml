@@ -1,0 +1,130 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeIplikDetay
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>DENEME DETAYINI SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            İPLİK SEÇİMİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IplikSecimi)
+        </dd>
+
+        <dt>
+            MAMÜL TÜRÜ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MamulTuru)
+        </dd>
+
+        <dt>
+            PARTİ NUMARASI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartiNo)
+        </dd>
+
+        <dt>
+            DENYE
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Denye)
+        </dd>
+
+        <dt>
+            FLAMAN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Flaman)
+        </dd>
+
+
+        <dt>
+            BİLEŞEN 1
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilesen1)
+        </dd>
+
+        <dt>
+            BİLEŞEN 2
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilesen2)
+        </dd>
+
+        <dt>
+            BİLEŞEN 3
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilesen3)
+        </dd>
+
+        <dt>
+            BİLEŞEN 4
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilesen4)
+        </dd>
+
+        <dt>
+            BİLEŞEN 5
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilesen5)
+        </dd>
+
+        <dt>
+            PROJE ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)
+        </dd>
+
+        <dt>
+            DENEME ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_ProjeDenemeleri.DenemeAdi)
+        </dd>
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" />
+
+        </div>
+    }
+</div>
+<hr />
+<br />
+@Html.ActionLink("LİSTEYE DÖN", "Index", "ProjeDenemeIplikDetay", new { @class = "btn btn-primary" })

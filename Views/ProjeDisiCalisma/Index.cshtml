@@ -1,0 +1,304 @@
+﻿@*model IEnumerable<POLYTEKS_ARGE.Models.ARGE_ProjeDisiCalisma>*@
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<POLYTEKS_ARGE.Models.ARGE_ProjeDisiCalisma>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+            <center><h2><b style="color:black">AR-GE PROJE DIŞI ÇALIŞMALAR</b></h2></center>
+
+            <p>
+                @Html.ActionLink("YENİ PROJE DIŞI ÇALIŞMA OLUŞTUR", "Create", "ProjeDisiCalisma", new { @class = "btn btn-success btn-block" })
+            </p>
+            @using (Html.BeginForm("ProjeDisiCalismaRapors", "ProjeDisiCalisma", FormMethod.Post))
+            {
+                <input type="submit" value="RAPOR İNDİR" class="btn btn-danger btn-block" />
+            }
+            <hr />
+            <div class="container">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" id="Search" placeholder="ARA">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-search"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+            <table class="table table-striped table-bordered table-sm sortable">
+                <tr style="color:black">
+                    <th style="color:black">
+                        <b>PROJE KONUSU</b>
+                    </th>
+                    <th style="color:black">
+                        <b> AÇIKLAMA</b>
+                    </th>
+                    <th style="color:black">
+                        <b>TARİH</b>
+                    </th>
+                    @*<th style="color:black">
+                           <b>GÜNCELLEME</b>
+                        </th>*@
+                    <th style="color:black">
+                        <b>NUMUNELER</b>
+                    </th>
+                    <th style="color:black">
+                        <b>PROJE SORUMLUSU</b>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr style="color:black" id="myTable" class="Search item">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjeKonusu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Aciklama)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tarih)
+                        </td>
+                        @*<td>
+                                  @Html.DisplayFor(modelItem => item.Guncelleme)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numuneler)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ARGE_Personel.AdSoyad)
+                        </td>
+                        <td style="color: black">
+                            <center>
+
+                                <a href="@Url.Action("Edit", "ProjeDisiCalisma", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+                            </center>
+                        </td>
+
+                        <td style="color: black">
+                            <center>
+                                <a href="@Url.Action("Delete", "ProjeDisiCalisma", new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+                            </center>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            <div style="color:black" class="b">
+                <b>
+                    <strong>&nbsp;F-32.09C/01 </strong>
+
+
+                </b>
+            </div>
+            <style>
+
+                div.b {
+                    text-align: left;
+                    font-style: italic;
+                }
+            </style>
+            <br />
+            <table id="myTable"></table>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                var rowCount = $('#myTable tr').length;
+                $(document).ready(function () {
+                    function Contains(text_one, text_two) {
+                        if (text_one.indexOf(text_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        var searchText = $("#Search").val().toLowerCase();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text().toLowerCase(), searchText)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        })
+                    });
+                });
+
+            </script>
+            <div class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+            {
+                DisplayLinkToIndividualPages = true,
+                DisplayPageCountAndCurrentLocation = true,
+                MaximumPageNumbersToDisplay = 5,
+                //MaximumPageNumbersToDisplay = 3,
+                //LiElementClasses = new string[] { "pagination" },
+                //LinkToFirstPageFormat = "<< İLK",
+                //LinkToPreviousPageFormat = "< GERİ",
+                //LinkToNextPageFormat = "İLERİ >",
+                //LinkToLastPageFormat = "SON >>",
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+
+                DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                EllipsesFormat = "&#8230;",
+                LinkToFirstPageFormat = "««",
+                LinkToPreviousPageFormat = "«",
+                LinkToIndividualPageFormat = "{0}",
+                LinkToNextPageFormat = "»",
+                LinkToLastPageFormat = "»»",
+                PageCountAndCurrentLocationFormat = "Sayfa {0}/{1}",
+                //ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                FunctionToDisplayEachPageNumber = null,
+                ClassToApplyToFirstListItemInPager = null,
+                ClassToApplyToLastListItemInPager = null,
+                ContainerDivClasses = new[] { "pagination" },
+                //UlElementClasses = new[] { "pagination" },
+                //LiElementClasses = Enumerable.Empty<string>(),
+
+                //PageClasses = new string[] { "page-link" },
+
+            }
+            /* PagedListRenderOptions.PageNumbersOnly*/)
+            </div>
+            <style>
+                .pagination a {
+                    color: black;
+                    float: left;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    transition: background-color .3s;
+                    border: 1px solid #ddd;
+                }
+
+                    .pagination a.active {
+                        background-color: #4CAF50;
+                        color: white;
+                        border: 1px solid #4CAF50;
+                    }
+
+                    .pagination a:hover:not(.active) {
+                        background-color: #ddd;
+                    }
+            </style>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <style>
+                table {
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    width: 100%;
+                    position: relative;
+                    overflow: auto;
+                    /*  overflow-y: overlay;*/
+                }
+
+                th,
+                thead {
+                    position: sticky;
+                    top: 0;
+                    border: 1px solid #dddddd;
+                    /* background-color: #1f2d54;*/
+                    text-align: center;
+                    color: white;
+                    table-layout: fixed;
+                    word-break: break-word;
+                    height: 45px;
+                }
+
+                .filter {
+                    position: absolute;
+                    width: 20vw;
+                    height: 30vh;
+                    display: none;
+                    text-align: left;
+                    font-size: small;
+                    z-index: 9999;
+                    overflow: auto;
+                    background: #ffffff;
+                    /*   color: #1f2d54;*/
+                    border: 1px solid #dddddd;
+                }
+
+                    .filter input {
+                        margin: 5px !important;
+                        padding: 0 !important;
+                        width: 10%;
+                    }
+            </style>
+
+        </div>
+    </div>
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

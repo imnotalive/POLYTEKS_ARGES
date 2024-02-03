@@ -1,0 +1,221 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Proje
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a class="btn btn-primary" href="@Url.Action("ProjeRaporDetay","Proje",new {id=Model.ID})">RAPORLAMA</a>
+
+<center><h2 style="color: black"><b> @Model.ProjeKodu AR-GE PROJESİ DETAYLARI</b></h2></center>
+
+<div>
+    @Html.HiddenFor(model => model.ID)
+</div>
+<hr />
+<body>
+    <div class="bs-example">
+        <table class="table table-bordered table-hover table-striped table-responsive-xxl">
+            <thead class="table-striped">
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: black"><b>PROJE DURUMU</b></td>
+                    <td style="color: black">
+                        @if (Model.ProjeDurum == true)
+                        {
+                            @Html.Encode("DEVAM EDEN PROJE")
+                        }
+                        @if (Model.ProjeDurum == false)
+                        {
+                            @Html.Encode("TAMAMLANAN PROJE")
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE YÜRÜTÜCÜSÜ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ARGE_Personel.AdSoyad)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE KODU</b></td>
+
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.ProjeKodu)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE ADI</b></td>
+
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.ProjeAdi)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE BAŞLANGIÇ TARİHİ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ProjeBaslangicTarihi)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE BİTİŞ TARİHİ</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.ProjeBitisTarihi)</td>
+                </tr>
+
+                @*<tr>
+                        <td style="color: black"><b>PROJE KISA ADI</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.ProjeKisaAd)</td>
+                    </tr>*@
+                <tr>
+                    <td style="color: black"><b>PROJEDE GÖREV ALAN PERSONEL SAYISI</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.PersonelSayisi)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>PROJE SÜRESİ TOPLAM ADAM AY</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.ToplamAdamAy)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE KONUSU</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.ProjeKonusu)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE DESTEK DURUMU</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ProjeDestekDurumu)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>ÖZKAYNAKLA KARŞILANAN TUTAR</b></td>
+                    @*<td>   @Html.DisplayFor(model => model.MaliyetOngorusu)</td>*@
+                    <td style="color: black">  @string.Format("{0:#,0.00}", Model.OzkaynakTutari)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>TOPLAM PROJE BÜTÇESİ</b></td>
+                    @*<td>   @Html.DisplayFor(model => model.MaliyetOngorusu)</td>*@
+                    <td style="color: black"> @string.Format("{0:#,0.00}", Model.MaliyetOngorusu) @*@Model.MaliyetOngorusu.ToString("N")*@</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PERSONEL BÜTÇESİ</b></td>
+                    @*<td>   @Html.DisplayFor(model => model.MaliyetOngorusu)</td>*@
+                    <td style="color: black">@string.Format("{0:#,0.00}", Model.PersonelButcesi) @*@Html.DisplayFor(model => model.PersonelButcesi)*@</td>
+                </tr>
+
+                @*<tr>
+                        <td style="color: black"><b>AÇIKLAMA</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.Aciklama)</td>
+                    </tr>*@
+                <tr>
+                    <td style="color: black"><b>HİZMET ALIMI KONUSU-YERİ</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.HizmetAlimiKonusuYeri)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>HİZMET ALIMI TUTARI</b></td>
+                    <td style="color: black">  @string.Format("{0:#,0.00}", Model.HizmetAlimiTutari) @*@Html.DisplayFor(model => model.HizmetAlimiTutari)*@</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE KONUSUNU BELİRLEYEN İHTİYAÇLAR</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.ProjeKonusununIhtiyaclari)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJENİN YENİLİKÇİ YÖNÜ VE AR-GE NİTELİĞİ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ProjeArgeYonu)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE BEKLENEN ÇIKTILARI VE FAYDALARI</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ProjeCiktilari)</td>
+                </tr>
+                @if (Model.IsBirligiTuruId != null)
+                {
+                    <tr>
+                        <td style="color: black"><b>İŞBİRLİĞİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.ARGE_ProjeIsBirligiTuru.IsBirligiTuru)</td>
+                    </tr>
+                }
+                @*<tr>
+                        <td style="color: black"><b>PROJEDE YAPILACAKLAR</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.ProjedeYapilacaklar)</td>
+                    </tr>*@
+
+
+
+
+
+            </tbody>
+        </table>
+        <div style="color:black" class="b">
+            <b>
+                <strong>&nbsp;F-32.03A1/00</strong>
+
+
+            </b>
+        </div>
+        <style>
+
+            div.b {
+                text-align: left;
+                font-style: italic;
+            }
+        </style>
+    </div>
+</body>
+
+
+
+<p>
+    @Html.ActionLink("DÜZENLE", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+</p>
+<p>
+    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "Proje", new { @class = "btn btn-success" })
+</p>
+@*<div id="tab1" class="tab-content" style="display:none;">
+        <input type="button" id="btn1" value="Mamül Ambarı Taleplerini Getir" style="background-color:black;color:white;" />
+        <div id="result1"></div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btn1').click(function () {
+                $('#result1').load('/Sevkiyat/MamulTalep' + 'id');
+            });
+        });
+
+    </script>*@
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

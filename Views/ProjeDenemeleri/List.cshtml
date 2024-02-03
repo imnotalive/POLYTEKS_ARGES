@@ -1,0 +1,37 @@
+﻿@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_ProjeDenemeleri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.DropDownList("", (List<SelectListItem>)ViewBag.dgr2, "Lütfen Seçiniz", new { @class = "form-control", style = "color:black" })
+@*@Html.DropDownList("dlusers", new SelectList(ViewBag.list, "listid", "name"), "Select")*@
+<input id="Button1" type="button" value="button" />
+<div id="result"></div>
+
+<script>
+        $("#Button1").click(function () {
+            $.ajax({
+                "url": "@Url.Action("List")",
+                "type":"POST",
+                "data": { userid: $("#dlusers").val() },
+                "success": function (data) {
+                    $("#result").html(data);
+                }
+            });
+        });
+</script>
+
+
+<table class="table">
+    <tr>
+        <td>order_id</td>
+        <td>username</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayTextFor(m => item.ARGE_Proje.ID)</td>
+            <td>@Html.DisplayTextFor(m => item.ARGE_Proje.ProjeKodu)</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,275 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeleri
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<CENTER><H3 style="color: black"><b>@Model.ARGE_Proje.ProjeKodu PROJE DENEMESİ DETAYLARI</b></H3></CENTER>
+<body>
+    <div class="bs-example">
+        <table class="table table-bordered table-hover  table-striped table-responsive-lg">
+            <thead class="table-striped">
+                @*<tr>
+                        <th>Row</th>
+                        <th>    @Html.DisplayFor(model => model.ProjeAdi)</th>
+                        <tr />
+                    <tr>
+                        <th>Row</th>
+                        <th>    @Html.DisplayFor(model => model.ProjeAdi)</th>
+                    </tr>*@
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: black"><b>POY DENEME TARİHİ</b></td>
+
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.DenemeTarih)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>DENEME ADI</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.DenemeAdi)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>PROJE ADI</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)</td>
+                </tr>
+                @if (Model.POYLotu != null)
+                {
+                    <tr>
+                        <td style="color: black"><b>POY/FDY LOTU</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.POYLotu)</td>
+                    </tr>
+                    if (Model.POYLotu2 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU2</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu2)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu3 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU3</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu3)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu4 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU4</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu4)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu5 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU5</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu5)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu6 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU6</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu6)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu7 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU7</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu7)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu8 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU8</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu8)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu9 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU9</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu9)</td>
+                        </tr>
+                    }
+                    if (Model.POYLotu10 != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>POY/FDY LOTU10</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.POYLotu10)</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td style="color: black"><b>POY/FDY DTEX</b></td>
+                        <td style="color: black">  @Html.DisplayFor(model => model.POYDtex)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>KATKI</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.Katki)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>CHIPS</b></td>
+                        <td style="color: black">  @Html.DisplayFor(model => model.ARGE_DenemeChips.ChipsAdi)</td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="color: black"><b>POY/FDY MAKİNESİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.POYMakinesi)</td>
+                    </tr>
+                    if (Model.DisMakine != null)
+                    {
+                        <tr>
+                            <td style="color: black"><b>DIŞ MAKİNE</b></td>
+                            <td style="color: black">   @Html.DisplayFor(model => model.DisMakine)</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td style="color: black"><b>POY/FDY MİKTARI</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.POYMiktari)</td>
+                    </tr>
+                }
+                @if (Model.TekstureLotu != null)
+                {
+                    <tr>
+                        <td style="color: black"><b>TEKSTÜRE DENEME TARİHİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.TekstureDenemeTarihi)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>TEKSTÜRE LOTU</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.TekstureLotu)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>TEKSTÜRE DTEX</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.TekstureDtex)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>TEKSTÜRE MAKİNESİ</b></td>
+                        <td style="color: black">  @Html.DisplayFor(model => model.TekstureMakinesi)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>TEKSTÜRE MİKTARI</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.TekstureMiktari)</td>
+                    </tr>
+                }
+                @if (Model.BukumLotu != null)
+                {
+                    <tr>
+                        <td style="color: black"><b>BÜKÜM DENEME TARİHİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.BukumDenemeTarihi)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>BÜKÜM LOTU</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.BukumLotu)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>BÜKÜM DTEX</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.BukumDtex)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>BÜKÜM MAKİNESİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.BukumMakinesi)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>BÜKÜM MİKTARI</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.BukumMiktari)</td>
+                    </tr>
+                }
+                @if (Model.HavaTekstureLotu != null)
+                {
+                    <tr>
+                        <td style="color: black"><b>HAVA TEKSTÜRE DENEME TARİHİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.HavaTekstureDenemeTarihi)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>HAVA TEKSTÜRE LOTU</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.HavaTekstureLotu)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>HAVA TEKSTÜRE DTEX</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.HavaTekstureDtex)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>HAVA TEKSTÜRE MAKİNESİ</b></td>
+                        <td style="color: black">   @Html.DisplayFor(model => model.BukumMakinesi)</td>
+                    </tr>
+                    <tr>
+                        <td style="color: black"><b>HAVA TEKSTÜRE MİKTARI</b></td>
+                        <td style="color: black">  @Html.DisplayFor(model => model.HavaTekstureMiktari)</td>
+                    </tr>
+                }
+                <tr>
+                    <td style="color: black"><b>AÇIKLAMA</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.Aciklama)</td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</body>
+<div style="color:black" class="b">
+    <b>
+        <strong>&nbsp;F-32.09A/01</strong>
+
+
+    </b>
+</div>
+<style>
+
+    div.b {
+        text-align: left;
+        font-style: italic;
+    }
+</style>
+<div>
+    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "ProjeDenemeleri", new { @class = "btn btn-primary" })
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

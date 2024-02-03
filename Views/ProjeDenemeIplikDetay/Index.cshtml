@@ -1,0 +1,183 @@
+﻿@*@using GridMvc.Html
+@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_ProjeDenemeIplikDetay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+<script type="text/javascript"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/locales/bootstrap-datepicker.tr.min.js"></script>
+<CENTER><h2><b>AR-GE PROJESİ DENEME ÜRETİMİ DETAYLARI</b></h2></CENTER>
+<p>
+    @Html.ActionLink("AR-GE PROJESİNE BAĞLI DENEME ÜRETİM GİRİŞİ OLUŞTUR", "Create", "ProjeDenemeIplikDetay", new { @class = "btn btn-success btn-block" })
+</p>
+<table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>SIRA NO</th>
+                <th>
+                    DENEME ADI
+                </th>
+                <th>
+                    PROJE KODU
+                </th>
+                <th>
+                    PROJE ADI
+                </th>
+                <th>
+                    İPLİK TÜRÜ
+                </th>
+                <th>
+                    MAMÜL TÜRÜ
+                </th>
+                <th>
+                    PARTİ NUMARASI
+                </th>
+                <th>
+                    DENYE
+                </th>
+                <th>
+                    FLAMAN
+                </th>
+
+
+
+                <th>DÜZENLE</th>
+                <th>SİL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int sayac = 0;
+                foreach (var item in Model)
+                {
+                    sayac++;
+                    <tr class="Search">
+                        <td><center><b>@sayac</b></center></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ARGE_ProjeDenemeleri.DenemeAdi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ARGE_Proje.ProjeKodu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ARGE_Proje.ProjeAdi)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IplikSecimi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MamulTuru)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartiNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Denye)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Flaman)
+                        </td>
+
+
+                        <td>
+                            @Html.ActionLink("DÜZENLE", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+<script type="text/javascript"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/locales/bootstrap-datepicker.tr.min.js"></script>
+<div style="height: 500px; overflow: auto;">
+    <div class="row-cols-sm-1">
+        @Html.Grid(Model).EmptyText("Gösterilecek bir şey bulunamadı").Columns(Columns =>
+   {
+       Columns.Add(c => c.ARGE_ProjeDenemeleri.DenemeTarih).Titled("DENEME TARİHİ").Format("{0:dd.MM.yyyy}").Sortable(true).Filterable(true);
+       Columns.Add(c => c.ARGE_ProjeDenemeleri.DenemeAdi).Titled("DENEME ADI").Sortable(true).Filterable(true);
+       Columns.Add(c => c.ARGE_Proje.ProjeKodu).Titled("PROJE KODU").Sortable(true).Filterable(true);
+       Columns.Add(c => c.ARGE_Proje.ProjeAdi).Titled("PROJE ADI").Sortable(true).Filterable(true);
+       Columns.Add(c => c.IplikSecimi).Titled("İPLİK").Sortable(true).Filterable(true);
+       Columns.Add(c => c.PartiNo).Titled("PARTİ NO").Sortable(true).Filterable(true);
+       Columns.Add(c => c.Denye).Titled("DENYE").Sortable(true).Filterable(true);
+       Columns.Add(c => c.Flaman).Titled("FLAMAN").Sortable(true).Filterable(true);
+       Columns.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(1)
+    .RenderValueAs(o => Html.ActionLink("DÜZENLE", "Edit", new { id = o.ID }, new { @class = "btn btn-primary btn-xl" })).Encoded(false).Filterable(false).Sortable(false).Titled("DÜZENLE");
+       Columns.Add()
+       .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(1)
+      .RenderValueAs(o => Html.ActionLink("DETAYLAR", "Details", new { id = o.ID }, new { @class = "btn btn-info btn-xl" })).Encoded(false).Filterable(false).Sortable(false).Titled("DETAYLAR");
+       Columns.Add()
+.Encoded(false)
+    .Sanitized(false)
+    .SetWidth(1)
+      .RenderValueAs(o => Html.ActionLink("SİL", "Delete", new { id = o.ID }, new { @class = "btn btn-danger btn-xl" })).Encoded(false).Filterable(false).Sortable(false).Titled("SİL");
+
+
+   }
+    ).WithPaging(50).SetLanguage("tr").Sortable(true).Filterable(true).WithGridItemsCount("Toplam Proje Denemesi Detayı Sayısı").WithMultipleFilters()
+    </div>
+</div>
+
+<script>
+    /***
+* Grid.Mvc russian language (ru-RU) http://gridmvc.codeplex.com/
+*/
+    window.GridMvc = window.GridMvc || {};
+    window.GridMvc.lang = window.GridMvc.lang || {};
+    GridMvc.lang.tr = {
+        filterTypeLabel: "Filtre: ",
+        filterValueLabel: "Değer:",
+        applyFilterButtonText: "Uygula",
+        filterSelectTypes: {
+            Equals: "Eşittir",
+            StartsWith: "Başlar",
+            Contains: "İçerir",
+            EndsWith: "Biter",
+            GreaterThan: "Büyüktür",
+            LessThan: "Küçüktür",
+
+        },
+        code: 'tr',
+        boolTrueLabel: "Doğru",
+        boolFalseLabel: "Yanlış",
+        clearFilterLabel: "Temizle"
+    };
+</script>
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+
+    });
+</script>
+<style>
+    td, th {
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-top: 1px solid black
+    }
+</style>*@

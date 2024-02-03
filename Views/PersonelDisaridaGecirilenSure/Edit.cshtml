@@ -1,0 +1,233 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_PersonelDisaridaGecirilenSure
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <div class="card" style="background-color:floralwhite">
+        <div class="card-header">
+            <center><h2><b>AR-GE PERSONELİ DIŞARIDA GEÇİRİLEN SÜREYİ DÜZENLE</b></h2></center>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+
+                    <div class="col-md-12">
+                        <div class="card" style="background-color:floralwhite">
+                            <div class="card-header">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <b> @Html.Label("TARİH", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(model => model.CikisTarih, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CikisTarih, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-md-4">
+                                        <b>  @Html.Label("ÇIKIŞ SAATİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.CikisSaati, new { htmlAttributes = new { @class = "form-control clockpicker", @onkeydown = "return false" } })
+                                            @Html.ValidationMessageFor(model => model.CikisSaati, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <b> @Html.Label("GİRİŞ SAATİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.GirisSaati, new { htmlAttributes = new { @class = "form-control clockpicker", @onkeydown = "return false" } })
+                                            @Html.ValidationMessageFor(model => model.GirisSaati, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <div class="card" style="background-color:floralwhite">
+                            <div class="card-header">
+                                <div class="form-group">
+                                    <b>@Html.Label("DIŞ GÖREV ADI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                    <div class="col-md-12">
+
+                                        @Html.DropDownListFor(model => model.DisGorevAdi, new List<SelectListItem>
+                                       {
+                                                 new  SelectListItem { Text = "1-Yüksek Lisans Eğitimi", Value = "1-Yüksek Lisans Eğitimi" },
+                                       new  SelectListItem { Text = "2-Doktora Eğitimi", Value = "2-Doktora Eğitimi" },
+
+                                         new  SelectListItem { Text = "3-Laboratuvar", Value = "3-Laboratuvar" },
+
+                                             new  SelectListItem { Text = "4-Analiz", Value = "4-Analiz" },
+
+                                             new  SelectListItem { Text = "5-Test ve Deney Çalışmalar", Value = "5-Test ve Deney Çalışmalar" },
+
+                                             new  SelectListItem { Text = "6-Diğer Ar-Ge veya Tasarım Merkezlerinde Yapılan Çalışmalar", Value = "6-Diğer Ar-Ge veya Tasarım Merkezlerinde Yapılan Çalışmalar" },
+
+                                             new  SelectListItem { Text = "7-Saha Araştırması", Value = "7-Saha Araştırması" },
+
+                                             new  SelectListItem { Text = "8-Prototip Geliştirmeye Yönelik Faaliyetler", Value = "8-Prototip Geliştirmeye Yönelik Faaliyetler" },
+
+                                             new  SelectListItem { Text = "9-Bilimsel İçerikli Etkinlik", Value = "9-Bilimsel İçerikli Etkinlik" },
+
+                                             new  SelectListItem { Text = "10-COVID-19", Value = "10-COVID-19" },
+
+                                       }, "--LÜTFEN DIŞ GÖREVİ SEÇİNİZ--", new { @style = "color:black", @class = "form-control", title = "Lütfen Dış Görevi Seçiniz!" })
+                                        @Html.ValidationMessageFor(model => model.DisGorevAdi, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <br />
+                    <div class="col-md-12">
+                        <div class="card" style="background-color:floralwhite">
+                            <div class="card-header">
+                                <div class="form-group">
+                                    <b>@Html.Label("YER", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.Yer, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Yer, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <div class="card" style="background-color:floralwhite">
+                            <div class="card-header">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <b>@Html.Label("PROJE", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("ProjeId", null, "--LÜTFEN PROJE SEÇİNİZ--", new { @class = "form-control", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.ProjeId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group col-md-6">
+                                        <b>@Html.Label("PERSONEL", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                        <div class="col-md-12">
+                                            @Html.DropDownList("PersonelId", null, "--LÜTFEN PERSONEL SEÇİNİZ--", htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.PersonelId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12">
+                        <div class="card" style="background-color:floralwhite">
+                            <div class="card-header">
+                                <div class="form-group">
+                                    <b>@Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                                    <div class="col-md-12">
+                                        @Html.TextAreaFor(model => model.Aciklama, 3, 50, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="DEĞİŞİKLİKLERİ KAYDET" class="btn btn-danger btn-block" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "PersonelDisaridaGecirilenSure", new { @class = "btn btn-primary" })
+            </div>
+            <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+            <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+            <script src="~/dist/bootstrap-clockpicker.js"></script>
+            <script src="~/dist/jquery-clockpicker.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.js"></script>
+            <link href="https://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet" />
+            <script>
+                $('.clockpicker').clockpicker({
+                    align: 'left',
+                    placement: 'bottom',
+                    autoclose: true
+                    /*    'default': 'now'*/
+                    /* donetext: 'TAMAM'*/
+                });
+            </script>
+            <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+            <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker;
+                });
+            </script>
+            <div id="loader" class="center"></div>
+
+            <script>
+                document.onreadystatechange = function () {
+                    if (document.readyState !== "complete") {
+                        document.querySelector(
+                            "body").style.visibility = "hidden";
+                        document.querySelector(
+                            "#loader").style.visibility = "visible";
+                    } else {
+                        document.querySelector(
+                            "#loader").style.display = "none";
+                        document.querySelector(
+                            "body").style.visibility = "visible";
+                    }
+                };
+            </script>
+            <style>
+                #loader {
+                    border: 12px solid #f3f3f3;
+                    border-radius: 50%;
+                    border-top: 12px solid #444444;
+                    width: 70px;
+                    height: 70px;
+                    animation: spin 1s linear infinite;
+                }
+
+                @@keyframes spin {
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .center {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+            </style>
+        </div>
+</div>
+</div>

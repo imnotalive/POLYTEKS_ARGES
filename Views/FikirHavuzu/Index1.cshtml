@@ -1,0 +1,433 @@
+﻿@*@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_FikirHavuzu>*@
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<POLYTEKS_ARGE.Models.ARGE_FikirHavuzu>
+
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+            <CENTER><h2><b>AR-GE FİKİR HAVUZU</b></h2></CENTER>
+
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+            @*<link href="/Content/glyphicons.css" rel="stylesheet" />*@
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+            <p>
+                @Html.ActionLink("YENİ PROJE FİKRİ OLUŞTUR", "Create", "FikirHavuzu", new { @class = "btn btn-info btn-block" })
+            </p>
+            <p>
+                @Html.ActionLink("RAPORLAMA", "FikirHavuzuRapor", "FikirHavuzu", new { @class = "btn btn-danger btn-block" })
+            </p>
+
+            <div class="container">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" id="Search" placeholder="ARA">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-search"></i></div>
+                        </div>
+                        &emsp;   &emsp;   &emsp;
+                        <div title="PROJELENDİ/DEVAM EDİYOR" class="foo wine"></div>
+                        <div title="PROJE TAMAMLANDI" class="foo gray"></div>
+                        <div title="ARASTIRMA ASAMASINDA" class="foo green"></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+            <table class="table table-bordered table-hover sortable">
+                <tr>
+
+                    <th style="background-color: #C5D9F1; color: black">
+                        FİKİR SAHİBİ
+                    </th>
+                    <th style="background-color: #C5D9F1; color: black">
+                        FİKİR KONUSU
+                    </th>
+                    <th style="background-color: #C5D9F1; color: black">
+                        TARİH
+                    </th>
+                    <th style="background-color: #C5D9F1; color: black">
+                        SON DURUM
+                    </th>
+                    <th style="background-color: #C5D9F1; color: black">
+                        ONAY
+                    </th>
+                    <th style="background-color: #C5D9F1; color: black"></th>
+                    <th style="background-color: #C5D9F1; color: black"></th>
+                    <th style="background-color: #C5D9F1; color: black"></th>
+                </tr>
+
+
+                @foreach (var item in Model)
+                {
+                    if (item.GuncelDurumId == null)
+                    {
+                        <tr class="Search item sortable">
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.FikirSahibi)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.FikirKonusu)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.Tarih)
+                            </td>
+                            <td style="color:black">
+                                @Html.DisplayFor(modelItem => item.SonDurum)
+                            </td>
+                            <td style="color:black">
+                                @if (item.ARGE_FikirHavuzuOnayDurum.ID == 1)
+                                {<b>@Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)</b>}
+                            else
+                            { @Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)}
+                            </td>
+                            <td style="color:black">
+                                <a href="@Url.Action("Edit", "FikirHavuzu", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+                            </td>
+                            <td style="color:black">
+                                <a href="@Url.Action("Details", "FikirHavuzu", new { id = item.ID })" title="DETAYLAR" class="btn btn-info"> <i class="fa fa-book" aria-hidden="true">  </i></a>
+                            </td>
+                            <td style="color:black">
+                                <a href="@Url.Action("Delete", "FikirHavuzu", new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+                            </td>
+                        </tr>
+                    }
+
+                    if (item.GuncelDurumId == 2)
+                    {
+
+                        <tr class="Search item sortable">
+
+                            <td style="background-color: #CCC0DA; color: black">
+                                @Html.DisplayFor(modelItem => item.FikirSahibi)
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                @Html.DisplayFor(modelItem => item.FikirKonusu)
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                @Html.DisplayFor(modelItem => item.Tarih)
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                @*@if (item.SonDurum.Contains("AR"))
+                                    {
+                                        <a href="@Url.Action("Details", "Proje", new { id = item.ID })">@(item.SonDurum)</a>
+                                    }
+                                    else
+                                    {*@
+                                @Html.DisplayFor(modelItem => item.SonDurum)
+                                @*}*@
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                @if (item.ARGE_FikirHavuzuOnayDurum.ID == 1)
+                                {<b>@Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)</b>}
+                            else
+                            { @Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)}
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                <a href="@Url.Action("Edit", "FikirHavuzu", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                <a href="@Url.Action("Details", "FikirHavuzu", new { id = item.ID })" title="DETAYLAR" class="btn btn-info"> <i class="fa fa-book" aria-hidden="true">  </i></a>
+                            </td>
+                            <td style="background-color: #CCC0DA; color: black">
+                                <a href="@Url.Action("Delete", "FikirHavuzu", new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+                            </td>
+                        </tr>
+                    }
+                    else if (item.GuncelDurumId == 3)
+                    {
+
+
+                        <tr class="Search item sortable">
+
+                            <td style="background-color: lightgray; color: black">
+                                @Html.DisplayFor(modelItem => item.FikirSahibi)
+                            </td>
+                            <td style="background-color: lightgray; color: black">
+                                @Html.DisplayFor(modelItem => item.FikirKonusu)
+                            </td>
+                            <td style="background-color: lightgray; color: black ">
+                                @Html.DisplayFor(modelItem => item.Tarih)
+                            </td>
+                            <td style="background-color: lightgray; color: black">
+                                @*@if (item.SonDurum.Contains("AR"))
+                                    {
+                                        <a href="@Url.Action("Details", "Proje", new { id = item.ID })">@(item.SonDurum)</a>
+                                    }
+                                    else
+                                    {*@
+                                @Html.DisplayFor(modelItem => item.SonDurum)
+                                @*}*@
+                            </td>
+                            <td style="background-color: lightgray; color: black">
+                                @if (item.ARGE_FikirHavuzuOnayDurum.ID == 1)
+                                {<b>@Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)</b>}
+                            else
+                            { @Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)}
+                            </td>
+                            <td style="background-color: lightgray; color: black">
+                                <a href="@Url.Action("Edit", "FikirHavuzu", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+                            </td>
+                            <td style="background-color: lightgray; color: black">
+                                <a href="@Url.Action("Details", "FikirHavuzu", new { id = item.ID })" title="DETAYLAR" class="btn btn-info"> <i class="fa fa-book" aria-hidden="true">  </i></a>
+                            </td>
+                            <td style="background-color: lightgray; color: black">
+                                <a href="@Url.Action("Delete", "FikirHavuzu", new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+                            </td>
+                        </tr>
+                    }
+                    else if (item.GuncelDurumId == 1)
+                    {
+
+
+                        <tr class="Search item sortable">
+
+                            <td style="background-color: #F2DCDB; color: black">
+                                @Html.DisplayFor(modelItem => item.FikirSahibi)
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+
+                                @Html.DisplayFor(modelItem => item.FikirKonusu)
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+
+                                @Html.DisplayFor(modelItem => item.Tarih)
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+
+                                @Html.DisplayFor(modelItem => item.SonDurum)
+
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+                                @if (item.ARGE_FikirHavuzuOnayDurum.ID == 1)
+                                {<b>@Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)</b>}
+                            else
+                            { @Html.DisplayFor(modelItem => item.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)}
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+
+                                <a href="@Url.Action("Edit", "FikirHavuzu", new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+
+                                <a href="@Url.Action("Details", "FikirHavuzu", new { id = item.ID })" title="DETAYLAR" class="btn btn-info"> <i class="fa fa-book" aria-hidden="true">  </i></a>
+                            </td>
+                            <td style="background-color: #F2DCDB; color: black">
+
+                                <a href="@Url.Action("Delete", "FikirHavuzu", new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>
+                            </td>
+                        </tr>
+
+
+                    }
+                }
+
+            </table>
+            <div class="b">
+                <b>
+                    <strong> &nbsp;F-32.05/00 </strong>
+
+                </b>
+            </div>
+            <style>
+
+                div.b {
+                    text-align: left;
+                    font-style: italic;
+                }
+            </style>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    function Contains(text_one, text_two) {
+                        if (text_one.indexOf(text_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        var searchText = $("#Search").val().toLowerCase();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text().toLowerCase(), searchText)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        })
+                    });
+                });
+
+            </script>
+            <style>
+                .foo {
+                    float: right;
+                    width: 30px;
+                    height: 30px;
+                    margin: 5px;
+                    border: 1px solid rgba(0, 0, 0, .2);
+                }
+
+                .green {
+                    background: #F2DCDB;
+                }
+
+                .wine {
+                    background: #CCC0DA;
+                }
+
+                .gray {
+                    background: lightgray;
+                }
+            </style>
+
+            <style>
+
+
+                .alert {
+                    position: relative;
+                }
+
+                    .alert .glyphicon {
+                        position: absolute;
+                        right: 16px;
+                        top: 19px;
+                    }
+            </style>
+            <div class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("Index1", new { page }), new PagedListRenderOptions
+            {
+                DisplayLinkToIndividualPages = true,
+                DisplayPageCountAndCurrentLocation = true,
+                MaximumPageNumbersToDisplay = 5,
+                //MaximumPageNumbersToDisplay = 3,
+                //LiElementClasses = new string[] { "pagination" },
+                //LinkToFirstPageFormat = "<< İLK",
+                //LinkToPreviousPageFormat = "< GERİ",
+                //LinkToNextPageFormat = "İLERİ >",
+                //LinkToLastPageFormat = "SON >>",
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+
+                DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                EllipsesFormat = "&#8230;",
+                LinkToFirstPageFormat = "««",
+                LinkToPreviousPageFormat = "«",
+                LinkToIndividualPageFormat = "{0}",
+                LinkToNextPageFormat = "»",
+                LinkToLastPageFormat = "»»",
+                PageCountAndCurrentLocationFormat = "Sayfa {0}/{1}",
+                //ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                FunctionToDisplayEachPageNumber = null,
+                ClassToApplyToFirstListItemInPager = null,
+                ClassToApplyToLastListItemInPager = null,
+                ContainerDivClasses = new[] { "pagination" },
+                //UlElementClasses = new[] { "pagination" },
+                //LiElementClasses = Enumerable.Empty<string>(),
+
+                //PageClasses = new string[] { "page-link" },
+
+            }
+            /* PagedListRenderOptions.PageNumbersOnly*/)
+            </div>
+            <style>
+                .pagination a {
+                    color: black;
+                    float: left;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    transition: background-color .3s;
+                    border: 1px solid #ddd;
+                }
+
+                    .pagination a.active {
+                        background-color: #4CAF50;
+                        color: white;
+                        border: 1px solid #4CAF50;
+                    }
+
+                    .pagination a:hover:not(.active) {
+                        background-color: #ddd;
+                    }
+            </style>
+
+        </div>
+    </div>
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

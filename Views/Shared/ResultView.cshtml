@@ -1,0 +1,180 @@
+﻿
+@model POLYTEKS_ARGE.Models.SearchModel
+@using POLYTEKS_ARGE.Controllers;
+<div class='MenuItemHeader SearchResultHead'>
+    <div class='SearchResultHeadLeft'>DENEME İSTEKLERİ</div><div class='SearchResultHeadRight'>
+    </div><div class='clear'></div>
+</div>
+<div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.DenemeIsteks)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.Katki.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+<div class='MenuItemHeader SearchResultHead'>
+    <div class='SearchResultHeadLeft'>FİKİR HAVUZU</div><div class='SearchResultHeadRight'>
+    </div><div class='clear'></div>
+</div>
+<div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.FikirHavuzus)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.FikirSahibi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+<div class='MenuItemHeader SearchResultHead'>
+    <div class='SearchResultHeadLeft'>HAMMADDE</div><div class='SearchResultHeadRight'>
+    </div><div class='clear'></div>
+</div>
+<div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.Hammaddes)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.KatkiIsmi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+<div class='MenuItemHeader SearchResultHead'>
+    <div class='SearchResultHeadLeft'>MALİYET</div><div class='SearchResultHeadRight'>
+    </div><div class='clear'></div>
+</div>
+<div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.Maliyets)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.MaliyetAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+<div class='MenuItemHeader SearchResultHead'>
+    <div class='SearchResultHeadLeft'>NUMUNE</div><div class='SearchResultHeadRight'>
+    </div><div class='clear'></div>
+</div><div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.Numunes)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.PartiKodu.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+      <div class='MenuItemHeader SearchResultHead'>
+          <div class='SearchResultHeadLeft'>PERSONEL</div><div class='SearchResultHeadRight'>
+          </div><div class='clear'></div>
+      </div><div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.Personels)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.AdSoyad.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+            <div class='MenuItemHeader SearchResultHead'>
+                <div class='SearchResultHeadLeft'>PROJE DENEMELERİ</div><div class='SearchResultHeadRight'>
+                </div><div class='clear'></div>
+            </div><div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.ProjeDenemeleris)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.DenemeAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+                  <div class='MenuItemHeader SearchResultHead'>
+                      <div class='SearchResultHeadLeft'>PROJE GÜNCEL BİLGİ</div><div class='SearchResultHeadRight'>
+                      </div><div class='clear'></div>
+                  </div><div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.ProjeGuncelBilgis)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.ARGE_Proje.ProjeAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+                        <div class='MenuItemHeader SearchResultHead'>
+                            <div class='SearchResultHeadLeft'>SARFİYAT</div><div class='SearchResultHeadRight'>
+                            </div><div class='clear'></div>
+                        </div><div>
+    <ul class='SearchResultItemHead'>
+        @foreach (var item in Model.Sarfiyats)
+        {
+            <li class='SearchResultItem'>
+                » @Html.Raw(item.SarfiyatCinsi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+//.Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+//.Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+//.Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+)
+            </li>
+        }
+    </ul>
+</div>
+                            

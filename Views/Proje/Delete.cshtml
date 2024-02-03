@@ -1,0 +1,154 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Proje
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>BU PROJEYİ SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            PROJE ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjeAdi)
+        </dd>
+
+        <dt>
+            PROJE KODU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjeKodu)
+        </dd>
+
+        <dt>
+            PROJE KISA AD
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjeKisaAd)
+        </dd>
+
+        <dt>
+            PROJE KONUSU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjeKonusu)
+        </dd>
+
+        <dt>
+            PROJE BAŞLANGIÇ TARİHİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjeBaslangicTarihi)
+        </dd>
+
+        <dt>
+            PROJE BİTİŞ TARİHİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjeBitisTarihi)
+        </dd>
+
+        <dt>
+            PROJE YÜRÜTÜCÜSÜ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Personel.AdSoyad)
+        </dd>
+
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            TOPLAM ADAM AY
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamAdamAy)
+        </dd>
+
+        <dt>
+            MALİYET ÖNGÖRÜSÜ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaliyetOngorusu)
+        </dd>
+
+    </dl>
+    <br />
+    <br />
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" /> <br /><br />
+
+        </div>
+    }
+</div>
+<hr />
+<br />
+@Html.ActionLink("LİSTEYE DÖN", "Index", "Proje", new { @class = "btn btn-primary" })
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

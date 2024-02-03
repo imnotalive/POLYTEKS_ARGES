@@ -1,0 +1,119 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_PersonelDisaridaGecirilenSure
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            TARİH
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CikisTarih)
+        </dd>
+
+        <dt>
+            DIŞ GÖREV ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisGorevAdi)
+        </dd>
+
+        <dt>
+            YER
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yer)
+        </dd>
+
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            PERSONEL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Personel.AdSoyad)
+        </dd>
+
+        <dt>
+            PROJE
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" />
+
+        </div>
+    }
+</div>
+<hr />
+<br />
+@Html.ActionLink("LİSTEYE DÖN", "Index", "PersonelDisaridaGecirilenSure", new { @class = "btn btn-primary" })
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

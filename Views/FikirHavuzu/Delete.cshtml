@@ -1,0 +1,62 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_FikirHavuzu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>AŞAĞIDAKİ FİKRİ SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            FİKİR SAHİBİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FikirSahibi)
+        </dd>
+
+        <dt>
+            FİKİR KONUSU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FikirKonusu)
+        </dd>
+
+        <dt>
+            TARİH
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            SON DURUM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SonDurum)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" />
+
+        </div>
+
+    }
+    <div>
+        @Html.ActionLink("LİSTEYE GERİ DÖN", "Index1", "FikirHavuzu", new { @class = "btn btn-primary" })
+    </div>
+</div>

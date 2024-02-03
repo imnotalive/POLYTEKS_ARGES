@@ -1,0 +1,164 @@
+﻿@model POLYTEKS_ARGE.Models.NumuneModel
+@{
+    ViewBag.Title = "NumuneRapor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h4 style="color:black"><b>NUMUNE RAPORLAMA</b></h4></center>
+<hr />
+@using (Html.BeginForm("NumuneExcelOlusturs", "Numune", FormMethod.Post))
+{
+    <input type="submit" value="GENEL RAPOR İNDİR" class="btn btn-danger btn-block" />
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="portlet light bordered">
+
+
+            @using (Html.BeginForm("NumuneRapors", "Numune"))
+            {
+
+                <div class="row">
+
+
+                    <label class="control-label"><b>PARTİ NUMARASI:</b></label><br />
+                    <div class="col-md-4">
+                        <div class="input-icon right">
+
+                            @Html.TextBoxFor(a => a.PartiKodu, Model.PartiKodu, new
+                       {
+                           @class = "form-control uppercase"
+                       })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label"><b>&nbsp; </b></label>
+                        <button type="submit" class="btn btn-primary red-thunderbird"><b> RAPOR İNDİR <i class="fa fa-book"></i></b></button>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <br />
+
+
+
+
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+<hr />
+@*@using (Html.BeginForm("NumuneAdiRapor", "Numune"))
+    {
+        @Html.DropDownListFor(a => a.SecilenId, Model.NumuneSelect)
+        <button type="submit">Kaydet</button>
+    }*@
+@*<div class="row">
+        <div class="col-md-12 ">
+            <div class="portlet light bordered">
+
+
+
+                    <div class="row">
+
+
+                        <label class="control-label"><b>NUMUNE ADI:</b></label><br />
+                        <div class="col-md-4">
+                            <div class="input-icon right">
+                                @using (Html.BeginForm("NumuneAdiRapor", "Numune"))
+                                {
+                                    @Html.DropDownListFor(a => a.SecilenId, Model.NumuneSelect)
+                                    <button type="submit">Kaydet</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label"><b>&nbsp; </b></label>
+                            <button type="submit" class="btn btn-primary red-thunderbird"><b> RAPOR İNDİR <i class="fa fa-book"></i></b></button>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+                    <br />
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>*@
+<style>
+    .uppercase {
+        text-transform: uppercase
+    }
+</style>
+<script>
+    function InputToUpper(obj) {
+        if (obj.value != "") {
+            obj.value = obj.value.toUpperCase();
+        }
+    }
+</script>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

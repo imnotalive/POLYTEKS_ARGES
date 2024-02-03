@@ -1,0 +1,244 @@
+﻿@model  List<POLYTEKS_ARGE.Models.ARGE_FikirHavuzu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<CENTER><h2><b>AR-GE FİKİR HAVUZU</b></h2></CENTER>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+@*<link href="/Content/glyphicons.css" rel="stylesheet" />*@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<p>
+    @Html.ActionLink("YENİ PROJE FİKRİ OLUŞTUR", "Create", "FikirHavuzu", new { @class = "btn btn-info btn-block" })
+</p>
+<p>
+    @Html.ActionLink("RAPORLAMA", "FikirHavuzuRapor", "FikirHavuzu", new { @class = "btn btn-danger btn-block" })
+</p>
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <input class="form-control" type="text" id="Search" placeholder="ARA">
+            <div class="input-group-append">
+                <div class="input-group-text"><i class="fa fa-search"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th></th>
+        <th style="color:black">
+            FİKİR SAHİBİ
+        </th>
+        <th style="color:black">
+            FİKİR KONUSU
+        </th>
+        <th style="color:black">
+            TARİH
+        </th>
+        <th style="color:black">
+            SON DURUM
+        </th>
+        <th style="color:black">DÜZENLE</th>
+        <th style="color:black">DETAYLAR</th>
+        <th style="color:black">SİL</th>
+    </tr>
+
+    @{
+        int sayac = -2;
+        foreach (var item in Model)
+        {
+            sayac++;
+
+            if (string.IsNullOrEmpty(item.GuncelDurum))
+            {
+
+                <tr class="Search">
+                    <td style="background-color: #d0efff ; color:black"><center><b>@sayac</b></center></td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.DisplayFor(modelItem => item.FikirSahibi)
+
+                    </td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.DisplayFor(modelItem => item.FikirKonusu)
+                    </td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.DisplayFor(modelItem => item.Tarih)
+                    </td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.DisplayFor(modelItem => item.SonDurum)
+
+                    </td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.ActionLink("DÜZENLE", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.ActionLink("DETAYLAR", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+                    </td>
+                    <td style="background-color: #d0efff ; color:black">
+                        @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+            else if (item.GuncelDurum.ToString() == "PROJELENDİ/DEVAM EDİYOR")
+            {
+                <tr class="Search">
+                    <td style="background-color: #C1E1C1 ; color: black"><center><b>@sayac</b></center></td>
+                    <td style="background-color: #C1E1C1 ; color: black">
+                        @Html.DisplayFor(modelItem => item.FikirSahibi)
+                    </td>
+                    <td style="background-color: #C1E1C1; color: black">
+                        @Html.DisplayFor(modelItem => item.FikirKonusu)
+                    </td>
+                    <td style="background-color: #C1E1C1; color: black">
+                        @Html.DisplayFor(modelItem => item.Tarih)
+                    </td>
+                    <td style="background-color: #C1E1C1; color: black">
+                        @if (item.SonDurum.Contains("AR"))
+                        {   
+                            <a href="@Url.Action("Details", "Proje", new { id = item.ID  })">@(item.SonDurum)</a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.SonDurum)
+                        }
+                    </td>
+                    <td style="background-color: #C1E1C1; color: black">
+                        @Html.ActionLink("DÜZENLE", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td style="background-color: #C1E1C1; color: black">
+                        @Html.ActionLink("DETAYLAR", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+                    </td>
+                    <td style="background-color: #C1E1C1; color: black">
+                        @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+            else if (item.GuncelDurum.ToString() == "PROJE TAMAMLANDI")
+            {
+                <tr class="Search">
+                    <td style="background-color: #FEE9EA; color: black"><center><b>@sayac</b></center></td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @Html.DisplayFor(modelItem => item.FikirSahibi)
+                    </td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @Html.DisplayFor(modelItem => item.FikirKonusu)
+                    </td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @Html.DisplayFor(modelItem => item.Tarih)
+                    </td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @if (item.SonDurum.Contains("AR"))
+                        {
+                            <a href="@Url.Action("Details", "Proje", new {id = item.ID })">@(item.SonDurum)</a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.SonDurum)
+                        }
+                    </td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @Html.ActionLink("DÜZENLE", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @Html.ActionLink("DETAYLAR", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+                    </td>
+                    <td style="background-color: #FEE9EA; color: black">
+                        @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+            else if (item.GuncelDurum == "ARASTIRMA ASAMASINDA")
+            {
+                <tr class="Search">
+                    <td style="background-color: lightgray; color: black"><center><b>@sayac</b></center></td>
+                    <td style="background-color: lightgray; color: black">
+                        @Html.DisplayFor(modelItem => item.FikirSahibi)
+                    </td>
+                    <td style="background-color: lightgray; color: black">
+
+                        @Html.DisplayFor(modelItem => item.FikirKonusu)
+                    </td>
+                    <td style="background-color: lightgray; color: black">
+
+                        @Html.DisplayFor(modelItem => item.Tarih)
+                    </td>
+                    <td style="background-color: lightgray; color: black">
+                        @if (item.SonDurum.Contains("AR"))
+                        {
+                            <a href="@Url.Action("Details", "Proje", new { id = item.ID })">@(item.SonDurum)</a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.SonDurum)
+                        }
+                    </td>
+                    <td style="background-color: lightgray; color: black">
+
+                        @Html.ActionLink("DÜZENLE", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td style="background-color: lightgray; color: black">
+
+                        @Html.ActionLink("DETAYLAR", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+                    </td>
+                    <td style="background-color: lightgray; color: black">
+
+                        @Html.ActionLink("SİL", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    </td>
+
+                </tr>
+
+            }
+        }
+    }
+
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        });
+    });
+
+</script>
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<button id="btn">PROJE</button>
+<input type="text" id="Coordinate1">
+<a id="myLink" href="#"></a>
+<script>
+
+    if (str.match("^AR")) {
+        $("#btn").click(function () {
+            $("#myLink").text($("#Coordinate1").val());
+            $("#myLink").prop("href", "/Proje/Details/" + $("#Coordinate1").val());
+        });
+    }
+
+</script>*@
+
+

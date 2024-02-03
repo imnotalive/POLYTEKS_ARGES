@@ -1,0 +1,72 @@
+﻿@model POLYTEKS_ARGE.Models.ProjeModel
+
+@{
+    ViewBag.Title = "ProjeKodundanOlustur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProjeKodundanOlustur</h2>
+
+
+@using (Html.BeginForm("ProjeKodundanOlustur", "Proje"))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <b>Proje Kodu Seçimi</b>
+                @Html.DropDownListFor(a => a.id, new SelectList(Model.ArgeProjes, "ID", "ProjeKodu", new { htmlAttributes = new { @class = "form-control" } }))
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-12">
+                <input type="submit" value="RAPORLAMA" class="btn btn-danger btn-block" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+}
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

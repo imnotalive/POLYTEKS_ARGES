@@ -1,0 +1,1862 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PTKS_ARGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARGE_DenemeChips">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChipsAdi" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ARGE_DenemeDurum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenemeDurum" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ARGE_DenemeIstek">
+          <Key>
+            <PropertyRef Name="DenemeIstekId" />
+          </Key>
+          <Property Name="DenemeIstekId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="Katki" Type="nvarchar" MaxLength="250" />
+          <Property Name="KesitTipi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Chips" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dozaj" Type="nvarchar" MaxLength="100" />
+          <Property Name="POYDtex" Type="nvarchar" MaxLength="250" />
+          <Property Name="POYReferans" Type="nvarchar" MaxLength="250" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProjeDenemeIstekId" Type="int" />
+          <Property Name="POYMiktari" Type="nvarchar" MaxLength="500" />
+          <Property Name="KesitTipiId" Type="int" />
+          <Property Name="DurumId" Type="int" />
+          <Property Name="KesitTipiId2" Type="int" />
+          <Property Name="KesitTipiId3" Type="int" />
+          <Property Name="ChipsSecme" Type="int" />
+        </EntityType>
+        <EntityType Name="ARGE_FikirHavuzu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FikirSahibi" Type="nvarchar" MaxLength="500" />
+          <Property Name="FikirKonusu" Type="nvarchar" MaxLength="500" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="SonDurum" Type="nvarchar" MaxLength="500" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="GuncelDurumId" Type="int" />
+          <Property Name="OnayDurumId" Type="int" />
+        </EntityType>
+        <EntityType Name="ARGE_FikirHavuzuGuncelDurum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FikirHavuzuGuncelDurum" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ARGE_FikirHavuzuOnayDurum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FikirHavuzuDurum" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ARGE_Hammadde">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HammaddeGirisTarihi" Type="datetime" />
+          <Property Name="Tedarikci" Type="nvarchar" MaxLength="250" />
+          <Property Name="KatkiIsmi" Type="nvarchar" MaxLength="150" />
+          <Property Name="UrunKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fonksiyon" Type="nvarchar" MaxLength="250" />
+          <Property Name="Dozaj" Type="float" />
+          <Property Name="Miktar" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="MiktarBirim" Type="nvarchar" MaxLength="20" />
+          <Property Name="Fiyat" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="FiyatBirim" Type="nvarchar" MaxLength="20" />
+          <Property Name="Ozellik" Type="nvarchar" MaxLength="150" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="HammaddeGelisMiktari" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="KullanımDurumu" Type="nvarchar" MaxLength="50" />
+          <Property Name="İşletmeStok" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="ARGE_KesitTipi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KesitTipi" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ARGE_Makineler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MakineNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MakineAdi" Type="nvarchar" MaxLength="250" />
+          <Property Name="MakineTuru" Type="nvarchar" MaxLength="100" />
+          <Property Name="MakineGrubu" Type="nvarchar" MaxLength="250" />
+          <Property Name="MakineTipi" Type="nvarchar(max)" />
+          <Property Name="MakineBolum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ARGE_Maliyet">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+          </Key>
+          <Property Name="MaliyetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaliyetTarih" Type="datetime" />
+          <Property Name="Firma" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birim" Type="nvarchar" MaxLength="10" />
+          <Property Name="MaliyetTipi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="Personel" Type="nvarchar" MaxLength="250" />
+          <Property Name="MaliyetAdi" Type="nvarchar" MaxLength="250" />
+          <Property Name="KDVliMiktar" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="KDVsizMiktar" Type="decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="ARGE_Numune">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriFirma" Type="nvarchar" MaxLength="250" />
+          <Property Name="IlgiliKisi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Iletisim" Type="nvarchar" MaxLength="250" />
+          <Property Name="PartiId" Type="int" />
+          <Property Name="Miktar" Type="nvarchar" MaxLength="50" />
+          <Property Name="HatirlatmaTarihi" Type="datetime" />
+          <Property Name="PartiKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="NumuneAdi" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ARGE_Personel">
+          <Key>
+            <PropertyRef Name="PersonelId" />
+          </Key>
+          <Property Name="PersonelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonelKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="250" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="30" />
+          <Property Name="Durum" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ARGE_PersonelDisaridaGecirilenSure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CikisTarih" Type="datetime" />
+          <Property Name="DisGorevAdi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Yer" Type="nvarchar" MaxLength="250" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="CikisSaati" Type="nvarchar" MaxLength="50" />
+          <Property Name="GirisSaati" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ARGE_PersonelProje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="ProjeId" Type="int" />
+        </EntityType>
+        <EntityType Name="ARGE_Proje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjeAdi" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProjeKodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjeKisaAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProjeBaslangicTarihi" Type="datetime" />
+          <Property Name="ProjeBitisTarihi" Type="datetime" />
+          <Property Name="ProjeDurum" Type="bit" Nullable="false" />
+          <Property Name="ToplamAdamAy" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MaliyetOngorusu" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="ProjeYurutucusuId" Type="int" Nullable="false" />
+          <Property Name="ProjeKonusu" Type="nvarchar(max)" />
+          <Property Name="ProjedeYapilacaklar" Type="nvarchar(max)" />
+          <Property Name="ProjeArgeYonu" Type="nvarchar(max)" />
+          <Property Name="ProjeCiktilari" Type="nvarchar(max)" />
+          <Property Name="ProjeDestekDurumu" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonelSayisi" Type="int" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="ProjeKonusununIhtiyaclari" Type="nvarchar(max)" />
+          <Property Name="HizmetAlimiKonusuYeri" Type="nvarchar(max)" />
+          <Property Name="HizmetAlimiTutari" Type="nvarchar" MaxLength="50" />
+          <Property Name="OzkaynakTutari" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="PersonelButcesi" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="IsBirligiTuruId" Type="int" />
+          <Property Name="Aciklama2" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeDenemeleri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenemeTarih" Type="datetime" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="DenemeAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYDtex" Type="nvarchar" MaxLength="50" />
+          <Property Name="Katki" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYMakinesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYMiktari" Type="nvarchar" MaxLength="50" />
+          <Property Name="TekstureLotu" Type="nvarchar" MaxLength="50" />
+          <Property Name="TekstureDtex" Type="nvarchar" MaxLength="50" />
+          <Property Name="TekstureMakinesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="TekstureMiktari" Type="nvarchar" MaxLength="50" />
+          <Property Name="BukumLotu" Type="nvarchar" MaxLength="50" />
+          <Property Name="BukumDtex" Type="nvarchar" MaxLength="50" />
+          <Property Name="BukumMakinesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="BukumMiktari" Type="nvarchar" MaxLength="50" />
+          <Property Name="HavaTekstureLotu" Type="nvarchar" MaxLength="50" />
+          <Property Name="HavaTekstureDtex" Type="nvarchar" MaxLength="50" />
+          <Property Name="HavaTekstureMiktari" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="Bilesen1" Type="nvarchar" MaxLength="250" />
+          <Property Name="POYLotu2" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu3" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu4" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu5" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu6" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu7" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu8" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu9" Type="nvarchar" MaxLength="50" />
+          <Property Name="POYLotu10" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisMakine" Type="nvarchar" MaxLength="250" />
+          <Property Name="Chips2" Type="nvarchar" MaxLength="50" />
+          <Property Name="HavaTekstureMakinesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Chips" Type="int" />
+          <Property Name="TekstureDenemeTarihi" Type="datetime" />
+          <Property Name="BukumDenemeTarihi" Type="datetime" />
+          <Property Name="HavaTekstureDenemeTarihi" Type="datetime" />
+          <Property Name="POYDenemeKesitId" Type="int" />
+          <Property Name="TekstureDenemeKesitId" Type="int" />
+          <Property Name="BukumDenemeKesitId" Type="int" />
+          <Property Name="HavaTekstureDenemeKesitId" Type="int" />
+          <Property Name="POYDenemeKesit" Type="nvarchar" MaxLength="150" />
+          <Property Name="TekstureDenemeKesit" Type="nvarchar" MaxLength="150" />
+          <Property Name="BukumDenemeKesit" Type="nvarchar" MaxLength="150" />
+          <Property Name="HavaTekstureDenemeKesit" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeDisiCalisma">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjeKonusu" Type="nvarchar(max)" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="Guncelleme" Type="nvarchar(max)" />
+          <Property Name="Numuneler" Type="nvarchar(max)" />
+          <Property Name="ProjeSorumluId" Type="int" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeGuncelBilgi">
+          <Key>
+            <PropertyRef Name="ProjeGuncellemeId" />
+          </Key>
+          <Property Name="ProjeGuncellemeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjeGuncellemeTarih" Type="datetime" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="ProjeGuncellemeDetay" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeIsBirligiTuru">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsBirligiTuru" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ARGE_Sarfiyat">
+          <Key>
+            <PropertyRef Name="SarfiyatId" />
+          </Key>
+          <Property Name="SarfiyatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SarfiyatTarih" Type="datetime" />
+          <Property Name="Miktar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Birim" Type="nvarchar" MaxLength="10" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="30" />
+          <Property Name="ProjeId" Type="int" />
+          <Property Name="SarfiyatCinsi" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_DenemeChips">
+          <End Role="ARGE_DenemeChips" Type="Self.ARGE_DenemeChips" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_DenemeChips">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="ChipsSecme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_DenemeDurum">
+          <End Role="ARGE_DenemeDurum" Type="Self.ARGE_DenemeDurum" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_DenemeDurum">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_DenemeIstek">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="ProjeDenemeIstekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="KesitTipiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi1">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="KesitTipiId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi2">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="KesitTipiId3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum">
+          <End Role="ARGE_FikirHavuzuGuncelDurum" Type="Self.ARGE_FikirHavuzuGuncelDurum" Multiplicity="0..1" />
+          <End Role="ARGE_FikirHavuzu" Type="Self.ARGE_FikirHavuzu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_FikirHavuzuGuncelDurum">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_FikirHavuzu">
+              <PropertyRef Name="GuncelDurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum">
+          <End Role="ARGE_FikirHavuzuOnayDurum" Type="Self.ARGE_FikirHavuzuOnayDurum" Multiplicity="0..1" />
+          <End Role="ARGE_FikirHavuzu" Type="Self.ARGE_FikirHavuzu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_FikirHavuzuOnayDurum">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_FikirHavuzu">
+              <PropertyRef Name="OnayDurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_FikirHavuzu_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_FikirHavuzu" Type="Self.ARGE_FikirHavuzu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_FikirHavuzu">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Maliyet_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_Maliyet" Type="Self.ARGE_Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Maliyet">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Numune_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_Numune" Type="Self.ARGE_Numune" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Numune">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel">
+          <End Role="ARGE_Personel" Type="Self.ARGE_Personel" Multiplicity="0..1" />
+          <End Role="ARGE_PersonelDisaridaGecirilenSure" Type="Self.ARGE_PersonelDisaridaGecirilenSure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelDisaridaGecirilenSure">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_PersonelDisaridaGecirilenSure" Type="Self.ARGE_PersonelDisaridaGecirilenSure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelDisaridaGecirilenSure">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelProje_ARGE_Personel">
+          <End Role="ARGE_Personel" Type="Self.ARGE_Personel" Multiplicity="0..1" />
+          <End Role="ARGE_PersonelProje" Type="Self.ARGE_PersonelProje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelProje">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelProje_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_PersonelProje" Type="Self.ARGE_PersonelProje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelProje">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Proje_ARGE_Personel">
+          <End Role="ARGE_Personel" Type="Self.ARGE_Personel" Multiplicity="1" />
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_Proje">
+              <PropertyRef Name="ProjeYurutucusuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru">
+          <End Role="ARGE_ProjeIsBirligiTuru" Type="Self.ARGE_ProjeIsBirligiTuru" Multiplicity="0..1" />
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_ProjeIsBirligiTuru">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Proje">
+              <PropertyRef Name="IsBirligiTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips">
+          <End Role="ARGE_DenemeChips" Type="Self.ARGE_DenemeChips" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_DenemeChips">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="Chips" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="POYDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="TekstureDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="BukumDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="HavaTekstureDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDisiCalisma_ARGE_Personel">
+          <End Role="ARGE_Personel" Type="Self.ARGE_Personel" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDisiCalisma" Type="Self.ARGE_ProjeDisiCalisma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDisiCalisma">
+              <PropertyRef Name="ProjeSorumluId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeGuncelBilgi_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeGuncelBilgi" Type="Self.ARGE_ProjeGuncelBilgi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeGuncelBilgi">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Sarfiyat_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_Sarfiyat" Type="Self.ARGE_Sarfiyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Sarfiyat">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PTKS_ARGEModelStoreContainer">
+          <EntitySet Name="ARGE_DenemeChips" EntityType="Self.ARGE_DenemeChips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_DenemeDurum" EntityType="Self.ARGE_DenemeDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_DenemeIstek" EntityType="Self.ARGE_DenemeIstek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_FikirHavuzu" EntityType="Self.ARGE_FikirHavuzu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_FikirHavuzuGuncelDurum" EntityType="Self.ARGE_FikirHavuzuGuncelDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_FikirHavuzuOnayDurum" EntityType="Self.ARGE_FikirHavuzuOnayDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Hammadde" EntityType="Self.ARGE_Hammadde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_KesitTipi" EntityType="Self.ARGE_KesitTipi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Makineler" EntityType="Self.ARGE_Makineler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Maliyet" EntityType="Self.ARGE_Maliyet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Numune" EntityType="Self.ARGE_Numune" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Personel" EntityType="Self.ARGE_Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_PersonelDisaridaGecirilenSure" EntityType="Self.ARGE_PersonelDisaridaGecirilenSure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_PersonelProje" EntityType="Self.ARGE_PersonelProje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Proje" EntityType="Self.ARGE_Proje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_ProjeDenemeleri" EntityType="Self.ARGE_ProjeDenemeleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_ProjeDisiCalisma" EntityType="Self.ARGE_ProjeDisiCalisma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_ProjeGuncelBilgi" EntityType="Self.ARGE_ProjeGuncelBilgi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_ProjeIsBirligiTuru" EntityType="Self.ARGE_ProjeIsBirligiTuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARGE_Sarfiyat" EntityType="Self.ARGE_Sarfiyat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_DenemeChips" Association="Self.FK_ARGE_DenemeIstek_ARGE_DenemeChips">
+            <End Role="ARGE_DenemeChips" EntitySet="ARGE_DenemeChips" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_DenemeDurum" Association="Self.FK_ARGE_DenemeIstek_ARGE_DenemeDurum">
+            <End Role="ARGE_DenemeDurum" EntitySet="ARGE_DenemeDurum" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_DenemeIstek" Association="Self.FK_ARGE_DenemeIstek_ARGE_DenemeIstek">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi" Association="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi1" Association="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi1">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi2" Association="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi2">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum" Association="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum">
+            <End Role="ARGE_FikirHavuzuGuncelDurum" EntitySet="ARGE_FikirHavuzuGuncelDurum" />
+            <End Role="ARGE_FikirHavuzu" EntitySet="ARGE_FikirHavuzu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum" Association="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum">
+            <End Role="ARGE_FikirHavuzuOnayDurum" EntitySet="ARGE_FikirHavuzuOnayDurum" />
+            <End Role="ARGE_FikirHavuzu" EntitySet="ARGE_FikirHavuzu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_FikirHavuzu_ARGE_Proje" Association="Self.FK_ARGE_FikirHavuzu_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_FikirHavuzu" EntitySet="ARGE_FikirHavuzu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Maliyet_ARGE_Proje" Association="Self.FK_ARGE_Maliyet_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_Maliyet" EntitySet="ARGE_Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Numune_ARGE_Proje" Association="Self.FK_ARGE_Numune_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_Numune" EntitySet="ARGE_Numune" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel" Association="Self.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_PersonelDisaridaGecirilenSure" EntitySet="ARGE_PersonelDisaridaGecirilenSure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje" Association="Self.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_PersonelDisaridaGecirilenSure" EntitySet="ARGE_PersonelDisaridaGecirilenSure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelProje_ARGE_Personel" Association="Self.FK_ARGE_PersonelProje_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_PersonelProje" EntitySet="ARGE_PersonelProje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelProje_ARGE_Proje" Association="Self.FK_ARGE_PersonelProje_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_PersonelProje" EntitySet="ARGE_PersonelProje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Proje_ARGE_Personel" Association="Self.FK_ARGE_Proje_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru" Association="Self.FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru">
+            <End Role="ARGE_ProjeIsBirligiTuru" EntitySet="ARGE_ProjeIsBirligiTuru" />
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips">
+            <End Role="ARGE_DenemeChips" EntitySet="ARGE_DenemeChips" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_Proje" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDisiCalisma_ARGE_Personel" Association="Self.FK_ARGE_ProjeDisiCalisma_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_ProjeDisiCalisma" EntitySet="ARGE_ProjeDisiCalisma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeGuncelBilgi_ARGE_Proje" Association="Self.FK_ARGE_ProjeGuncelBilgi_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_ProjeGuncelBilgi" EntitySet="ARGE_ProjeGuncelBilgi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Sarfiyat_ARGE_Proje" Association="Self.FK_ARGE_Sarfiyat_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_Sarfiyat" EntitySet="ARGE_Sarfiyat" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PTKS_ARGEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ARGE_DenemeChips">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChipsAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_DenemeIstek" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_DenemeChips" FromRole="ARGE_DenemeChips" ToRole="ARGE_DenemeIstek" />
+          <NavigationProperty Name="ARGE_ProjeDenemeleri" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips" FromRole="ARGE_DenemeChips" ToRole="ARGE_ProjeDenemeleri" />
+        </EntityType>
+        <EntityType Name="ARGE_DenemeDurum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenemeDurum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_DenemeIstek" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_DenemeDurum" FromRole="ARGE_DenemeDurum" ToRole="ARGE_DenemeIstek" />
+        </EntityType>
+        <EntityType Name="ARGE_DenemeIstek">
+          <Key>
+            <PropertyRef Name="DenemeIstekId" />
+          </Key>
+          <Property Name="DenemeIstekId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="Katki" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KesitTipi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Chips" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dozaj" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POYDtex" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="POYReferans" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeDenemeIstekId" Type="Int32" />
+          <Property Name="POYMiktari" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="KesitTipiId" Type="Int32" />
+          <Property Name="DurumId" Type="Int32" />
+          <Property Name="KesitTipiId2" Type="Int32" />
+          <Property Name="KesitTipiId3" Type="Int32" />
+          <Property Name="ChipsSecme" Type="Int32" />
+          <NavigationProperty Name="ARGE_DenemeChips" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_DenemeChips" FromRole="ARGE_DenemeIstek" ToRole="ARGE_DenemeChips" />
+          <NavigationProperty Name="ARGE_DenemeDurum" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_DenemeDurum" FromRole="ARGE_DenemeIstek" ToRole="ARGE_DenemeDurum" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_DenemeIstek" FromRole="ARGE_DenemeIstek" ToRole="ARGE_Proje" />
+          <NavigationProperty Name="ARGE_KesitTipi" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi" FromRole="ARGE_DenemeIstek" ToRole="ARGE_KesitTipi" />
+          <NavigationProperty Name="ARGE_KesitTipi1" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi1" FromRole="ARGE_DenemeIstek" ToRole="ARGE_KesitTipi" />
+          <NavigationProperty Name="ARGE_KesitTipi2" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi2" FromRole="ARGE_DenemeIstek" ToRole="ARGE_KesitTipi" />
+        </EntityType>
+        <EntityType Name="ARGE_FikirHavuzu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FikirSahibi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FikirKonusu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="SonDurum" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="GuncelDurumId" Type="Int32" />
+          <Property Name="OnayDurumId" Type="Int32" />
+          <NavigationProperty Name="ARGE_FikirHavuzuGuncelDurum" Relationship="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum" FromRole="ARGE_FikirHavuzu" ToRole="ARGE_FikirHavuzuGuncelDurum" />
+          <NavigationProperty Name="ARGE_FikirHavuzuOnayDurum" Relationship="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum" FromRole="ARGE_FikirHavuzu" ToRole="ARGE_FikirHavuzuOnayDurum" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_FikirHavuzu_ARGE_Proje" FromRole="ARGE_FikirHavuzu" ToRole="ARGE_Proje" />
+        </EntityType>
+        <EntityType Name="ARGE_FikirHavuzuGuncelDurum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FikirHavuzuGuncelDurum" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_FikirHavuzu" Relationship="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum" FromRole="ARGE_FikirHavuzuGuncelDurum" ToRole="ARGE_FikirHavuzu" />
+        </EntityType>
+        <EntityType Name="ARGE_FikirHavuzuOnayDurum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FikirHavuzuDurum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_FikirHavuzu" Relationship="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum" FromRole="ARGE_FikirHavuzuOnayDurum" ToRole="ARGE_FikirHavuzu" />
+        </EntityType>
+        <EntityType Name="ARGE_Hammadde">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HammaddeGirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Tedarikci" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KatkiIsmi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UrunKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fonksiyon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Dozaj" Type="Double" />
+          <Property Name="Miktar" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="MiktarBirim" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="FiyatBirim" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Ozellik" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HammaddeGelisMiktari" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="KullanımDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="İşletmeStok" Type="Decimal" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="ARGE_KesitTipi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KesitTipi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_DenemeIstek" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi" FromRole="ARGE_KesitTipi" ToRole="ARGE_DenemeIstek" />
+          <NavigationProperty Name="ARGE_DenemeIstek1" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi1" FromRole="ARGE_KesitTipi" ToRole="ARGE_DenemeIstek" />
+          <NavigationProperty Name="ARGE_DenemeIstek2" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi2" FromRole="ARGE_KesitTipi" ToRole="ARGE_DenemeIstek" />
+          <NavigationProperty Name="ARGE_ProjeDenemeleri" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi" FromRole="ARGE_KesitTipi" ToRole="ARGE_ProjeDenemeleri" />
+          <NavigationProperty Name="ARGE_ProjeDenemeleri1" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1" FromRole="ARGE_KesitTipi" ToRole="ARGE_ProjeDenemeleri" />
+          <NavigationProperty Name="ARGE_ProjeDenemeleri2" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2" FromRole="ARGE_KesitTipi" ToRole="ARGE_ProjeDenemeleri" />
+          <NavigationProperty Name="ARGE_ProjeDenemeleri3" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3" FromRole="ARGE_KesitTipi" ToRole="ARGE_ProjeDenemeleri" />
+        </EntityType>
+        <EntityType Name="ARGE_Makineler">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakineNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MakineAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MakineTuru" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MakineGrubu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MakineTipi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MakineBolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ARGE_Maliyet">
+          <Key>
+            <PropertyRef Name="MaliyetId" />
+          </Key>
+          <Property Name="MaliyetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaliyetTarih" Type="DateTime" Precision="3" />
+          <Property Name="Firma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MaliyetTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="Personel" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MaliyetAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KDVliMiktar" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="KDVsizMiktar" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_Maliyet_ARGE_Proje" FromRole="ARGE_Maliyet" ToRole="ARGE_Proje" />
+        </EntityType>
+        <EntityType Name="ARGE_Numune">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriFirma" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IlgiliKisi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Iletisim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PartiId" Type="Int32" />
+          <Property Name="Miktar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HatirlatmaTarihi" Type="DateTime" Precision="3" />
+          <Property Name="PartiKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="NumuneAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_Numune_ARGE_Proje" FromRole="ARGE_Numune" ToRole="ARGE_Proje" />
+        </EntityType>
+        <EntityType Name="ARGE_PersonelDisaridaGecirilenSure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CikisTarih" Type="DateTime" Precision="3" />
+          <Property Name="DisGorevAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Yer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="CikisSaati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GirisSaati" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje" FromRole="ARGE_PersonelDisaridaGecirilenSure" ToRole="ARGE_Proje" />
+          <NavigationProperty Name="ARGE_Personel" Relationship="PTKS_ARGEModel.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel" FromRole="ARGE_PersonelDisaridaGecirilenSure" ToRole="ARGE_Personel" />
+        </EntityType>
+        <EntityType Name="ARGE_PersonelProje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="ProjeId" Type="Int32" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_PersonelProje_ARGE_Proje" FromRole="ARGE_PersonelProje" ToRole="ARGE_Proje" />
+          <NavigationProperty Name="ARGE_Personel" Relationship="PTKS_ARGEModel.FK_ARGE_PersonelProje_ARGE_Personel" FromRole="ARGE_PersonelProje" ToRole="ARGE_Personel" />
+        </EntityType>
+        <EntityType Name="ARGE_Proje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjeAdi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeKisaAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeBaslangicTarihi" Type="DateTime" Precision="3" />
+          <Property Name="ProjeBitisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="ProjeDurum" Type="Boolean" Nullable="false" />
+          <Property Name="ToplamAdamAy" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MaliyetOngorusu" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="ProjeYurutucusuId" Type="Int32" Nullable="false" />
+          <Property Name="ProjeKonusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjedeYapilacaklar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeArgeYonu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeCiktilari" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeDestekDurumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSayisi" Type="Int32" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeKonusununIhtiyaclari" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HizmetAlimiKonusuYeri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HizmetAlimiTutari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OzkaynakTutari" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="PersonelButcesi" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="IsBirligiTuruId" Type="Int32" />
+          <Property Name="Aciklama2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_DenemeIstek" Relationship="Self.FK_ARGE_DenemeIstek_ARGE_DenemeIstek" FromRole="ARGE_Proje" ToRole="ARGE_DenemeIstek" />
+          <NavigationProperty Name="ARGE_FikirHavuzu" Relationship="Self.FK_ARGE_FikirHavuzu_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_FikirHavuzu" />
+          <NavigationProperty Name="ARGE_Maliyet" Relationship="Self.FK_ARGE_Maliyet_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_Maliyet" />
+          <NavigationProperty Name="ARGE_Numune" Relationship="Self.FK_ARGE_Numune_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_Numune" />
+          <NavigationProperty Name="ARGE_PersonelDisaridaGecirilenSure" Relationship="Self.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_PersonelDisaridaGecirilenSure" />
+          <NavigationProperty Name="ARGE_PersonelProje" Relationship="Self.FK_ARGE_PersonelProje_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_PersonelProje" />
+          <NavigationProperty Name="ARGE_ProjeIsBirligiTuru" Relationship="Self.FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru" FromRole="ARGE_Proje" ToRole="ARGE_ProjeIsBirligiTuru" />
+          <NavigationProperty Name="ARGE_ProjeDenemeleri" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_ProjeDenemeleri" />
+          <NavigationProperty Name="ARGE_ProjeGuncelBilgi" Relationship="Self.FK_ARGE_ProjeGuncelBilgi_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_ProjeGuncelBilgi" />
+          <NavigationProperty Name="ARGE_Sarfiyat" Relationship="Self.FK_ARGE_Sarfiyat_ARGE_Proje" FromRole="ARGE_Proje" ToRole="ARGE_Sarfiyat" />
+          <NavigationProperty Name="ARGE_Personel" Relationship="PTKS_ARGEModel.FK_ARGE_Proje_ARGE_Personel" FromRole="ARGE_Proje" ToRole="ARGE_Personel" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeDenemeleri">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenemeTarih" Type="DateTime" Precision="3" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="DenemeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYDtex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Katki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYMakinesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYMiktari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TekstureLotu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TekstureDtex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TekstureMakinesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TekstureMiktari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BukumLotu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BukumDtex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BukumMakinesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BukumMiktari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HavaTekstureLotu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HavaTekstureDtex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HavaTekstureMiktari" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Bilesen1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POYLotu10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisMakine" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Chips2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HavaTekstureMakinesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Chips" Type="Int32" />
+          <Property Name="TekstureDenemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="BukumDenemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="HavaTekstureDenemeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="POYDenemeKesitId" Type="Int32" />
+          <Property Name="TekstureDenemeKesitId" Type="Int32" />
+          <Property Name="BukumDenemeKesitId" Type="Int32" />
+          <Property Name="HavaTekstureDenemeKesitId" Type="Int32" />
+          <Property Name="POYDenemeKesit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TekstureDenemeKesit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BukumDenemeKesit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HavaTekstureDenemeKesit" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_DenemeChips" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips" FromRole="ARGE_ProjeDenemeleri" ToRole="ARGE_DenemeChips" />
+          <NavigationProperty Name="ARGE_KesitTipi" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi" FromRole="ARGE_ProjeDenemeleri" ToRole="ARGE_KesitTipi" />
+          <NavigationProperty Name="ARGE_KesitTipi1" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1" FromRole="ARGE_ProjeDenemeleri" ToRole="ARGE_KesitTipi" />
+          <NavigationProperty Name="ARGE_KesitTipi2" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2" FromRole="ARGE_ProjeDenemeleri" ToRole="ARGE_KesitTipi" />
+          <NavigationProperty Name="ARGE_KesitTipi3" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3" FromRole="ARGE_ProjeDenemeleri" ToRole="ARGE_KesitTipi" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_ProjeDenemeleri_ARGE_Proje" FromRole="ARGE_ProjeDenemeleri" ToRole="ARGE_Proje" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeDisiCalisma">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjeKonusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="Guncelleme" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Numuneler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeSorumluId" Type="Int32" />
+          <NavigationProperty Name="ARGE_Personel" Relationship="PTKS_ARGEModel.FK_ARGE_ProjeDisiCalisma_ARGE_Personel" FromRole="ARGE_ProjeDisiCalisma" ToRole="ARGE_Personel" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeGuncelBilgi">
+          <Key>
+            <PropertyRef Name="ProjeGuncellemeId" />
+          </Key>
+          <Property Name="ProjeGuncellemeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjeGuncellemeTarih" Type="DateTime" Precision="3" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="ProjeGuncellemeDetay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_ProjeGuncelBilgi_ARGE_Proje" FromRole="ARGE_ProjeGuncelBilgi" ToRole="ARGE_Proje" />
+        </EntityType>
+        <EntityType Name="ARGE_ProjeIsBirligiTuru">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsBirligiTuru" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru" FromRole="ARGE_ProjeIsBirligiTuru" ToRole="ARGE_Proje" />
+        </EntityType>
+        <EntityType Name="ARGE_Sarfiyat">
+          <Key>
+            <PropertyRef Name="SarfiyatId" />
+          </Key>
+          <Property Name="SarfiyatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SarfiyatTarih" Type="DateTime" Precision="3" />
+          <Property Name="Miktar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Birim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ProjeId" Type="Int32" />
+          <Property Name="SarfiyatCinsi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="Self.FK_ARGE_Sarfiyat_ARGE_Proje" FromRole="ARGE_Sarfiyat" ToRole="ARGE_Proje" />
+        </EntityType>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_DenemeChips">
+          <End Role="ARGE_DenemeChips" Type="Self.ARGE_DenemeChips" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_DenemeChips">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="ChipsSecme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips">
+          <End Role="ARGE_DenemeChips" Type="Self.ARGE_DenemeChips" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_DenemeChips">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="Chips" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_DenemeDurum">
+          <End Role="ARGE_DenemeDurum" Type="Self.ARGE_DenemeDurum" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_DenemeDurum">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="DurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_DenemeIstek">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="ProjeDenemeIstekId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="KesitTipiId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi1">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="KesitTipiId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi2">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_DenemeIstek" Type="Self.ARGE_DenemeIstek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_DenemeIstek">
+              <PropertyRef Name="KesitTipiId3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum">
+          <End Role="ARGE_FikirHavuzuGuncelDurum" Type="Self.ARGE_FikirHavuzuGuncelDurum" Multiplicity="0..1" />
+          <End Role="ARGE_FikirHavuzu" Type="Self.ARGE_FikirHavuzu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_FikirHavuzuGuncelDurum">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_FikirHavuzu">
+              <PropertyRef Name="GuncelDurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum">
+          <End Role="ARGE_FikirHavuzuOnayDurum" Type="Self.ARGE_FikirHavuzuOnayDurum" Multiplicity="0..1" />
+          <End Role="ARGE_FikirHavuzu" Type="Self.ARGE_FikirHavuzu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_FikirHavuzuOnayDurum">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_FikirHavuzu">
+              <PropertyRef Name="OnayDurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_FikirHavuzu_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_FikirHavuzu" Type="Self.ARGE_FikirHavuzu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_FikirHavuzu">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="POYDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="TekstureDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="BukumDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3">
+          <End Role="ARGE_KesitTipi" Type="Self.ARGE_KesitTipi" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_KesitTipi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="HavaTekstureDenemeKesitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Maliyet_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_Maliyet" Type="Self.ARGE_Maliyet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Maliyet">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Numune_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_Numune" Type="Self.ARGE_Numune" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Numune">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_PersonelDisaridaGecirilenSure" Type="Self.ARGE_PersonelDisaridaGecirilenSure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelDisaridaGecirilenSure">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelProje_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_PersonelProje" Type="Self.ARGE_PersonelProje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelProje">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru">
+          <End Role="ARGE_ProjeIsBirligiTuru" Type="Self.ARGE_ProjeIsBirligiTuru" Multiplicity="0..1" />
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_ProjeIsBirligiTuru">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Proje">
+              <PropertyRef Name="IsBirligiTuruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDenemeleri_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeDenemeleri" Type="Self.ARGE_ProjeDenemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDenemeleri">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeGuncelBilgi_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_ProjeGuncelBilgi" Type="Self.ARGE_ProjeGuncelBilgi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeGuncelBilgi">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Sarfiyat_ARGE_Proje">
+          <End Role="ARGE_Proje" Type="Self.ARGE_Proje" Multiplicity="0..1" />
+          <End Role="ARGE_Sarfiyat" Type="Self.ARGE_Sarfiyat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Proje">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ARGE_Sarfiyat">
+              <PropertyRef Name="ProjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PTKS_ARGE1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ARGE_DenemeChips" EntityType="Self.ARGE_DenemeChips" />
+          <EntitySet Name="ARGE_DenemeDurum" EntityType="Self.ARGE_DenemeDurum" />
+          <EntitySet Name="ARGE_DenemeIstek" EntityType="Self.ARGE_DenemeIstek" />
+          <EntitySet Name="ARGE_FikirHavuzu" EntityType="Self.ARGE_FikirHavuzu" />
+          <EntitySet Name="ARGE_FikirHavuzuGuncelDurum" EntityType="Self.ARGE_FikirHavuzuGuncelDurum" />
+          <EntitySet Name="ARGE_FikirHavuzuOnayDurum" EntityType="Self.ARGE_FikirHavuzuOnayDurum" />
+          <EntitySet Name="ARGE_Hammadde" EntityType="Self.ARGE_Hammadde" />
+          <EntitySet Name="ARGE_KesitTipi" EntityType="Self.ARGE_KesitTipi" />
+          <EntitySet Name="ARGE_Makineler" EntityType="Self.ARGE_Makineler" />
+          <EntitySet Name="ARGE_Maliyet" EntityType="Self.ARGE_Maliyet" />
+          <EntitySet Name="ARGE_Numune" EntityType="Self.ARGE_Numune" />
+          <EntitySet Name="ARGE_PersonelDisaridaGecirilenSure" EntityType="Self.ARGE_PersonelDisaridaGecirilenSure" />
+          <EntitySet Name="ARGE_PersonelProje" EntityType="Self.ARGE_PersonelProje" />
+          <EntitySet Name="ARGE_Proje" EntityType="Self.ARGE_Proje" />
+          <EntitySet Name="ARGE_ProjeDenemeleri" EntityType="Self.ARGE_ProjeDenemeleri" />
+          <EntitySet Name="ARGE_ProjeDisiCalisma" EntityType="Self.ARGE_ProjeDisiCalisma" />
+          <EntitySet Name="ARGE_ProjeGuncelBilgi" EntityType="Self.ARGE_ProjeGuncelBilgi" />
+          <EntitySet Name="ARGE_ProjeIsBirligiTuru" EntityType="Self.ARGE_ProjeIsBirligiTuru" />
+          <EntitySet Name="ARGE_Sarfiyat" EntityType="Self.ARGE_Sarfiyat" />
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_DenemeChips" Association="Self.FK_ARGE_DenemeIstek_ARGE_DenemeChips">
+            <End Role="ARGE_DenemeChips" EntitySet="ARGE_DenemeChips" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips">
+            <End Role="ARGE_DenemeChips" EntitySet="ARGE_DenemeChips" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_DenemeDurum" Association="Self.FK_ARGE_DenemeIstek_ARGE_DenemeDurum">
+            <End Role="ARGE_DenemeDurum" EntitySet="ARGE_DenemeDurum" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_DenemeIstek" Association="Self.FK_ARGE_DenemeIstek_ARGE_DenemeIstek">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi" Association="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi1" Association="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi1">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_DenemeIstek_ARGE_KesitTipi2" Association="Self.FK_ARGE_DenemeIstek_ARGE_KesitTipi2">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_DenemeIstek" EntitySet="ARGE_DenemeIstek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum" Association="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum">
+            <End Role="ARGE_FikirHavuzuGuncelDurum" EntitySet="ARGE_FikirHavuzuGuncelDurum" />
+            <End Role="ARGE_FikirHavuzu" EntitySet="ARGE_FikirHavuzu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum" Association="Self.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum">
+            <End Role="ARGE_FikirHavuzuOnayDurum" EntitySet="ARGE_FikirHavuzuOnayDurum" />
+            <End Role="ARGE_FikirHavuzu" EntitySet="ARGE_FikirHavuzu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_FikirHavuzu_ARGE_Proje" Association="Self.FK_ARGE_FikirHavuzu_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_FikirHavuzu" EntitySet="ARGE_FikirHavuzu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3">
+            <End Role="ARGE_KesitTipi" EntitySet="ARGE_KesitTipi" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Maliyet_ARGE_Proje" Association="Self.FK_ARGE_Maliyet_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_Maliyet" EntitySet="ARGE_Maliyet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Numune_ARGE_Proje" Association="Self.FK_ARGE_Numune_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_Numune" EntitySet="ARGE_Numune" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje" Association="Self.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_PersonelDisaridaGecirilenSure" EntitySet="ARGE_PersonelDisaridaGecirilenSure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelProje_ARGE_Proje" Association="Self.FK_ARGE_PersonelProje_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_PersonelProje" EntitySet="ARGE_PersonelProje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru" Association="Self.FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru">
+            <End Role="ARGE_ProjeIsBirligiTuru" EntitySet="ARGE_ProjeIsBirligiTuru" />
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDenemeleri_ARGE_Proje" Association="Self.FK_ARGE_ProjeDenemeleri_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_ProjeDenemeleri" EntitySet="ARGE_ProjeDenemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeGuncelBilgi_ARGE_Proje" Association="Self.FK_ARGE_ProjeGuncelBilgi_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_ProjeGuncelBilgi" EntitySet="ARGE_ProjeGuncelBilgi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Sarfiyat_ARGE_Proje" Association="Self.FK_ARGE_Sarfiyat_ARGE_Proje">
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+            <End Role="ARGE_Sarfiyat" EntitySet="ARGE_Sarfiyat" />
+          </AssociationSet>
+          <EntitySet Name="ARGE_Personel" EntityType="PTKS_ARGEModel.ARGE_Personel" />
+          <AssociationSet Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel" Association="PTKS_ARGEModel.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_PersonelDisaridaGecirilenSure" EntitySet="ARGE_PersonelDisaridaGecirilenSure" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_PersonelProje_ARGE_Personel" Association="PTKS_ARGEModel.FK_ARGE_PersonelProje_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_PersonelProje" EntitySet="ARGE_PersonelProje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_Proje_ARGE_Personel" Association="PTKS_ARGEModel.FK_ARGE_Proje_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_Proje" EntitySet="ARGE_Proje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARGE_ProjeDisiCalisma_ARGE_Personel" Association="PTKS_ARGEModel.FK_ARGE_ProjeDisiCalisma_ARGE_Personel">
+            <End Role="ARGE_Personel" EntitySet="ARGE_Personel" />
+            <End Role="ARGE_ProjeDisiCalisma" EntitySet="ARGE_ProjeDisiCalisma" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ARGE_Personel">
+          <Key>
+            <PropertyRef Name="PersonelId" />
+          </Key>
+          <Property Name="PersonelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdSoyad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ARGE_PersonelDisaridaGecirilenSure" Relationship="PTKS_ARGEModel.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel" FromRole="ARGE_Personel" ToRole="ARGE_PersonelDisaridaGecirilenSure" />
+          <NavigationProperty Name="ARGE_PersonelProje" Relationship="PTKS_ARGEModel.FK_ARGE_PersonelProje_ARGE_Personel" FromRole="ARGE_Personel" ToRole="ARGE_PersonelProje" />
+          <NavigationProperty Name="ARGE_Proje" Relationship="PTKS_ARGEModel.FK_ARGE_Proje_ARGE_Personel" FromRole="ARGE_Personel" ToRole="ARGE_Proje" />
+          <NavigationProperty Name="ARGE_ProjeDisiCalisma" Relationship="PTKS_ARGEModel.FK_ARGE_ProjeDisiCalisma_ARGE_Personel" FromRole="ARGE_Personel" ToRole="ARGE_ProjeDisiCalisma" />
+        </EntityType>
+        <Association Name="FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel">
+          <End Type="PTKS_ARGEModel.ARGE_Personel" Role="ARGE_Personel" Multiplicity="0..1" />
+          <End Type="PTKS_ARGEModel.ARGE_PersonelDisaridaGecirilenSure" Role="ARGE_PersonelDisaridaGecirilenSure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelDisaridaGecirilenSure">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_PersonelProje_ARGE_Personel">
+          <End Type="PTKS_ARGEModel.ARGE_Personel" Role="ARGE_Personel" Multiplicity="0..1" />
+          <End Type="PTKS_ARGEModel.ARGE_PersonelProje" Role="ARGE_PersonelProje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_PersonelProje">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_Proje_ARGE_Personel">
+          <End Type="PTKS_ARGEModel.ARGE_Personel" Role="ARGE_Personel" Multiplicity="1" />
+          <End Type="PTKS_ARGEModel.ARGE_Proje" Role="ARGE_Proje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_Proje">
+              <PropertyRef Name="ProjeYurutucusuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARGE_ProjeDisiCalisma_ARGE_Personel">
+          <End Type="PTKS_ARGEModel.ARGE_Personel" Role="ARGE_Personel" Multiplicity="0..1" />
+          <End Type="PTKS_ARGEModel.ARGE_ProjeDisiCalisma" Role="ARGE_ProjeDisiCalisma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARGE_Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="ARGE_ProjeDisiCalisma">
+              <PropertyRef Name="ProjeSorumluId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PTKS_ARGEModelStoreContainer" CdmEntityContainer="PTKS_ARGE1">
+          <EntitySetMapping Name="ARGE_DenemeChips">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_DenemeChips">
+              <MappingFragment StoreEntitySet="ARGE_DenemeChips">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChipsAdi" ColumnName="ChipsAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_DenemeDurum">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_DenemeDurum">
+              <MappingFragment StoreEntitySet="ARGE_DenemeDurum">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DenemeDurum" ColumnName="DenemeDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_DenemeIstek">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_DenemeIstek">
+              <MappingFragment StoreEntitySet="ARGE_DenemeIstek">
+                <ScalarProperty Name="DenemeIstekId" ColumnName="DenemeIstekId" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Katki" ColumnName="Katki" />
+                <ScalarProperty Name="KesitTipi" ColumnName="KesitTipi" />
+                <ScalarProperty Name="Chips" ColumnName="Chips" />
+                <ScalarProperty Name="Dozaj" ColumnName="Dozaj" />
+                <ScalarProperty Name="POYDtex" ColumnName="POYDtex" />
+                <ScalarProperty Name="POYReferans" ColumnName="POYReferans" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeDenemeIstekId" ColumnName="ProjeDenemeIstekId" />
+                <ScalarProperty Name="POYMiktari" ColumnName="POYMiktari" />
+                <ScalarProperty Name="KesitTipiId" ColumnName="KesitTipiId" />
+                <ScalarProperty Name="DurumId" ColumnName="DurumId" />
+                <ScalarProperty Name="KesitTipiId2" ColumnName="KesitTipiId2" />
+                <ScalarProperty Name="KesitTipiId3" ColumnName="KesitTipiId3" />
+                <ScalarProperty Name="ChipsSecme" ColumnName="ChipsSecme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_FikirHavuzu">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_FikirHavuzu">
+              <MappingFragment StoreEntitySet="ARGE_FikirHavuzu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FikirSahibi" ColumnName="FikirSahibi" />
+                <ScalarProperty Name="FikirKonusu" ColumnName="FikirKonusu" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="SonDurum" ColumnName="SonDurum" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="GuncelDurumId" ColumnName="GuncelDurumId" />
+                <ScalarProperty Name="OnayDurumId" ColumnName="OnayDurumId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_FikirHavuzuGuncelDurum">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_FikirHavuzuGuncelDurum">
+              <MappingFragment StoreEntitySet="ARGE_FikirHavuzuGuncelDurum">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FikirHavuzuGuncelDurum" ColumnName="FikirHavuzuGuncelDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_FikirHavuzuOnayDurum">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_FikirHavuzuOnayDurum">
+              <MappingFragment StoreEntitySet="ARGE_FikirHavuzuOnayDurum">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FikirHavuzuDurum" ColumnName="FikirHavuzuDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Hammadde">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Hammadde">
+              <MappingFragment StoreEntitySet="ARGE_Hammadde">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HammaddeGirisTarihi" ColumnName="HammaddeGirisTarihi" />
+                <ScalarProperty Name="Tedarikci" ColumnName="Tedarikci" />
+                <ScalarProperty Name="KatkiIsmi" ColumnName="KatkiIsmi" />
+                <ScalarProperty Name="UrunKodu" ColumnName="UrunKodu" />
+                <ScalarProperty Name="Fonksiyon" ColumnName="Fonksiyon" />
+                <ScalarProperty Name="Dozaj" ColumnName="Dozaj" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="MiktarBirim" ColumnName="MiktarBirim" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="FiyatBirim" ColumnName="FiyatBirim" />
+                <ScalarProperty Name="Ozellik" ColumnName="Ozellik" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="HammaddeGelisMiktari" ColumnName="HammaddeGelisMiktari" />
+                <ScalarProperty Name="KullanımDurumu" ColumnName="KullanımDurumu" />
+                <ScalarProperty Name="İşletmeStok" ColumnName="İşletmeStok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_KesitTipi">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_KesitTipi">
+              <MappingFragment StoreEntitySet="ARGE_KesitTipi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KesitTipi" ColumnName="KesitTipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Makineler">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Makineler">
+              <MappingFragment StoreEntitySet="ARGE_Makineler">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MakineNo" ColumnName="MakineNo" />
+                <ScalarProperty Name="MakineAdi" ColumnName="MakineAdi" />
+                <ScalarProperty Name="MakineTuru" ColumnName="MakineTuru" />
+                <ScalarProperty Name="MakineGrubu" ColumnName="MakineGrubu" />
+                <ScalarProperty Name="MakineTipi" ColumnName="MakineTipi" />
+                <ScalarProperty Name="MakineBolum" ColumnName="MakineBolum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Maliyet">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Maliyet">
+              <MappingFragment StoreEntitySet="ARGE_Maliyet">
+                <ScalarProperty Name="MaliyetId" ColumnName="MaliyetId" />
+                <ScalarProperty Name="MaliyetTarih" ColumnName="MaliyetTarih" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="MaliyetTipi" ColumnName="MaliyetTipi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="Personel" ColumnName="Personel" />
+                <ScalarProperty Name="MaliyetAdi" ColumnName="MaliyetAdi" />
+                <ScalarProperty Name="KDVliMiktar" ColumnName="KDVliMiktar" />
+                <ScalarProperty Name="KDVsizMiktar" ColumnName="KDVsizMiktar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Numune">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Numune">
+              <MappingFragment StoreEntitySet="ARGE_Numune">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MusteriFirma" ColumnName="MusteriFirma" />
+                <ScalarProperty Name="IlgiliKisi" ColumnName="IlgiliKisi" />
+                <ScalarProperty Name="Iletisim" ColumnName="Iletisim" />
+                <ScalarProperty Name="PartiId" ColumnName="PartiId" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="HatirlatmaTarihi" ColumnName="HatirlatmaTarihi" />
+                <ScalarProperty Name="PartiKodu" ColumnName="PartiKodu" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="NumuneAdi" ColumnName="NumuneAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_PersonelDisaridaGecirilenSure">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_PersonelDisaridaGecirilenSure">
+              <MappingFragment StoreEntitySet="ARGE_PersonelDisaridaGecirilenSure">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CikisTarih" ColumnName="CikisTarih" />
+                <ScalarProperty Name="DisGorevAdi" ColumnName="DisGorevAdi" />
+                <ScalarProperty Name="Yer" ColumnName="Yer" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="CikisSaati" ColumnName="CikisSaati" />
+                <ScalarProperty Name="GirisSaati" ColumnName="GirisSaati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_PersonelProje">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_PersonelProje">
+              <MappingFragment StoreEntitySet="ARGE_PersonelProje">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Proje">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Proje">
+              <MappingFragment StoreEntitySet="ARGE_Proje">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProjeAdi" ColumnName="ProjeAdi" />
+                <ScalarProperty Name="ProjeKodu" ColumnName="ProjeKodu" />
+                <ScalarProperty Name="ProjeKisaAd" ColumnName="ProjeKisaAd" />
+                <ScalarProperty Name="ProjeBaslangicTarihi" ColumnName="ProjeBaslangicTarihi" />
+                <ScalarProperty Name="ProjeBitisTarihi" ColumnName="ProjeBitisTarihi" />
+                <ScalarProperty Name="ProjeDurum" ColumnName="ProjeDurum" />
+                <ScalarProperty Name="ToplamAdamAy" ColumnName="ToplamAdamAy" />
+                <ScalarProperty Name="MaliyetOngorusu" ColumnName="MaliyetOngorusu" />
+                <ScalarProperty Name="ProjeYurutucusuId" ColumnName="ProjeYurutucusuId" />
+                <ScalarProperty Name="ProjeKonusu" ColumnName="ProjeKonusu" />
+                <ScalarProperty Name="ProjedeYapilacaklar" ColumnName="ProjedeYapilacaklar" />
+                <ScalarProperty Name="ProjeArgeYonu" ColumnName="ProjeArgeYonu" />
+                <ScalarProperty Name="ProjeCiktilari" ColumnName="ProjeCiktilari" />
+                <ScalarProperty Name="ProjeDestekDurumu" ColumnName="ProjeDestekDurumu" />
+                <ScalarProperty Name="PersonelSayisi" ColumnName="PersonelSayisi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeKonusununIhtiyaclari" ColumnName="ProjeKonusununIhtiyaclari" />
+                <ScalarProperty Name="HizmetAlimiKonusuYeri" ColumnName="HizmetAlimiKonusuYeri" />
+                <ScalarProperty Name="HizmetAlimiTutari" ColumnName="HizmetAlimiTutari" />
+                <ScalarProperty Name="OzkaynakTutari" ColumnName="OzkaynakTutari" />
+                <ScalarProperty Name="PersonelButcesi" ColumnName="PersonelButcesi" />
+                <ScalarProperty Name="IsBirligiTuruId" ColumnName="IsBirligiTuruId" />
+                <ScalarProperty Name="Aciklama2" ColumnName="Aciklama2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_ProjeDenemeleri">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_ProjeDenemeleri">
+              <MappingFragment StoreEntitySet="ARGE_ProjeDenemeleri">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DenemeTarih" ColumnName="DenemeTarih" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="DenemeAdi" ColumnName="DenemeAdi" />
+                <ScalarProperty Name="POYLotu" ColumnName="POYLotu" />
+                <ScalarProperty Name="POYDtex" ColumnName="POYDtex" />
+                <ScalarProperty Name="Katki" ColumnName="Katki" />
+                <ScalarProperty Name="POYMakinesi" ColumnName="POYMakinesi" />
+                <ScalarProperty Name="POYMiktari" ColumnName="POYMiktari" />
+                <ScalarProperty Name="TekstureLotu" ColumnName="TekstureLotu" />
+                <ScalarProperty Name="TekstureDtex" ColumnName="TekstureDtex" />
+                <ScalarProperty Name="TekstureMakinesi" ColumnName="TekstureMakinesi" />
+                <ScalarProperty Name="TekstureMiktari" ColumnName="TekstureMiktari" />
+                <ScalarProperty Name="BukumLotu" ColumnName="BukumLotu" />
+                <ScalarProperty Name="BukumDtex" ColumnName="BukumDtex" />
+                <ScalarProperty Name="BukumMakinesi" ColumnName="BukumMakinesi" />
+                <ScalarProperty Name="BukumMiktari" ColumnName="BukumMiktari" />
+                <ScalarProperty Name="HavaTekstureLotu" ColumnName="HavaTekstureLotu" />
+                <ScalarProperty Name="HavaTekstureDtex" ColumnName="HavaTekstureDtex" />
+                <ScalarProperty Name="HavaTekstureMiktari" ColumnName="HavaTekstureMiktari" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Bilesen1" ColumnName="Bilesen1" />
+                <ScalarProperty Name="POYLotu2" ColumnName="POYLotu2" />
+                <ScalarProperty Name="POYLotu3" ColumnName="POYLotu3" />
+                <ScalarProperty Name="POYLotu4" ColumnName="POYLotu4" />
+                <ScalarProperty Name="POYLotu5" ColumnName="POYLotu5" />
+                <ScalarProperty Name="POYLotu6" ColumnName="POYLotu6" />
+                <ScalarProperty Name="POYLotu7" ColumnName="POYLotu7" />
+                <ScalarProperty Name="POYLotu8" ColumnName="POYLotu8" />
+                <ScalarProperty Name="POYLotu9" ColumnName="POYLotu9" />
+                <ScalarProperty Name="POYLotu10" ColumnName="POYLotu10" />
+                <ScalarProperty Name="DisMakine" ColumnName="DisMakine" />
+                <ScalarProperty Name="Chips2" ColumnName="Chips2" />
+                <ScalarProperty Name="HavaTekstureMakinesi" ColumnName="HavaTekstureMakinesi" />
+                <ScalarProperty Name="Chips" ColumnName="Chips" />
+                <ScalarProperty Name="TekstureDenemeTarihi" ColumnName="TekstureDenemeTarihi" />
+                <ScalarProperty Name="BukumDenemeTarihi" ColumnName="BukumDenemeTarihi" />
+                <ScalarProperty Name="HavaTekstureDenemeTarihi" ColumnName="HavaTekstureDenemeTarihi" />
+                <ScalarProperty Name="POYDenemeKesitId" ColumnName="POYDenemeKesitId" />
+                <ScalarProperty Name="TekstureDenemeKesitId" ColumnName="TekstureDenemeKesitId" />
+                <ScalarProperty Name="BukumDenemeKesitId" ColumnName="BukumDenemeKesitId" />
+                <ScalarProperty Name="HavaTekstureDenemeKesitId" ColumnName="HavaTekstureDenemeKesitId" />
+                <ScalarProperty Name="POYDenemeKesit" ColumnName="POYDenemeKesit" />
+                <ScalarProperty Name="TekstureDenemeKesit" ColumnName="TekstureDenemeKesit" />
+                <ScalarProperty Name="BukumDenemeKesit" ColumnName="BukumDenemeKesit" />
+                <ScalarProperty Name="HavaTekstureDenemeKesit" ColumnName="HavaTekstureDenemeKesit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_ProjeDisiCalisma">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_ProjeDisiCalisma">
+              <MappingFragment StoreEntitySet="ARGE_ProjeDisiCalisma">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProjeKonusu" ColumnName="ProjeKonusu" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Guncelleme" ColumnName="Guncelleme" />
+                <ScalarProperty Name="Numuneler" ColumnName="Numuneler" />
+                <ScalarProperty Name="ProjeSorumluId" ColumnName="ProjeSorumluId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_ProjeGuncelBilgi">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_ProjeGuncelBilgi">
+              <MappingFragment StoreEntitySet="ARGE_ProjeGuncelBilgi">
+                <ScalarProperty Name="ProjeGuncellemeId" ColumnName="ProjeGuncellemeId" />
+                <ScalarProperty Name="ProjeGuncellemeTarih" ColumnName="ProjeGuncellemeTarih" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="ProjeGuncellemeDetay" ColumnName="ProjeGuncellemeDetay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_ProjeIsBirligiTuru">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_ProjeIsBirligiTuru">
+              <MappingFragment StoreEntitySet="ARGE_ProjeIsBirligiTuru">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IsBirligiTuru" ColumnName="IsBirligiTuru" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Sarfiyat">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Sarfiyat">
+              <MappingFragment StoreEntitySet="ARGE_Sarfiyat">
+                <ScalarProperty Name="SarfiyatId" ColumnName="SarfiyatId" />
+                <ScalarProperty Name="SarfiyatTarih" ColumnName="SarfiyatTarih" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ProjeId" ColumnName="ProjeId" />
+                <ScalarProperty Name="SarfiyatCinsi" ColumnName="SarfiyatCinsi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARGE_Personel">
+            <EntityTypeMapping TypeName="PTKS_ARGEModel.ARGE_Personel">
+              <MappingFragment StoreEntitySet="ARGE_Personel">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="PersonelKodu" ColumnName="PersonelKodu" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,237 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeleri
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<CENTER><h3><b> PROJE DENEMESİNİ SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</b></h3></CENTER>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            DENEME TARİHİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DenemeTarih)
+        </dd>
+
+        <dt>
+            DENEME ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DenemeAdi)
+        </dd>
+
+        <dt>
+            POY LOTU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYLotu)
+        </dd>
+
+        <dt>
+            POY DTEX
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYDtex)
+        </dd>
+
+        <dt>
+            KATKI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Katki)
+        </dd>
+
+        <dt>
+            CHIPS
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chips)
+        </dd>
+
+        <dt>
+            POY MAKİNESİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYMakinesi)
+        </dd>
+
+        <dt>
+            POY MİKTARI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYMiktari)
+        </dd>
+
+        <dt>
+            TEKSTÜRE LOTU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TekstureLotu)
+        </dd>
+
+        <dt>
+            TEKSTÜRE DTEX
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TekstureDtex)
+        </dd>
+
+        <dt>
+            TEKSTURE MAKİNESİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TekstureMakinesi)
+        </dd>
+
+        <dt>
+            TEKSTÜRE MİKTARI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TekstureMiktari)
+        </dd>
+
+        <dt>
+            BÜKÜM LOTU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BukumLotu)
+        </dd>
+
+        <dt>
+            BÜKÜM DTEX
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BukumDtex)
+        </dd>
+
+        <dt>
+            BÜKÜM MAKİNESİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BukumMakinesi)
+        </dd>
+
+        <dt>
+            BÜKÜM MİKTARI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BukumMiktari)
+        </dd>
+
+        <dt>
+            HAVA TEKSTÜRE LOTU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HavaTekstureLotu)
+        </dd>
+
+        <dt>
+            HAVA TEKSTÜRE DTEX
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HavaTekstureDtex)
+        </dd>
+
+        <dt>
+            HAVA TEKSTÜRE MİKTARI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HavaTekstureMiktari)
+        </dd>
+
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            PROJE ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" />
+
+        </div>
+    }
+    @Html.ActionLink("GERİ", "Index", "ProjeDenemeleri", new { @class = "btn btn-primary" })
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

@@ -1,0 +1,106 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_DenemeIstek
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><b>AR-GE PROJE DENEME İSTEĞİ SİLME</b></h2>
+
+<h3>Gerçekten silmek istediğinizden emin misiniz?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            TARİH
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            KATKI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Katki)
+        </dd>
+
+        <dt>
+            KESİT TİPİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KesitTipi)
+        </dd>
+
+        <dt>
+            CHIPS
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chips)
+        </dd>
+
+        <dt>
+            DOZAJ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dozaj)
+        </dd>
+
+        <dt>
+            POY DTEX
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYDtex)
+        </dd>
+
+        <dt>
+            POY MİKTARI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYMiktari)
+        </dd>
+
+        <dt>
+            POY REFERANS
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POYReferans)
+        </dd>
+
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            PROJE ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" />
+            @Html.ActionLink("LİSTEYE DÖN", "Index", "DenemeIstek", new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

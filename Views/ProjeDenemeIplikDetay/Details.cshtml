@@ -1,0 +1,101 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeIplikDetay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<center><h2><b> @Model.ARGE_ProjeDenemeleri.ARGE_ProjeDenemeIplikDetay PROJE DENEMESİ DETAYLARI</b></h2></center>
+
+<div>
+    @Html.HiddenFor(model => model.ID)
+</div>
+<hr />
+<body>
+    <div class="bs-example">
+        <table class="table table-bordered table-striped table-responsive-lg">
+            <thead class="table-striped">
+                @*<tr>
+                        <th>Row</th>
+                        <th>    @Html.DisplayFor(model => model.ProjeAdi)</th>
+                        <tr />
+                    <tr>
+                        <th>Row</th>
+                        <th>    @Html.DisplayFor(model => model.ProjeAdi)</th>
+                    </tr>*@
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>İPLİK SEÇİMİ</b></td>
+
+                    <td>
+                        @Html.DisplayFor(model => model.IplikSecimi)
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>MAMÜL TÜRÜ</b></td>
+                    <td>   @Html.DisplayFor(model => model.MamulTuru)</td>
+                </tr>
+                <tr>
+                    <td><b>PARTİ NUMARASI</b></td>
+                    <td>   @Html.DisplayFor(model => model.PartiNo)</td>
+                </tr>
+                <tr>
+                    <td><b>DENYE</b></td>
+                    <td>   @Html.DisplayFor(model => model.Denye)</td>
+                </tr>
+
+                <tr>
+                    <td><b>FLAMAN</b></td>
+                    <td>   @Html.DisplayFor(model => model.Flaman)</td>
+                </tr>
+
+
+                <tr>
+                    <td><b>AÇIKLAMA</b></td>
+                    <td>   @Html.DisplayFor(model => model.Aciklama)</td>
+                </tr>
+                <tr>
+                    <td><b>BİLEŞEN 1</b></td>
+                    <td>   @Html.DisplayFor(model => model.Bilesen1)</td>
+                </tr>
+                <tr>
+                    <td><b>BİLEŞEN 2</b></td>
+                    <td>   @Html.DisplayFor(model => model.Bilesen2)</td>
+                </tr>
+                <tr>
+                    <td><b>BİLEŞEN 3</b></td>
+                    <td>   @Html.DisplayFor(model => model.Bilesen3)</td>
+                </tr>
+                <tr>
+                    <td><b>BİLEŞEN 4</b></td>
+                    <td>   @Html.DisplayFor(model => model.Bilesen4)</td>
+                </tr>
+                <tr>
+                    <td><b>BİLEŞEN 5</b></td>
+                    <td>   @Html.DisplayFor(model => model.Bilesen5)</td>
+                </tr>
+                <tr>
+                    <td><b>DENEME ADI</b></td>
+                    <td>   @Html.DisplayFor(model => model.ARGE_ProjeDenemeleri.DenemeAdi)</td>
+                </tr>
+                <tr>
+                    <td><b>PROJE ADI</b></td>
+                    <td>   @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+<p>
+    @Html.ActionLink("DÜZENLE", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+</p>
+<p>
+    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "Proje", new { @class = "btn btn-success" })
+</p>

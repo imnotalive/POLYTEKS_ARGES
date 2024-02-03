@@ -1,0 +1,38 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_DenemeChips
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("CHIPS ADI")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChipsAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-block btn-danger" />
+
+        </div>
+    }
+    <div>
+        @Html.ActionLink("LİSTEYE DÖN", "Index", "Chips", new { @class = "btn btn-primary" })
+    </div>
+
+</div>

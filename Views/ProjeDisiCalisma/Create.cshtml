@@ -1,0 +1,174 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDisiCalisma
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <div class="card" style="color:aliceblue">
+        <div class="card-header">
+            <center><h2 style="color: black"><b>PROJE DIŞI ÇALIŞMA EKLE</b></h2></center>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-md-12">
+                    <div class="card" style="color:aliceblue">
+                        <div class="card-header">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <b>@Html.Label("TARİH", htmlAttributes: new { @class = "control-label col-md-12", style = "color: black" })</b>
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(model => model.Tarih, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", style = "color: black" })
+                                        @Html.ValidationMessageFor(model => model.Tarih, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <b> @Html.Label("PROJE SORUMLUSU", htmlAttributes: new { @class = "control-label col-md-12", style = "color: black" })</b>
+                                    <div class="col-md-12">
+                                        @Html.DropDownList("ProjeSorumluId", null, "--PERSONEL SEÇİNİZ--", htmlAttributes: new { @class = "form-control", style = "color: black" })
+                                        @Html.ValidationMessageFor(model => model.ProjeSorumluId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <div class="card" style="color:aliceblue">
+                        <div class="card-header">
+                            <div class="form-group">
+                                <b> @Html.Label("PROJE KONUSU", htmlAttributes: new { @class = "control-label col-md-12", style = "color: black" })</b>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.ProjeKonusu, new { htmlAttributes = new { @class = "form-control", style = "color: black", onkeyup = "InputToUpper(this);" } })
+                                    @Html.ValidationMessageFor(model => model.ProjeKonusu, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="col-md-12">
+                    <div class="card" style="color:aliceblue">
+                        <div class="card-header">
+                            <div class="form-group">
+                                <b>@Html.Label("GÜNCELLEME", htmlAttributes: new { @class = "control-label col-md-12", style = "color: black" })</b>
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.Guncelleme, new { htmlAttributes = new { @class = "form-control", style = "color: black" } })
+                                    @Html.ValidationMessageFor(model => model.Guncelleme, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <div class="col-md-12">
+                    <div class="card" style="color:aliceblue">
+                        <div class="card-header">
+
+                            <div class="form-group">
+                                <b> @Html.Label("NUMUNELER", htmlAttributes: new { @class = "control-label col-md-12", style = "color: black" })</b>
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(model => model.Numuneler, 5, 50, new { @class = "form-control", style = "color: black" })
+                                    @Html.ValidationMessageFor(model => model.Numuneler, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <div class="card" style="color:aliceblue">
+                        <div class="card-header">
+                            <div class="form-group">
+                                <b> @Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color: black" })</b>
+                                <div class="col-md-12">
+                                    @Html.TextAreaFor(model => model.Aciklama, 5, 50, new { @class = "form-control", style = "color: black" })
+                                    @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-12">
+                        <input type="submit" value="OLUŞTUR" class="btn btn-success btn-block" />
+                    </div>
+                </div>
+
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index", "ProjeDisiCalismalar", new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+            <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker;
+                });
+            </script>
+            <script>
+                function InputToUpper(obj) {
+                    if (obj.value != "") {
+                        obj.value = obj.value.toUpperCase();
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

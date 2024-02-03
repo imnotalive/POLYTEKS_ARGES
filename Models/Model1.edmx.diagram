@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d88c51aa397c494c85525c4ab13ef121" Name="Diagram1">
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_DenemeChips" Width="1.5" PointX="15" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_DenemeDurum" Width="1.5" PointX="9" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_DenemeIstek" Width="1.5" PointX="11.25" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_FikirHavuzu" Width="1.5" PointX="14.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_FikirHavuzuGuncelDurum" Width="1.5" PointX="12" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_FikirHavuzuOnayDurum" Width="1.5" PointX="12" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Hammadde" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_KesitTipi" Width="1.5" PointX="9" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Makineler" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Maliyet" Width="1.5" PointX="11.25" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Numune" Width="1.5" PointX="11.25" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Personel" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_PersonelDisaridaGecirilenSure" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_PersonelProje" Width="1.5" PointX="6" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Proje" Width="1.5" PointX="9" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_ProjeDenemeleri" Width="1.5" PointX="17.25" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_ProjeDisiCalisma" Width="1.5" PointX="3" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_ProjeGuncelBilgi" Width="1.5" PointX="11.25" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_ProjeIsBirligiTuru" Width="1.5" PointX="6.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PTKS_ARGEModel.ARGE_Sarfiyat" Width="1.5" PointX="11.25" PointY="51.125" IsExpanded="true" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDenemeleri_ARGE_DenemeChips" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_DenemeIstek_ARGE_DenemeDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_DenemeIstek_ARGE_DenemeIstek" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_DenemeIstek_ARGE_KesitTipi" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_DenemeIstek_ARGE_KesitTipi1" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_DenemeIstek_ARGE_KesitTipi2" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuGuncelDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_FikirHavuzu_ARGE_FikirHavuzuOnayDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_FikirHavuzu_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi1" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi2" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDenemeleri_ARGE_KesitTipi3" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_Maliyet_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_Numune_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_PersonelProje_ARGE_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_Proje_ARGE_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDisiCalisma_ARGE_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_PersonelDisaridaGecirilenSure_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_PersonelProje_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_Proje_ARGE_ProjeIsBirligiTuru" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeDenemeleri_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_ProjeGuncelBilgi_ARGE_Proje" ManuallyRouted="false" />
+        <AssociationConnector Association="PTKS_ARGEModel.FK_ARGE_Sarfiyat_ARGE_Proje" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

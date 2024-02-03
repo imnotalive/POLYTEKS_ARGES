@@ -1,0 +1,210 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeleri
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header text-center bg-dark text-white">
+                <div class="row align-items-center">
+                    <div class="col-md-11">
+                        <center><h4><b>YENİ TEKSTÜRE DENEMESİ EKLE</b></h4></center>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+
+                    <b> @Html.Label("DENEME TARİHİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.DenemeTarih, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", style = "color:black" })
+                        @Html.ValidationMessageFor(model => model.DenemeTarih, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>  @Html.Label("DENEME ADI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.DenemeAdi, new { htmlAttributes = new { @class = "form-control", style = "color:black", onkeyup = "InputToUpper(this);" } })
+                        @Html.ValidationMessageFor(model => model.DenemeAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <b>@Html.Label("PROJE", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.DropDownList("ProjeId", null, "PROJE SEÇİNİZ", htmlAttributes: new { @class = "form-control", required = "required", style = "color:black" })
+                        @Html.ValidationMessageFor(model => model.ProjeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group col-md-6">
+                    <b> @Html.Label("POY/FDY LOTU", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.DropDownListFor(m => m.POYLotu, ViewBag.Kategoriler as IEnumerable<SelectListItem>, "--POY LOTU SEÇİNİZ--", new { @class = "form-control", style = "color:black" })
+                        @Html.ValidationMessageFor(model => model.POYLotu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <b>  @Html.Label("TEKSTÜRE LOTU", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.TekstureLotu, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.TekstureLotu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <b>@Html.Label("TEKSTÜRE DTEX", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.TekstureDtex, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.TekstureDtex, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <b> @Html.Label("MAKİNE", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @*@Html.DropDownListFor(model => model.TekstureMakinesi, (List<SelectListItem>)ViewBag.dgrs, "Lütfen Seçiniz", new { @class = "form-control" })*@
+                        @Html.DropDownListFor(model => model.TekstureMakinesi, new List<SelectListItem>
+                                    {
+                                              new  SelectListItem { Text = "FK6-05", Value = "FK6-05" },
+                                    new  SelectListItem { Text = "FK6-6", Value = "FK6-6" },
+                                    new  SelectListItem { Text = "FK6-7", Value = "FK6-7" },
+                                              new  SelectListItem { Text = "FK6-8", Value = "FK6-8" },
+                                    new  SelectListItem { Text = "FK6-9", Value = "FK6-9" },
+                                    new  SelectListItem { Text = "FK6-10", Value = "FK6-10" },
+                                    new  SelectListItem { Text = "FK6-11", Value = "FK6-11" },
+                                      new  SelectListItem { Text = "FK6-12", Value = "FK6-12" },
+                                    new  SelectListItem { Text = "FK6-13", Value = "FK6-13" },
+                                    new  SelectListItem { Text = "FK7-1A", Value = "FK7-1A" },
+                                    new  SelectListItem { Text = "FK7-1B", Value = "FK7-1B" },
+                                     new  SelectListItem { Text = "FK7-2A", Value = "FK7-2A" },
+                                      new  SelectListItem { Text = "FK7-2B", Value = "FK7-2B" },
+                                      new  SelectListItem { Text = "FK7-3A", Value = "FK7-3A" },
+                                        new  SelectListItem { Text = "FK7-3B", Value = "FK7-3B" },
+                                         new  SelectListItem { Text = "FK7-4A", Value = "FK7-4A" },
+                                    new  SelectListItem { Text = "FK7-4B", Value = "FK7-4B" },
+                                            new  SelectListItem { Text = "FK7-14A", Value = "FK7-14A" },
+                                    new  SelectListItem { Text = "FK7-14B", Value = "FK7-14B" },
+                                        new  SelectListItem { Text = "FK7-15A", Value = "FK7-15A" },
+                                    new  SelectListItem { Text = "FK7-15B", Value = "FK7-15B" },
+                                      new  SelectListItem { Text = "AD1-A", Value = "AD1-A" },
+                                        new  SelectListItem { Text = "AD1-B", Value = "AD1-B" },
+                                       new  SelectListItem { Text = "AD2-A", Value = "AD2-A" },
+                                        new  SelectListItem { Text = "AD2-B", Value = "AD2-B" },
+                                            new  SelectListItem { Text = "AD3-A", Value = "AD3-A" },
+                                              new  SelectListItem { Text = "AD3-B", Value = "AD3-B" },
+                                                new  SelectListItem { Text = "AS1-A", Value = "AS1-A" },
+                                                  new  SelectListItem { Text = "AS1-B", Value = "AS1-B" },
+
+                                    new  SelectListItem { Text = "AS2-A", Value = "AS2-A" },
+                                      new  SelectListItem { Text = "AS2-B", Value = "AS2-B" },
+                                    new  SelectListItem { Text = "AS3-A", Value = "AS3-A" },
+                                    new  SelectListItem { Text = "AS3-B", Value = "AS3-B" },
+                                    new  SelectListItem { Text = "AS4-A", Value = "AS4-A" },
+                                    new  SelectListItem { Text = "AS4-B", Value = "AS4-B" },
+                                    new  SelectListItem { Text = "AS5-A", Value = "AS5-A" },
+                                    new  SelectListItem { Text = "AS5-B", Value = "AS5-B" },
+                                    new  SelectListItem { Text = "AS6-A", Value = "AS6-A" },
+                                    new  SelectListItem { Text = "AS6-B", Value = "AS6-B" },
+                                    new  SelectListItem { Text = "AS7-A", Value = "AS7-A" },
+                                    new  SelectListItem { Text = "AS7-B", Value = "AS7-B" },
+                                    new  SelectListItem { Text = "AS8-A", Value = "AS8-A" },
+                                    new  SelectListItem { Text = "AS8-B", Value = "AS8-B" },
+                                    new  SelectListItem { Text = "AS9-A", Value = "AS9-A" },
+                                    new  SelectListItem { Text = "AS9-B", Value = "AS9-B" },
+                          new  SelectListItem { Text = "AS10-A", Value = "AS10-A" },
+                                    new  SelectListItem { Text = "AS10-B", Value = "AS10-B" },
+                                      new  SelectListItem { Text = "AS11-A", Value = "AS11-A" },
+                                    new  SelectListItem { Text = "AS11-B", Value = "AS11-B" },
+
+
+
+                                    }, "Lütfen Seçiniz", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen Tekstüre Makine Numarası Seçiniz!" })
+                        @Html.ValidationMessageFor(model => model.TekstureMakinesi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <b>  @Html.Label("TEKSTÜRE MİKTARI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.TekstureMiktari, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.TekstureMiktari, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <b>  @Html.Label("KESİT TİPİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.TekstureDenemeKesit, new List<SelectListItem>
+                    {
+                              new  SelectListItem { Text = "CORE AND SHEATH", Value = "CORE AND SHEATH" },
+                    new  SelectListItem { Text = "HOLLOW", Value = "HOLLOW" },
+
+                      new  SelectListItem { Text = "SEA AND ISLAND", Value = "SEA AND ISLAND" },
+
+                          new  SelectListItem { Text = "SIDE BY SIDE", Value = "SIDE BY SIDE" },
+                              new  SelectListItem { Text = "ROUND", Value = "ROUND" },
+                                  new  SelectListItem { Text = "TRILOBAL", Value = "TRILOBAL" },
+                                      new  SelectListItem { Text = "OCTOLOBAL", Value = "OCTOLOBAL" },
+                                          new  SelectListItem { Text = "W", Value = "W" },
+                                              new  SelectListItem { Text = "WW", Value = "WW" },
+                                                  new  SelectListItem { Text = "YASSI", Value = "YASSI" },
+                                                           new  SelectListItem { Text = "YASSI YASSI", Value = "YASSI YASSI" },
+                    }, "KESİT TİPİNİ SEÇİNİZ", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen Kesit Tipini Seçiniz!" })
+                    @Html.ValidationMessageFor(model => model.TekstureDenemeKesit, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <b>@Html.Label("BİLEŞEN", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Bilesen1, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                    @Html.ValidationMessageFor(model => model.Bilesen1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <b> @Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.Aciklama, 10, 50, new { @class = "form-control", style = "color:black" })
+                    @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    <input type="submit" value="YENİ TEKSTÜRE DENEMESİ OLUŞTUR" class="btn btn-dark btn-block" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker;
+    });
+</script>
+<script>
+    function InputToUpper(obj) {
+        if (obj.value != "") {
+            obj.value = obj.value.toUpperCase();
+        }
+    }
+</script>
+

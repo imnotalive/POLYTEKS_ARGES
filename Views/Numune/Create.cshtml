@@ -1,0 +1,178 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Numune
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["Msg"] != null)
+{
+    <div class="custom-alerts alert alert-@TempData["class"] fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+        <h2>@Html.Raw(TempData["Msg"])</h2>
+    </div>
+}
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header text-center bg-dark text-white">
+                <div class="row align-items-center">
+                    <div class="col-md-11">
+                        <CENTER><h3 style="color: black"><b>YENİ NUMUNE OLUŞTUR</b></h3></CENTER>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <b>@Html.Label("NUMUNE ADI", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NumuneAdi, new { htmlAttributes = new { @class = "form-control", style = "color:black " } })
+                        @Html.ValidationMessageFor(model => model.NumuneAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <b>@Html.Label("MÜŞTERİ FİRMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.MusteriFirma, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.MusteriFirma, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <b> @Html.Label("İLGİLİ KİŞİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.IlgiliKisi, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.IlgiliKisi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <b>@Html.Label("İLETİŞİM", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Iletisim, new { htmlAttributes = new { @class = "form-control", style = "color:black " } })
+                        @Html.ValidationMessageFor(model => model.Iletisim, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <b> @Html.Label("MİKTAR", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Miktar, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                        @Html.ValidationMessageFor(model => model.Miktar, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <b>@Html.Label("HATIRLATMA TARİHİ", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.HatirlatmaTarihi, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control", style = "color:black" })
+                        @Html.ValidationMessageFor(model => model.HatirlatmaTarihi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <b>@Html.Label("PARTİ KODU", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.PartiKodu, new { htmlAttributes = new { @class = "form-control", style = "color:black" } })
+                    @Html.ValidationMessageFor(model => model.PartiKodu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <b>@Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-12", style = "color:black" })</b>
+                <div class="col-md-12">
+                    @Html.TextAreaFor(model => model.Aciklama, 3, 50, new { @class = "form-control", style = "color:black" })
+                    @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    <input type="submit" value="NUMUNE OLUŞTUR" class="btn btn-success btn-block" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12">
+                    @Html.ActionLink("LİSTEYE DÖN", "Index", "Numune", new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker;
+    });
+</script>
+@*<style>
+        .uppercase {
+            text-transform: uppercase
+        }
+    </style>*@
+@*<script>
+        function InputToUpper(obj) {
+            if (obj.value != "") {
+                obj.value = obj.value.toUpperCase();
+            }
+        }
+    </script>*@
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

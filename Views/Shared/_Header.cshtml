@@ -1,0 +1,343 @@
+﻿
+<header>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</header>
+
+<body>
+    <div class="header"></div>
+    <input type="checkbox" class="openSideMenu" id="openSideMenu">
+    <label for="openSideMenu" class="sideIconToggle" onload="openNav()">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sideMenu">
+        <CENTER><a href="@Url.Action("Index", "Home")"><h2 style="color:white;"><b>AR-GE</b></h2></a></CENTER>
+
+        <button class="dropdown-btn">
+            PROJE YÖNETİMİ
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+
+            <a class="dropdown-item" href="@Url.Action("Index", "Proje")" style="color:white;">Proje Listesi</a>
+
+            <a class="dropdown-item" href="@Url.Action("Create", "Proje")" style="color:white;" data-toggle="tab">Proje Ekle</a>
+        </div>
+        <button class="dropdown-btn">
+            PERSONEL YÖNETİMİ
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+
+            <a class="dropdown-item" href="@Url.Action("Index", "Personel")" style="color:white;">Personel Listesi</a>
+            <a class="dropdown-item" href="@Url.Action("Create", "Personel")" style="color:white;">Personel Ekle</a>
+        </div>
+        <button class="dropdown-btn">
+            MALİYET YÖNETİMİ
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+
+
+            <a class="dropdown-item" href="@Url.Action("Index", "Maliyet")" style="color: white;" data-toggle="tab">Malzeme/Hizmet Alımı</a>
+
+            <a class="dropdown-item" href="@Url.Action("Index", "Sarfiyat")" style="color: white;" data-toggle="tab">Sarfiyat Girişi</a>
+        </div>
+
+        <button class="dropdown-btn">
+            GÜNCEL BİLGİ
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a class="dropdown-item" href="@Url.Action("Index", "ProjeGuncelBilgi")" style="color:white;">PROJE GÜNCELLEME</a>
+
+        </div>
+        <button class="dropdown-btn">
+            DENEME YÖNETİMİ
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a class="dropdown-item" href="@Url.Action("Index", "ProjeDenemeleri")" style="color:white;">PROJE DENEMELERİ</a>
+            <a class="dropdown-item" href="@Url.Action("Index", "ProjeDenemeIplikDetay")" style="color:white;">PROJE DENEMELERİ DETAYLARI</a>
+        </div>
+        <button class="dropdown-btn">
+            NUMUNE YÖNETİMİ
+
+        </button>
+        <div class="dropdown-container">
+
+        </div>
+        <button class="dropdown-btn">
+            RAPORLAMA
+
+        </button>
+        <div class="dropdown-container">
+
+        </div>
+        @*<a href="#contact" style="color:white;">RAPORLAMA</a>*@
+
+
+    </div>
+</body>
+<style>
+    html, body {
+        overflow-x: hidden;
+        height: 100%;
+    }
+
+    body {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .header {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+        background-color: black;
+        position: fixed;
+        height: 60px !important;
+        overflow: hidden;
+        z-index: 10;
+    }
+
+    .main {
+        margin: 0 auto;
+        display: block;
+        height: 100%;
+        margin-top: 60px;
+    }
+
+    .mainInner {
+        display: table;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+        .mainInner div {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 1.25px;
+        }
+
+    #sideMenu {
+        height: 100%;
+        position: fixed;
+        left: 0;
+        width: 250px;
+        margin-top: 60px;
+        transform: translateX(-250px);
+        transition: transform 250ms ease-in-out;
+        background: black;
+        z-index: 1;
+    }
+
+    .sideMenuInner {
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid black;
+    }
+
+        .sideMenuInner li {
+            list-style: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            border-bottom: 1px solid black;
+        }
+
+            .sideMenuInner li span {
+                display: block;
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.50);
+            }
+
+            .sideMenuInner li a {
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: bold;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+    input[type="checkbox"]:checked ~ #sideMenu {
+        transform: translateX(0);
+    }
+
+    input[type=checkbox] {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        display: none;
+    }
+
+    .sideIconToggle {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        cursor: pointer;
+        position: absolute;
+        z-index: 99;
+        height: 100%;
+        width: 100%;
+        top: 22px;
+        left: 15px;
+        height: 22px;
+        width: 22px;
+    }
+
+    .spinner {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+    }
+
+    .horizontal {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        margin-top: 3px;
+    }
+
+    .diagonal.part-1 {
+        position: relative;
+        transition: all 0.3s;
+        box-sizing: border-box;
+        float: left;
+    }
+
+    .diagonal.part-2 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        margin-top: 3px;
+    }
+
+    input[type=checkbox]:checked ~ .sideIconToggle > .horizontal {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        opacity: 0;
+    }
+
+    input[type=checkbox]:checked ~ .sideIconToggle > .diagonal.part-1 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        transform: rotate(135deg);
+        margin-top: 8px;
+    }
+
+    input[type=checkbox]:checked ~ .sideIconToggle > .diagonal.part-2 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        transform: rotate(-135deg);
+        margin-top: -9px;
+    }
+
+    #sidenav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: rgba(0, 0, 0, .1);
+        cursor: pointer;
+        z-index: 1;
+    }
+</style>
+<script type="text/javascript">
+    function openNav() {
+        document.getElementById("#sideMenu");
+    }
+
+    function closeNav() {
+        document.getElementById("#sideMenu").style.width = "0";
+    }
+
+    function clickOutsite() {
+        TO - DO
+    }
+
+    function clickOnItemAndClose() {
+        TO - DO
+    }
+</script>
+<style>
+    .sideMenu {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+        .sideMenu a, .dropdown-btn {
+            padding: 10px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+            .sideMenu a:hover, .dropdown-btn:hover {
+                color: #f1f1f1;
+            }
+
+    .active {
+        background-color: green;
+        color: white;
+    }
+
+    .dropdown-container {
+        display: none;
+        background-color: #262626;
+        padding-left: 8px;
+    }
+
+    .fa-caret-down {
+        float: right;
+        padding-right: 8px;
+    }
+</style>
+<script type="text/javascript">
+
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+
+</script>
+

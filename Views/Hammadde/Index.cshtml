@@ -1,0 +1,752 @@
+﻿@*@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_Hammadde>*@
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<POLYTEKS_ARGE.Models.ARGE_Hammadde>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+    <script>
+        function archiveFunction(int id) {
+            event.preventDefault(); // prevent form submit
+            var form = event.target.form; // storing the form
+            swal({
+                title: "Silmek istediğinizden emin misiniz ?",
+                text: "Seçili hammadde silinecek.",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "EVET",
+                cancelButtonText: "HAYIR",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        form.submit();          // submitting the form when user press yes
+                    } else {
+                        swal("İptal Edildi", "İşleminiz iptal edilmiştir.", "error");
+                    }
+                });
+        }
+    </script>*@
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+            <center><h2 style="color: black"><b>AR-GE HAMMADDE LİSTESİ</b></h2></center>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+            @*<link href="/Content/glyphicons.css" rel="stylesheet" />*@
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+            <p>
+                @Html.ActionLink("YENİ HAMMADDE GİRİŞİ OLUŞTUR", "Create", "Hammadde", new { @class = "btn btn-info btn-block" })
+            </p>
+            @using (Html.BeginForm("HammaddeModeliOlustur", "Hammadde", FormMethod.Post))
+            {
+                <input type="submit" value="RAPOR İNDİR" class="btn btn-danger btn-block" />
+            }
+            <br />
+            <div class="col-md-12">
+                <div class="card" style="background-color: whitesmoke">
+                    <div class="card-header">
+                        <div class="container">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" id="Search" placeholder="ARA">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><i class="fa fa-search"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+                        <table class="table table-striped table-bordered table-sm sortable" id="myTable">
+
+                            <thead>
+
+                                <tr style="background-color:#d7c9c9; color: black">
+                                    @*<th></th>*@
+                                    <th>
+                                        TEDARİKÇİ
+                                    </th>
+                                    <th>
+                                        KATKI İSMİ
+                                    </th>
+                                    <th>
+                                        ÜRÜN KODU
+                                    </th>
+                                    <th>
+                                        HAMMADDE TARİHİ
+                                    </th>
+                                    <th>
+                                        AR-GE STOK
+                                    </th>
+                                    <th>
+                                        İŞLETME STOK
+                                    </th>
+                                    @*<th style="color: black">
+                                            BİRİM
+                                        </th>*@
+                                    <th>
+                                        DOZAJ
+                                    </th>
+                                    <th>
+                                        FİYAT
+                                    </th>
+                                    <th>
+                                        BİRİM
+                                    </th>
+
+                                    <th>
+                                        KULLANIM DURUMU
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @{
+                                    //int sayac = 0;
+                                    foreach (var item in Model)
+                                    {
+                                        //sayac++;
+                                        <tr class="Search item">
+                                            @*<td style="color: black"><center><b>@sayac</b></center></td>*@
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.Tedarikci)
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.KatkiIsmi)
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.UrunKodu)
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.HammaddeGirisTarihi)
+                                            </td>
+                                            <td style="color: black">
+
+                                                @string.Format("{0:#,0.00}", item.Miktar)
+
+                                            </td>
+                                            <td style="color: black">
+
+                                                @string.Format("{0:#,0.00}", item.İşletmeStok)
+
+                                            </td>
+                                            @*<td style="color: black">
+                                                    @Html.DisplayFor(modelItem => item.MiktarBirim)
+                                                </td>*@
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.Dozaj)
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.Fiyat)
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.FiyatBirim)
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.DisplayFor(modelItem => item.KullanımDurumu)
+                                            </td>
+
+                                            <td style="color: black">
+
+
+                                                <a href="@Url.Action("Edit", "Hammadde",new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a>
+
+                                            </td>
+
+
+                                            <td style="color: black">
+                                                @*@Html.ActionLink("DETAYLAR", "Details", new { id = item.ID }, new { @class = "btn btn-info" })*@
+                                                <a href="@Url.Action("Details", "Hammadde",new { id = item.ID })" title="DETAYLAR" class="btn btn-info"> <i class="fa fa-book" aria-hidden="true">  </i></a>
+
+                                            </td>
+                                            <td style="color: black">
+                                                @Html.ActionLink("SİL", "deleted", "Hammadde", new { @class = "btn btn-danger deleteBtn" })
+                                                @*<a href="@Url.Action("Delete", "Hammadde",new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a>*@
+
+                                            </td>
+                                            @*<td>
+                                                    <input type="hidden" name="ID" id="ID" value="<?php echo $rows['ID']; ?>">
+                                                    <a href="@Url.Action("Delete", "Hammadde",new { id = item.ID })" class="btn btn-danger" name="archive" type="submit" onclick="archiveFunction()">
+                                                        <i class="fa fa-trash"></i>
+                                                                                                                <td style="color: black">
+                                                </td>*@
+                                            @*<td>
+                                                <input id="Delete"
+                                                                        onclick="deleteOrder('@item.ID')"
+                                                                        onclick="remove(@item.ID)"
+                                                           type="button"
+                                                           value="Delete" />
+                                                </td>*@
+                                            <td>
+
+                                                @*@using (Html.BeginForm("Delete", "Hammadde", FormMethod.Post))
+                                                    {@Html.Hidden("id", item.ID)*@
+                                                @*<button type="submit" class="btn btn-danger" onclick="return functionConfirm(this)">
+                                                        Delete
+                                                    </button>*@
+                                                <!--}-->
+                                                @*<a href="#" class="btn btn-danger" onclick="ConfirmDelete(@item.ID)"><i class="glyphicon glyphicon-trash"></i> </a>*@
+                                                <!--</td>-->
+                                                <!--}-->
+
+                                                <input type="hidden" name="roleName" value="admin" />
+                                                <span>
+                                                    @Html.ActionLink("deleted", "deleted",
+                                                    new { @class = "btn btn-success btn-xs deleteBtn" })
+                                                </span>
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                        <script>
+                            $(function () {
+
+                                $(".deleteBtn").click(function (e) {
+                                    //whenever our button is clicked
+
+                                    e.preventDefault();
+                                    // stop the default behavior(navigation)
+                                    var _form = $(this).closest("form");
+                                    //get a reference to the container form
+
+                                    swal({
+                                        title: 'Are you sure?',
+                                        text: "You won't be able to revert this!",
+                                        type: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        confirmButtonText: 'Yes, delete it!'
+                                    }).then(function () {
+                                        window.location.href = "/Hammadde/Index"
+                                        _form.submit();
+                                    });
+
+                                });
+
+                            })</script>
+                        <script type="text/javascript">
+                            function functionConfirm(event) {
+                                swal({
+                                    title: 'are you sur?',
+                                    text: "You will not be able to recover this item",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    cancelButtonText: 'No',
+                                    cancelButtonClass: 'btn btn-danger',
+                                    showConfirmButton: true,
+                                    confirmButtonText: 'Yes',
+                                    confirmButtonClass: 'btn btn-success'
+                                }, function (isConfirm) {
+                                    if (isConfirm) {
+                                        $('form').submit();
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                });
+                                return false;
+                            }
+                        </script>
+
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                                        <h3 class="modal-title">Delete Employee</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Are you sure ? You want to delete this. </h4>
+
+                                        @*<div style="text-align:center;display:none" id="loaderDiv">
+                                                <img src="~/Content/InternetSlowdown_Day.gif" width="150" />
+                                            </div>*@
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                                        <a href="@Url.Action("DeleteEmployee", "Hammadde")" class="btn btn-success" onclick="DeleteEmployee()">Confirm</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div style="color:black" class="b">
+                            <b>
+                                <strong>&nbsp;F-32.09D/02</strong>
+
+
+                            </b>
+                        </div>
+
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <style>
+
+                div.b {
+                    text-align: left;
+                    font-style: italic;
+                }
+            </style>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                $(function () {
+                    $('#rowCount')
+                        .button()
+                        .click(function () {
+                            alert("Rows = " + ($('table#myTable tr:last').index() + 1));
+                        })
+                });
+                $(document).ready(function () {
+                    function Contains(text_one, text_two) {
+                        if (text_one.indexOf(text_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        var searchText = $("#Search").val().toLowerCase();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text().toLowerCase(), searchText)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        })
+                    });
+                });
+
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <style>
+                table {
+                    margin: 0 auto;
+                    margin-top: 20px;
+                    width: 100%;
+                    position: relative;
+                    overflow: auto;
+                    /*  overflow-y: overlay;*/
+                }
+
+                th,
+                thead {
+                    position: sticky;
+                    top: 0;
+                    border: 1px solid #dddddd;
+                    /* background-color: #1f2d54;*/
+                    text-align: center;
+                    color: white;
+                    table-layout: fixed;
+                    word-break: break-word;
+                    height: 45px;
+                }
+
+                .filter {
+                    position: absolute;
+                    width: 20vw;
+                    height: 30vh;
+                    display: none;
+                    text-align: left;
+                    font-size: small;
+                    z-index: 9999;
+                    overflow: auto;
+                    background: #ffffff;
+                    /*   color: #1f2d54;*/
+                    border: 1px solid #dddddd;
+                }
+
+                    .filter input {
+                        margin: 5px !important;
+                        padding: 0 !important;
+                        width: 10%;
+                    }
+            </style>
+            <script>
+                (function ($) {
+
+                    $.fn.ddTableFilter = function (options) {
+                        options = $.extend(true, $.fn.ddTableFilter.defaultOptions, options);
+
+                        return this.each(function () {
+                            if ($(this).hasClass('ddtf-processed')) {
+                                refreshFilters(this);
+                                return;
+                            }
+                            var table = $(this);
+                            var start = new Date();
+
+                            $('th:visible', table).each(function (index) {
+                                if ($(this).hasClass('skip-filter')) return;
+                                var selectbox = $('<select class="form-control">');
+                                var values = [];
+                                var opts = [];
+                                selectbox.append('<option value="--all--">' + $(this).text() + '</option>');
+
+                                var col = $('tr:not(.skip-filter) td:nth-child(' + (index + 1) + ')', table).each(function () {
+                                    var cellVal = options.valueCallback.apply(this);
+                                    if (cellVal.length == 0) {
+                                        cellVal = '--empty--';
+                                    }
+                                    $(this).attr('ddtf-value', cellVal);
+
+                                    if ($.inArray(cellVal, values) === -1) {
+                                        var cellText = options.textCallback.apply(this);
+                                        if (cellText.length == 0) { cellText = options.emptyText; }
+                                        values.push(cellVal);
+                                        opts.push({ val: cellVal, text: cellText });
+                                    }
+                                });
+                                if (opts.length < options.minOptions) {
+                                    return;
+                                }
+                                if (options.sortOpt) {
+                                    opts.sort(options.sortOptCallback);
+                                }
+                                $.each(opts, function () {
+                                    $(selectbox).append('<option value="' + this.val + '">' + this.text + '</option>')
+                                });
+
+                                $(this).wrapInner('<div style="display:none">');
+                                $(this).append(selectbox);
+
+                                selectbox.bind('change', { column: col }, function (event) {
+                                    var changeStart = new Date();
+                                    var value = $(this).val();
+
+                                    event.data.column.each(function () {
+                                        if ($(this).attr('ddtf-value') === value || value == '--all--') {
+                                            $(this).removeClass('ddtf-filtered');
+                                        }
+                                        else {
+                                            $(this).addClass('ddtf-filtered');
+                                        }
+                                    });
+                                    var changeStop = new Date();
+                                    if (options.debug) {
+                                        console.log('Search: ' + (changeStop.getTime() - changeStart.getTime()) + 'ms');
+                                    }
+                                    refreshFilters(table);
+
+                                });
+                                table.addClass('ddtf-processed');
+                                if ($.isFunction(options.afterBuild)) {
+                                    options.afterBuild.apply(table);
+                                }
+                            });
+
+                            function refreshFilters(table) {
+                                var refreshStart = new Date();
+                                $('tr', table).each(function () {
+                                    var row = $(this);
+                                    if ($('td.ddtf-filtered', row).length > 0) {
+                                        options.transition.hide.apply(row, options.transition.options);
+                                    }
+                                    else {
+                                        options.transition.show.apply(row, options.transition.options);
+                                    }
+                                });
+
+                                if ($.isFunction(options.afterFilter)) {
+                                    options.afterFilter.apply(table);
+                                }
+
+                                if (options.debug) {
+                                    var refreshEnd = new Date();
+                                    console.log('Refresh: ' + (refreshEnd.getTime() - refreshStart.getTime()) + 'ms');
+                                }
+                            }
+
+                            if (options.debug) {
+                                var stop = new Date();
+                                console.log('Build: ' + (stop.getTime() - start.getTime()) + 'ms');
+                            }
+                        });
+                    };
+
+                    $.fn.ddTableFilter.defaultOptions = {
+                        valueCallback: function () {
+                            return encodeURIComponent($.trim($(this).text()));
+                        },
+                        textCallback: function () {
+                            return $.trim($(this).text());
+                        },
+                        sortOptCallback: function (a, b) {
+                            return a.text.toLowerCase() > b.text.toLowerCase();
+                        },
+                        afterFilter: null,
+                        afterBuild: null,
+                        transition: {
+                            hide: $.fn.hide,
+                            show: $.fn.show,
+                            options: []
+                        },
+                        emptyText: '--BOŞ--',
+                        sortOpt: true,
+                        debug: false,
+                        minOptions: 2
+                    }
+
+                })(jQuery);
+
+                $('table').ddTableFilter();
+            </script>
+            @*<script>
+                    $(document).ready(function () {
+                        $('#data').after('<div id="nav"></div>');
+                        var rowsShown = 50;
+                        var rowsTotal = $('#data tbody tr').length;
+                        var numPages = rowsTotal / rowsShown;
+                        for (i = 0; i < numPages; i++) {
+                            var pageNum = i + 1;
+                            $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                        }
+                        $('#data tbody tr').hide();
+                        $('#data tbody tr').slice(0, rowsShown).show();
+                        $('#nav a:first').addClass('active');
+                        $('#nav a').bind('click', function () {
+
+                            $('#nav a').removeClass('active');
+                            $(this).addClass('active');
+                            var currPage = $(this).attr('rel');
+                            var startItem = currPage * rowsShown;
+                            var endItem = startItem + rowsShown;
+                            $('#data tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                                css('display', 'table-row').animate({ opacity: 1 }, 300);
+                        });
+                    });
+                </script>*@
+            <div class="pagination" style="color: black">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+            {
+                DisplayLinkToIndividualPages = true,
+                DisplayPageCountAndCurrentLocation = true,
+                MaximumPageNumbersToDisplay = 5,
+                //MaximumPageNumbersToDisplay = 3,
+                //LiElementClasses = new string[] { "pagination" },
+                //LinkToFirstPageFormat = "<< İLK",
+                //LinkToPreviousPageFormat = "< GERİ",
+                //LinkToNextPageFormat = "İLERİ >",
+                //LinkToLastPageFormat = "SON >>",
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+
+                    DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                EllipsesFormat = "&#8230;",
+                LinkToFirstPageFormat = "««",
+                LinkToPreviousPageFormat = "«",
+                LinkToIndividualPageFormat = "{0}",
+                LinkToNextPageFormat = "»",
+                LinkToLastPageFormat = "»»",
+                PageCountAndCurrentLocationFormat = "Sayfa {0}/{1}",
+                //ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                FunctionToDisplayEachPageNumber = null,
+                ClassToApplyToFirstListItemInPager = null,
+                ClassToApplyToLastListItemInPager = null,
+                ContainerDivClasses = new[] { "pagination" },
+                //UlElementClasses = new[] { "pagination" },
+                //LiElementClasses = Enumerable.Empty<string>(),
+
+                //PageClasses = new string[] { "page-link" },
+
+            }
+            /* PagedListRenderOptions.PageNumbersOnly*/)
+            </div>
+            <style>
+                .pagination a {
+                    color: black;
+                    float: left;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    transition: background-color .3s;
+                    border: 1px solid black;
+                }
+
+                    .pagination a.active {
+                        background-color: #dddddd;
+                        color: white;
+                        border: 1px solid black;
+                    }
+
+                    .pagination a:hover:not(.active) {
+                        background-color: #ddd;
+                    }
+            </style>
+        </div>
+    </div>
+</div>
+
+<input type="button" value="Delete" class="btn btn-default">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function remove(ID) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover your profile!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "POST",
+                        data: {
+                            id: ID
+                        },
+                        url: "/Hammadde/Delete",
+                        dataType: "json",
+                        success: function (response) {
+                            swal("Poof! Your profile has been deleted!", {
+                                icon: "success",
+                            }).then(function () {
+                                window.location.href = "/Hammadde/Index"
+                            });
+
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+
+                }
+                else {
+                    swal("Your profil is safe!");
+                }
+            });
+    }
+</script>
+<script>
+
+    var ConfirmDelete = function (ID) {
+
+        $("#ID").val(ID);
+        $("#myModal").modal('show');
+
+    }
+
+    var DeleteEmployee = function () {
+
+        $("#loaderDiv").show();
+
+        var empId = $("#ID").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Hammadde/DeleteEmployee",
+            data: { ID: empId },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + empId).remove();
+
+            }
+
+        })
+
+    }
+</script>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

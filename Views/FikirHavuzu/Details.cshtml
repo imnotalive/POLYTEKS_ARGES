@@ -1,0 +1,118 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_FikirHavuzu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<center><h2 style="color: black"><b> @Model.FikirKonusu PROJESİ DETAYLARI</b></h2></center>
+
+<div>
+    @Html.HiddenFor(model => model.ID)
+</div>
+<hr />
+<body>
+    <div class="bs-example">
+        <table class="table table-bordered table-hover  table-striped table-responsive-lg">
+            <thead class="table-striped">
+                @*<tr>
+                        <th>Row</th>
+                        <th>    @Html.DisplayFor(model => model.ProjeAdi)</th>
+                        <tr />
+                    <tr>
+                        <th>Row</th>
+                        <th>    @Html.DisplayFor(model => model.ProjeAdi)</th>
+                    </tr>*@
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: black"><b>FİKİR SAHİBİ</b></td>
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.FikirSahibi)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>FİKİR KONUSU</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.FikirKonusu)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>TARİH</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.Tarih)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>GÜNCEL DURUM</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.ARGE_FikirHavuzuGuncelDurum.FikirHavuzuGuncelDurum)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>SON DURUM</b></td>
+                    <td style="color: black"> @Html.DisplayFor(model => model.SonDurum)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>ONAY DURUMU</b></td>
+                    <td style="color: black"> @Html.DisplayFor(model => model.ARGE_FikirHavuzuOnayDurum.FikirHavuzuDurum)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>AÇIKLAMA</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.Aciklama)</td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+<p>
+    @Html.ActionLink("DÜZENLE", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+</p>
+<p>
+    @Html.ActionLink("LİSTEYE GERİ DÖN", "Index1", "Proje", new { @class = "btn btn-success" })
+</p>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

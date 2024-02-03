@@ -1,0 +1,123 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_DenemeIstek
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h2 style="color: black"><b>AR-GE PROJE DENEMESİ İSTEK DETAYLARI</b></h2></center>
+
+<div>
+    @Html.HiddenFor(model => model.DenemeIstekId)
+</div>
+<hr />
+<body>
+    <div class="bs-example">
+        <table class="table table-bordered table-hover table-striped table-responsive-lg">
+            <thead class="table-striped">
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: black"><b>TARİH</b></td>
+
+                    <td style="color: black">
+                        @Html.DisplayFor(model => model.Tarih)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>KATKI</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.Katki)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>KESİT TİPİ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.ARGE_KesitTipi.KesitTipi)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>CHIPS</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.Chips)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>DOZAJ</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.Dozaj)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>POY DTEX</b></td>
+                    <td style="color: black"> @Html.DisplayFor(model => model.POYDtex)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>POY MİKTARI</b></td>
+                    <td style="color: black"> @Html.DisplayFor(model => model.POYMiktari)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>POY REFERANS</b></td>
+                    <td style="color: black">@Html.DisplayFor(model => model.POYReferans)</td>
+                </tr>
+
+                <tr>
+                    <td style="color: black"><b>PROJE ADI</b></td>
+                    <td style="color: black">   @Html.DisplayFor(model => model.ARGE_Proje.ProjeAdi)</td>
+                </tr>
+                <tr>
+                    <td style="color: black"><b>AÇIKLAMA</b></td>
+                    <td style="color: black">  @Html.DisplayFor(model => model.Aciklama)</td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+<p>
+    @Html.ActionLink("DÜZENLE", "Edit", new { id = Model.DenemeIstekId }, new { @class = "btn btn-danger" })
+</p>
+<p>
+    @Html.ActionLink("LİSTEYE DÖN", "Index", "DenemeIstek", new { @class = "btn btn-primary" })
+</p>
+
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

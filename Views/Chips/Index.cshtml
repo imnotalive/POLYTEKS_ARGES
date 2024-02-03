@@ -1,0 +1,120 @@
+﻿@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_DenemeChips>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>BAŞARILI!</strong> @TempData["AlertMessage"]
+    </div>
+
+}
+@if (TempData["EditAlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        <strong>BAŞARILI!</strong> @TempData["EditAlertMessage"]
+    </div>
+
+}
+@if (TempData["DeleteAlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>BAŞARILI!</strong> @TempData["DeleteAlertMessage"]
+    </div>
+
+}
+<div class="col-md-12">
+    <div class="card" style="background-color:whitesmoke">
+        <div class="card-header">
+            <center>
+                <h2 style="color: black"><b>AR-GE CHIPSLERİ</b></h2>
+
+                <input type="button" id="btn1" value="CHIPS EKLE" @*style="background-color:royalblue;color:white;"*@ class="btn btn-primary" />
+                <br />
+                <hr />
+                <div id="result1"></div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#btn1').click(function () {
+                            $('#result1').load('/Chips/Create');
+                        });
+                    });
+
+                </script>
+
+                <table class="table table-bordered d-sm-table-row table-striped">
+                    <tr>
+                        <th style="color: black">
+                            <b> @Html.DisplayName("CHIPS ADI")</b>
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="color: black">
+                                @Html.DisplayFor(modelItem => item.ChipsAdi)
+                            </td>
+                            <td style="color: black">
+                                <center> <a href="@Url.Action("Edit", "Chips",new { id = item.ID })" title="DÜZENLE" class="btn btn-primary"> <i class="fas fa-pen">   </i></a></center>
+
+                            </td>
+                            <td style="color: black">
+
+                                <center> <a href="@Url.Action("Delete", "Chips",new { id = item.ID })" title="SİL" class="btn btn-danger">   <i class="fas fa-trash"> </i></a></center>
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </center>
+        </div>
+    </div>
+</div>
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>

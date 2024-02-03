@@ -1,0 +1,365 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Personel
+@{
+    ViewBag.Title = "Giris";
+}
+@*<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+        <script type="text/javascript"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    </head>*@
+
+@*<body>
+        <section class="home">
+
+            <div class="row" style="margin-top:20px">
+                <div class="col-xs-6 col-md-3 col-sm-offset-2 col-md-offset-4">
+                    <div class="center">
+
+                        <div class="header">
+                            <center>
+                                <h2 style="color:white;"> <b>HOŞGELDİNİZ</b></h2>
+
+                                <h4 style="color:white;">LÜTFEN GİRİŞ YAPINIZ</h4>
+                            </center>
+                            <h3 style="color:red;">@ViewBag.mesaj</h3>
+                        </div>
+                        @using (Html.BeginForm("Giris", "Home", FormMethod.Post))
+                        {
+
+                            <center>
+
+                                <div class="input-group">
+
+                                    @Html.TextBoxFor(m => m.KullaniciAdi, new { @class = "form-control", placeholder = "AD-SOYAD" })
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+
+
+                                </div>
+                                <br />
+                                <div class="input-group">
+                                    @Html.PasswordFor(m => m.Sifre, new { @class = "form-control", placeholder = "ŞİFRE" })
+                                    <div class="input-group-addon">
+                                        <i class="fas fa-lock" onclick="show()"></i>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <input type="submit" class="btn btn-lg btn-info btn-block" value="GİRİŞ YAP">
+                                    </div>
+                                </div>
+                            </center>
+
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <script>
+            function show() {
+                var Sifre = document.getElementById('Sifre');
+                var icon = document.querySelector('.fas');
+                if (Sifre.type === "password") {
+                    Sifre.type = "text";
+                    Sifre.style.marginTop = "5px";
+                    icon.style.color = "#7f2092";
+                } else {
+                    Sifre.type = "password";
+                    icon.style.color = "grey";
+                }
+            }
+        </script>
+        <style type="text/css">
+            .home {
+                width: 100%;
+                height: 100vh;
+                background-image: url(https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0f6908fa5e81286213c7211276e6b3d&auto=format&fit=crop&w=1500&q=80);
+                background-position: center top;
+                background-size: cover;
+            }
+        </style>
+    </body>*@
+@*<body>
+
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h2 class="card-header-pills text-center"><b>HOŞGELDİNİZ</b></h2>
+                        <h3 class="card-title text-center"><b>LÜTFEN GİRİŞ YAPINIZ</b></h3>
+
+                        <h3 style="color:red;">@ViewBag.mesaj</h3>
+
+                        @using (Html.BeginForm("Giris", "Home", FormMethod.Post))
+                        {
+
+                            <center>
+                                <div class="input">
+
+                                    @Html.TextBoxFor(m => m.KullaniciAdi, new { @class = "form-control", placeholder = "AD-SOYAD" })
+
+                                </div>
+
+                                <br />
+                                <div class="input">
+                                    @Html.PasswordFor(m => m.Sifre, new { @class = "form-control", placeholder = "ŞİFRE" })
+
+                                </div>
+
+                                <br />
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <input type="submit" class="btn btn-lg btn-primary btn-block" id="accordionSidebar" value="GİRİŞ YAP">
+                                    </div>
+                                </div>
+                            </center>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>*@
+
+@*</html>*@
+@*<style>
+        :root {
+            --input-padding-x: 1.5rem;
+            --input-padding-y: .75rem;
+        }
+
+        /*  body {
+            background: #007bff;
+            background: linear-gradient(to right, #0062E6, #33AEFF);
+        }*/
+
+        .card-signin {
+            border: 0;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+        }
+
+            .card-signin .card-title {
+                margin-bottom: 2rem;
+                font-weight: 300;
+                font-size: 1.5rem;
+            }
+
+            .card-signin .card-body {
+                padding: 2rem;
+            }
+
+        .form-signin {
+            width: 100%;
+        }
+
+            .form-signin .btn {
+                font-size: 80%;
+                border-radius: 5rem;
+                letter-spacing: .1rem;
+                font-weight: bold;
+                padding: 1rem;
+                transition: all 0.2s;
+            }
+
+        .form-label-group {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+            .form-label-group input {
+                height: auto;
+                border-radius: 2rem;
+            }
+
+            .form-label-group > input,
+            .form-label-group > label {
+                padding: var(--input-padding-y) var(--input-padding-x);
+            }
+
+            .form-label-group > label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                margin-bottom: 0;
+                /* Override default `<label>` margin */
+                line-height: 1.5;
+                color: #495057;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+                transition: all .1s ease-in-out;
+            }
+
+            .form-label-group input::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input:-ms-input-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input::-ms-input-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input::-moz-placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input::placeholder {
+                color: transparent;
+            }
+
+            .form-label-group input:not(:placeholder-shown) {
+                padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+                padding-bottom: calc(var(--input-padding-y) / 3);
+            }
+
+                .form-label-group input:not(:placeholder-shown) ~ label {
+                    padding-top: calc(var(--input-padding-y) / 3);
+                    padding-bottom: calc(var(--input-padding-y) / 3);
+                    font-size: 12px;
+                    color: #777;
+                }
+        }
+    </style>
+    <style>
+        #accordionSidebar {
+            background-image: linear-gradient(to right, #003173, #003173);
+        }
+    </style>*@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>POLYTEKS-ARGE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/LoginPage/Login_v18/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/LoginPage/Login_v18/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                @using (Html.BeginForm("Giris", "Home", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+
+                    <span class="login100-form-title p-b-43">
+                        <b>HOŞGELDİNİZ</b>
+                    </span>
+                    <CENTER><h2><b>POLYTEKS-ARGE</b></h2></CENTER>
+                    <br>
+                    <CENTER><h5>Lütfen Giriş Yapınız</h5></CENTER>
+                    <br />
+
+                    <h3 style="color:red;">@ViewBag.mesaj</h3>
+
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Kullanıcı Adı Gereklidir!">
+
+                        @Html.TextBoxFor(m => m.KullaniciAdi, new { @class = "input100" })
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">KULLANICI KODU</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Şifre Gereklidir!">
+
+                        @Html.PasswordFor(m => m.Sifre, new { @class = "input100" })
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">ŞİFRE</span>
+                    </div>
+
+
+
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            GİRİŞ YAP
+                        </button>
+                        @*<input type="submit" value="GİRİŞ YAP"/>*@
+                    </div>
+
+                }
+
+
+               
+
+                <div class="login100-more" style="background-image: url('/LoginPage/Login_v18/images/bg-01.jpg');">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/vendor/bootstrap/js/popper.js"></script>
+    <script src="/LoginPage/Login_v18/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/LoginPage/Login_v18/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="/LoginPage/Login_v18/js/main.js"></script>
+
+</body>
+</html>

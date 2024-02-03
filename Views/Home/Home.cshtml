@@ -1,0 +1,166 @@
+﻿@model POLYTEKS_ARGE.Models.SearchModel
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Search.css" rel="stylesheet" />
+
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+    <!-- Add jQuery to your website if you don't have it already -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <!-- JAVASCRIPT text alana tıklanınca temizler -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var searchboxID = "#txtSearch";
+            $('#srcButton').click(function () {
+                $(searchboxID).keyup();
+            });
+
+            $(searchboxID).keyup(function (event) {
+                if (event.keyCode != 13 && event.keyCode != 37 && event.keyCode != 39) {
+                    if ($.trim($(searchboxID).val()).length > 2) {
+
+                        delay(function () {
+                            var options = {};
+                            options.url = '/Home/Search',
+                                options.type = "POST";
+                            options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
+                                options.contentType = "application/json; charset=utf-8",
+                                options.success = function (result) {
+                                    $("#searchDiv").html(result);
+                                    $("#searchDiv").show();
+                                };
+                            options.error = function (err) {
+                                if (err.status == 500) {
+                                    window.location.href = "/Home/Home";
+                                } else {
+                                    if (err.status != 0) {
+                                        alert(err.statusText);
+                                    }
+                                }
+                            };
+                            $.ajax(options);
+                        }, 500);
+                    } else {
+                        $("#searchDiv").hide();
+                    }
+                }
+            });
+        });
+
+        var delay = (function () {
+            var timer = 0;
+            return function (callback, ms) {
+                clearTimeout(timer);
+                timer = setTimeout(callback, ms);
+            };
+        })();
+
+        $(function () {
+            $("#txtSearch").click(function () {
+                if ($("#txtSearch").val() == "ARA") {
+                    $("#txtSearch").val("");
+                }
+            });
+            $("#txtSearch").blur(function () {
+                if ($("#txtSearch").val().trim() == "") {
+                    $("#txtSearch").val("ARA");
+                }
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        #searchHead {
+            background-color: #c3dfef;
+        }
+
+        #tfheadsearch {
+            float: left;
+            padding: 20px;
+            font-style: italic;
+            font-family: 'Arial Rounded MT';
+            color: purple;
+            font-size: xx-large;
+        }
+
+        #tfnewsearch {
+            float: right;
+            padding: 20px 40px 20px 20px;
+        }
+
+        .tftextinput2 {
+            margin: 0;
+            padding: 5px 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #666;
+            border: 1px solid #0076a3;
+            border-right: 0px;
+            border-top-left-radius: 5px 5px;
+            border-bottom-left-radius: 5px 5px;
+        }
+
+        .tfbutton2 {
+            margin: 0;
+            padding: 5px 7px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            border: solid 1px #0076a3;
+            border-right: 0px;
+            background: #0095cd;
+            background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+            background: -moz-linear-gradient(top, #00adee, #0078a5);
+            border-top-right-radius: 5px 5px;
+            border-bottom-right-radius: 5px 5px;
+        }
+
+            .tfbutton2:hover {
+                text-decoration: none;
+                background: #007ead;
+                background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+                background: -moz-linear-gradient(top, #0095cc, #00678e);
+            }
+            /* Fixes submit button height problem in Firefox */
+            .tfbutton2::-moz-focus-inner {
+                border: 0;
+            }
+
+        .divResult {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML for SEARCH BAR -->
+    <div id="searchHead">
+        <div id="tfheadsearch"></div>
+   
+        <form id="tfnewsearch">
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" id="txtSearch" class="tftextinput2" name="q" size="21" maxlength="120" value="ARA"><input type="button" value=">" class="tfbutton2" id="srcButton">
+                    </td>
+                </tr>
+                <tr >
+                    <td>
+                        <div class="divResult" id="searchDiv"></div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

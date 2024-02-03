@@ -1,0 +1,84 @@
+﻿@model IEnumerable<POLYTEKS_ARGE.Models.ARGE_Proje>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card" style="background-color: whitesmoke ">
+        <div class="card-header">
+            <center><h2 style="color: black"><b>AR-GE PROJELERİ</b></h2></center>
+            <hr />
+            <div class="col-12">
+
+                <table style="color: black" class="table text-center table-bordered">
+
+                    <tr style="background-color: lightslategray">
+
+
+                        <th style="color: black">
+                            <b> PROJE KODU</b>
+                        </th>
+                        <th style="color: black">
+                            <b>PROJE ADI</b>
+                        </th>
+
+                        <th style="color: black">
+                            <b>PROJE BAŞLANGIÇ TARİHİ</b>
+                        </th>
+                        <th style="color: black">
+                            <b> PROJE BİTİŞ TARİHİ</b>
+                        </th>
+                        <th style="color: black">
+                            <b>PROJEDEKİ PERSONEL SAYISI</b>
+                        </th>
+
+                        <th style="color: black">
+                            <b> PROJE YÜRÜTÜCÜSÜ</b>
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+
+                            <td style="color: black">
+                                <b>  @Html.DisplayFor(modelItem => item.ProjeKodu)</b>
+                            </td>
+                            <td style="color: black">
+                                @Html.DisplayFor(modelItem => item.ProjeAdi)
+                            </td>
+
+                            <td style="color: black">
+                                @Html.DisplayFor(modelItem => item.ProjeBaslangicTarihi)
+                            </td>
+                            <td style="color: black">
+                                @Html.DisplayFor(modelItem => item.ProjeBitisTarihi)
+                            </td>
+                            <td style="color: black">
+                                @Html.DisplayFor(modelItem => item.PersonelSayisi)
+                            </td>
+
+                            <td style="color: black">
+                                <b> @Html.DisplayFor(modelItem => item.ARGE_Personel.AdSoyad)</b>
+                            </td>
+
+
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <style>
+                body {
+                    height: 100%;
+                    background-image: url('../../Template/img/1558354864296-_1_.jpg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            </style>
+            </div></div></div>

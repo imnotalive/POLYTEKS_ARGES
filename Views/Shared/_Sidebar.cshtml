@@ -1,0 +1,236 @@
+﻿
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "Home")">
+
+        <img src="~/Template/img/Ekran Alıntısı12345.PNG" class='background-img responsive' />
+    </a>
+
+
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <!--<li class="nav-item active">
+        <a class="nav-link" href="@Url.Action("Index", "Home")">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>ANASAYFA</span>
+        </a>
+    </li>-->
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        <CENTER><b>MENÜLER</b> </CENTER>
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collaps"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class='far fa-comment'></i>
+            <span><b>FİKİR HAVUZU</b></span>
+        </a>
+        <div id="collaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Fikir Havuzu Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index1", "FikirHavuzu")">Fikir Havuzu Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "FikirHavuzu")">Fikir Havuzu Ekle</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class='fas fa-layer-group'></i>
+            <span><b>PROJE YÖNETİMİ</b></span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Proje Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Proje")">Proje Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "Proje")">Proje Ekle</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
+           aria-expanded="true" aria-controls="collapse">
+            @*<i class="fas fa-fw fa-cog"></i>*@
+            <i class="fas fa-user" aria-hidden="true"></i>
+            <span><b>PERSONEL YÖNETİMİ</b></span>
+        </a>
+        <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">PERSONEL MENÜSÜ</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Personel")">Personel Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "Personel")">Personel Ekle</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">D.GEÇİRİLEN SÜRE MENÜSÜ</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "PersonelDisaridaGecirilenSure")">Personel Süreler Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "PersonelDisaridaGecirilenSure")">Personel Süre Ekle</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <!-- Divider -->
+    <!--<hr class="sidebar-divider">-->
+    <!-- Heading -->
+    <!--<div class="sidebar-heading">
+        Addons
+    </div>-->
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+           aria-expanded="true" aria-controls="collapsePages">
+            @*<i class="fas fa-fw fa-folder"></i>*@
+            <i class='fas fa-money-bill'></i>
+            <span><b>MALİYET YÖNETİMİ</b></span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Maliyet/Hizmet Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Maliyet")">Maliyet/Hizmet Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "Maliyet")">Maliyet/Hizmet Alımı Ekle</a>
+
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Sarfiyat Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Sarfiyat")">Sarfiyat Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "Sarfiyat")">Sarfiyat Girişi</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse11"
+           aria-expanded="true" aria-controls="collapse">
+            @*<i class="fas fa-fw fa-cog"></i>*@
+            <i class="fas fa-industry"></i>
+            <span><b>HAMMADDE YÖNETİMİ</b></span>
+        </a>
+        <div id="collapse11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Hammadde Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Hammadde")">Hammadde Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "Hammadde")">Hammadde Ekle</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Index", "ProjeGuncelBilgi")">
+            @*<i class="fas fa-fw fa-chart-area"></i>*@
+            <i class="fas fa-fw fa-cog"></i>
+            <span><b>GÜNCEL BİLGİ YÖNETİMİ</b></span>
+        </a>
+        <div id="collapse12345" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Güncel Bilgi Yönetimi Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "ProjeGuncelBilgi")">Proje Güncel Bilgi Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "ProjeGuncelBilgi")">Proje Güncel Bilgi Ekle</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+           aria-expanded="true" aria-controls="collapseUtilities">
+            @*<i class="fas fa-fw fa-wrench"></i>*@
+            <i class="fab fa-artstation"></i>
+            <span><b>DENEME YÖNETİMİ</b></span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Proje Denemeleri Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "ProjeDenemeleri")">Proje Denemeleri</a>
+                <a class="collapse-item" href="@Url.Action("Index", "DenemeIstek")">Proje Denemesi İsteği</a>
+                <a class="collapse-item" href="@Url.Action("Index", "ProjeDisiCalisma")">Proje Dışı Çalışmalar</a>
+
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
+           aria-expanded="true" aria-controls="collapseUtilities1">
+            @*<i class="fas fa-fw fa-wrench"></i>*@
+            <i class="fas fa-recycle"></i>
+            <span><b>NUMUNE YÖNETİMİ</b></span>
+        </a>
+        <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Numune Denemeleri Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Numune")">Numune Listesi</a>
+                <a class="collapse-item" href="@Url.Action("Create", "Numune")">Numune Ekle</a>
+
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities123"
+           aria-expanded="true" aria-controls="collapseUtilities1">
+            @*<i class="fas fa-fw fa-wrench"></i>*@
+            <i class="fas fa-bug"></i>
+            <span><b>GELİŞTİRİCİ YÖNETİMİ</b></span>
+        </a>
+        <div id="collapseUtilities123" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Geliştirici Menüsü</h6>
+                <a class="collapse-item" href="@Url.Action("Index", "Chips")">Chips</a>
+                <a class="collapse-item" href="@Url.Action("Index", "KesitTipi")">Kesit Tipi</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Tables -->
+    @*<li class="nav-item">
+            <a class="nav-link" href="~/Template/site/tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span><b>RAPORLAMA</b></span>
+            </a>
+        </li>*@
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Sidebar Message -->
+    @*<div class="sidebar-card">
+            <img class="sidebar-card-illustration mb-2" src="~/Template/img/undraw_rocket.svg" alt="">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+        </div>*@
+
+</ul>
+<style>
+    .background-img {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        z-index: -1;
+    }
+    .responsive {
+        width: 100%;
+        height: fit-content;
+    }
+</style>
+<style>
+    #accordionSidebar {
+        background-image: linear-gradient(to right, #003173, #003173);
+    }
+    .navbar .navbar-nav .bg-gradient-primary .sidebar .sidebar-dark accordion {
+        font-weight: bold;
+        font-size: 100rem;
+    }
+
+    .navbar{
+        font-weight: bold;
+    }
+</style>

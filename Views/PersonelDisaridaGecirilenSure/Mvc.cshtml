@@ -1,0 +1,40 @@
+﻿@model IEnumerable<POLYTEKS_ARGE.Models.PersonelDisaridaGecirilenSureView>
+
+@{
+    ViewBag.Title = "Mvc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>EmployeeId</th>
+                <th>EmployeeName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Experience</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                
+                        <tr style="background-color:pink">
+                            <td>@item.CikisSaati</td>
+                            <td>@item.GirisSaati</td>
+                            <td>@item.ProjeAdi</td>
+                            <td>@item.ProjeKodu</td>
+                            <td>@item.ProjeAdi</td>
+                        </tr>
+             
+              
+                }
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("ExportToExcel","PersonelDisaridaGecirilenSure")">Export Excel</a>
+</div>

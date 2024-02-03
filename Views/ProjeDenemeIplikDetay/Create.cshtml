@@ -1,0 +1,173 @@
+﻿@*@model POLYTEKS_ARGE.Models.ARGE_ProjeDenemeIplikDetay
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+<CENTER><h2><b>PROJE DENEMESİ ÜRETİMİ GİRİŞİ</b></h2></CENTER>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("İPLİK TÜRÜNÜ SEÇİNİZ", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.MamulTuru, new List<SelectListItem>
+{
+      new  SelectListItem { Text = "POY", Value = "POY" },
+            new  SelectListItem { Text = "FDY", Value = "FDY" },
+                  new  SelectListItem { Text = "HAVA TEKSTÜRE", Value = "HAVA TEKSTURE" },
+                        new  SelectListItem { Text = "TEKSTÜRE", Value = "TEKSTURE" },
+                              new  SelectListItem { Text = "KDK", Value = "KDK" },
+                                      new  SelectListItem { Text = "FLAT", Value = "FLAT" },
+                                              new  SelectListItem { Text = "AIR COVERING", Value = "AIR COVERING" },
+                                      new  SelectListItem { Text = "BÜKÜMLÜ", Value = "BUKUMLU" },
+}, "--LÜTFEN İPLİK TÜRÜNÜ SEÇİNİZ--", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen İplik Türünü Seçiniz!" })
+            @Html.ValidationMessageFor(model => model.IplikSecimi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("MAMÜL TÜRÜ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.MamulTuru, new List<SelectListItem>
+                {
+                          new  SelectListItem { Text = "YARI MAMÜL", Value = "YARI MAMUL" },
+                new  SelectListItem { Text = "MAMÜL", Value = "MAMUL" },
+                }, "--LÜTFEN MAMÜL TÜRÜNÜ SEÇİNİZ--", new { @style = "color:black", @class = "form-control", required = "required", title = "Lütfen Mamül Türünü Seçiniz!" })
+
+            @Html.ValidationMessageFor(model => model.MamulTuru, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("PARTİ NUMARASI", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PartiNo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PartiNo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("DENYE", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Denye, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Denye, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("FLAMAN", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Flaman, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Flaman, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("BİLEŞEN 1", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Bilesen1, ViewBag.Kategoriler as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Bilesen1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("BİLEŞEN 2", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Bilesen2, ViewBag.Kategoriler as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Bilesen2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("BİLEŞEN 3", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Bilesen3, ViewBag.Kategoriler as IEnumerable<SelectListItem>, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Bilesen3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("BİLEŞEN 4", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bilesen4, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bilesen4, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("BİLEŞEN 5", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Bilesen5, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Bilesen5, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+            @Html.Label("PROJE SEÇİNİZ", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProjeId", null, "--LÜTFEN PROJE SEÇİNİZ--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+            <div class="form-group">
+                @Html.Label("DENEME SEÇİNİZ", htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.DropDownList("DenemeId", null, "--LÜTFEN DENEME SEÇİNİZ--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DenemeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            $('#ProjeId').change(function () {
+                var id = $('#ProjeId').val();
+                $.ajax({
+                    url: '/ProjeDenemeIplikDetay/DenemeGetir',
+                    data: { p: id },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#DenemeId').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#DenemeId').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <div class="form-group">
+        @Html.Label("AÇIKLAMA", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Aciklama, 3, 50, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="OLUŞTUR" class="btn btn-success btn-block" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("LİSTEYE DÖN", "Index","ProjeDenemeIplikDetay", new { @class = "btn btn-primary" })
+</div>*@

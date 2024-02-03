@@ -1,0 +1,121 @@
+﻿@model POLYTEKS_ARGE.Models.ARGE_Sarfiyat
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<h2 style="color:black"><b>SARFİYAT SİLME</b></h2>
+<hr />
+<h3 style="color:black">SARFİYATI SİLMEK İSTEDİĞİNİZDEN EMİN MİSİNİZ?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            SARFİYAT TARİHİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SarfiyatTarih)
+        </dd>
+
+        <dt>
+            SARF MİKTARI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miktar)
+        </dd>
+
+        <dt>
+            BİRİM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birim)
+        </dd>
+
+
+
+        <dt>
+            PROJE ADI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARGE_Proje.ProjeKisaAd)
+        </dd>
+        <dt>
+            SARFİYAT CİNSİ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SarfiyatCinsi)
+        </dd>
+        <dt>
+            AÇIKLAMA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="SİL" class="btn btn-danger btn-block" /> <br /><br />
+
+        </div>
+    }
+</div>
+<hr />
+<br />
+
+@Html.ActionLink("LİSTEYE DÖN", "Index", "Sarfiyat", new { @class = "btn btn-primary" })
+<div id="loader" class="center"></div>
+
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== "complete") {
+            document.querySelector(
+                "body").style.visibility = "hidden";
+            document.querySelector(
+                "#loader").style.visibility = "visible";
+        } else {
+            document.querySelector(
+                "#loader").style.display = "none";
+            document.querySelector(
+                "body").style.visibility = "visible";
+        }
+    };
+</script>
+<style>
+    #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+    }
+
+    @@keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>
